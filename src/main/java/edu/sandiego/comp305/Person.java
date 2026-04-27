@@ -12,5 +12,6 @@ public class Person {
     }
     public void setAge(int age){
     }
+    public void setHealthScore(int score){}
 
 }
