@@ -10,5 +10,7 @@ public class Person {
     public int getHealthScore(){
         return 0;
     }
+    public void setAge(int age){
+    }
 
 }
