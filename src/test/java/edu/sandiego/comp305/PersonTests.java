@@ -20,4 +20,10 @@ public class PersonTests {
         Person person = new Person();
         assertEquals(100, person.getHealthScore());
     }
+    @Test
+    public void testSetAge() {
+        Person person = new Person();
+        person.setAge(18);
+        assertEquals(18, person.getAge());
+    }
 }
