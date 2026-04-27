@@ -10,4 +10,9 @@ public class PersonTests {
         Person person = new Person();
         assertEquals("Name", person.getName());
     }
+    @Test
+    public void testGetAge() {
+        Person person = new Person();
+        assertEquals(18, person.getAge());
+    }
 }
