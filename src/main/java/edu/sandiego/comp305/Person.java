@@ -7,5 +7,8 @@ public class Person {
     public int getAge(){
         return 0;
     }
+    public int getHealthScore(){
+        return 0;
+    }
 
 }
