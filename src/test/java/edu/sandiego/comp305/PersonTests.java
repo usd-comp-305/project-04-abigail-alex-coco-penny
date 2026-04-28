@@ -9,6 +9,10 @@ public class PersonTests {
         public TestPerson(String name, Age age, int healthScore, String phenotype) {
             super(name, age, healthScore, phenotype);
         }
+        @Override
+        public String getLifeStage() {
+            return "initialPerson";
+        }
     }
 
     @Test
