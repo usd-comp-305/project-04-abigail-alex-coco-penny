@@ -15,7 +15,7 @@ public class Child extends Person {
     public ArrayList<Person> getParents(){
         return null;
     }
-    public void inheritTraits(Person parent1, person parent2){
+    public void inheritTraits(Person parent1, Person parent2){
     }
 
 }
