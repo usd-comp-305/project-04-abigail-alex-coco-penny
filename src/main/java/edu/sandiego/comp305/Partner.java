@@ -6,4 +6,7 @@ public class Partner {
     }
     public void setBankBalance(int bankBalance){
     }
+    public int getCompatibilityScore(){
+        return 0;
+    }
 }
