@@ -14,27 +14,32 @@ public class PersonTests {
         public String getName() { return "newPerson";
         }
     }
+
     @Test
     public void testGetName() {
         Person person = new TestPerson("Name", 0, 0, "ABCD");
         assertEquals("Name", person.getName());
     }
+
     @Test
     public void testGetAge() {
         Person person = new TestPerson("Name", 18, 0, "ABCD");
         assertEquals(18, person.getAge());
     }
+
     @Test
     public void testGetHealthScore() {
         Person person = new TestPerson("Name", 0, 100, "ABCD");
         assertEquals(100, person.getHealthScore());
     }
+
     @Test
     public void testSetAge() {
         Person person = new TestPerson("Name", 0, 0, "ABCD");
         person.setAge(18);
         assertEquals(18, person.getAge());
     }
+
     @Test
     public void testSetHealthScore() {
         Person person = new TestPerson("Name", 0, 0, "ABCD");
