@@ -17,19 +17,19 @@ public abstract class Person {
 
     public String getName(){
         return null;
-    };
+    }
     public Age getAge(){
         return null;
-    };
+    }
     public int getHealthScore(){
         return 0;
-    };
+    }
     public String getPhenotype(){
         return null;
-    };
+    }
     public void setAge(Age age){
-    };
+    }
     public void setHealthScore(int healthScore){
-    };
+    }
 
 }
