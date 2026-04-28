@@ -1,5 +1,7 @@
 package edu.sandiego.comp305;
 
+import java.util.ArrayList;
+
 public abstract class Event {
 
     String description;
@@ -12,7 +14,7 @@ public abstract class Event {
         this.validAges = validAges;
     }
 
-    public abstract void execute();
+    public abstract void execute(Person person);
 
 
 }

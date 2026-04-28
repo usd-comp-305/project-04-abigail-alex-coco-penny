@@ -14,7 +14,7 @@ public class RiskyEvent {
     }
 
     @Override
-    public void execute() {
+    public void execute(Person person) {
         return;
     }
 

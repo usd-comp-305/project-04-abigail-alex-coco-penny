@@ -1,5 +1,7 @@
 package edu.sandiego.comp305;
 
+import java.util.ArrayList;
+
 public class MilestoneEvent {
 
     String milestoneType;
@@ -10,8 +12,8 @@ public class MilestoneEvent {
     }
 
     @Override
-    public void execute() {
-        return;
+    public void execute(Person person) {
+
     }
 
 }
