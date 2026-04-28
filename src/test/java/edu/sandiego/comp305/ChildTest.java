@@ -6,6 +6,11 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class ChildTest {
     @Test
+    public void testLifeStageIsChild(){
+        Child child = new Child();
+        assertEquals("Child", child.getLifeStage);
+    }
+    @Test
     public void testGetParentData() {
         Child child = new Child();
         assertNotNull(child.getParents());
