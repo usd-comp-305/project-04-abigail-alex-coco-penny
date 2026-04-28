@@ -20,7 +20,7 @@ public class PersonTests {
     @Test
     public void testGetAge() {
         Person person = new TestPerson("Name", Age.CHILD, 0, "ABCD");
-        assertEquals(18, person.getAge());
+        assertEquals(Age.CHILD, person.getAge());
     }
 
     @Test
@@ -32,8 +32,8 @@ public class PersonTests {
     @Test
     public void testSetAge() {
         Person person = new TestPerson("Name", Age.CHILD, 0, "ABCD");
-        person.setAge(18);
-        assertEquals(18, person.getAge());
+        person.setAge(Age.YOUNG_ADULT);
+        assertEquals(Age.YOUNG_ADULT, person.getAge());
     }
 
     @Test
