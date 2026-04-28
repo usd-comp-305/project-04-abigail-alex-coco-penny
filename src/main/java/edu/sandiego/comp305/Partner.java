@@ -14,8 +14,8 @@ public class Partner extends Person{
     }
     public void setBankBalance(int bankBalance){
     }
-    public int getCompatibilityScore(){
-        return 0;
+    public double getCompatibilityScore(){
+        return 0.0;
     }
     public void setCompatibilityScore(int compatibilityScore){}
 }
