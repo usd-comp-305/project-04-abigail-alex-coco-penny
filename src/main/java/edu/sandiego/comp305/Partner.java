@@ -9,4 +9,5 @@ public class Partner {
     public int getCompatibilityScore(){
         return 0;
     }
+    public void setCompatibilityScore(int compatibilityScore){}
 }
