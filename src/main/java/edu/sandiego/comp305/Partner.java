@@ -4,4 +4,6 @@ public class Partner {
     public int getBankBalance(){
         return 0;
     }
+    public void setBankBalance(int bankBalance){
+    }
 }
