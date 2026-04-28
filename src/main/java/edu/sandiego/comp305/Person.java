@@ -31,5 +31,6 @@ public abstract class Person {
     }
     public void setHealthScore(int healthScore){
     }
+    public abstract String getLifeStage();
 
 }
