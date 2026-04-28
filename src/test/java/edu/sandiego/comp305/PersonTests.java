@@ -42,4 +42,10 @@ public class PersonTests {
         person.setHealthScore(100);
         assertEquals(100, person.getHealthScore());
     }
+
+    @Test
+    public void testGetPhenotype() {
+        Person person = new TestPerson("Name", Age.CHILD, 0, "ABCD");
+        assertEquals("ABCD", person.getPhenotype());
+    }
 }
