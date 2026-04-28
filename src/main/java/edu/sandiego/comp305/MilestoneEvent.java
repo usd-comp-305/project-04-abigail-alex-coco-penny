@@ -9,4 +9,9 @@ public class MilestoneEvent {
         this.milestoneType = milestoneType;
     }
 
+    @Override
+    public void execute() {
+        return;
+    }
+
 }
