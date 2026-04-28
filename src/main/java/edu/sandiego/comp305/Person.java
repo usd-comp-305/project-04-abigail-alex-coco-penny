@@ -14,7 +14,7 @@ public abstract class Person {
         this.phenotype = phenotype;
 
     }
-    }
+
 
     public String getName(){
         return null;
