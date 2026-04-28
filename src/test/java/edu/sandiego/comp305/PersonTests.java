@@ -11,7 +11,21 @@ public class PersonTests {
         }
 
         @Override
-        public String getName() { return "newPerson";
+        public String getName() { return name;
+        }
+        @Override
+        public int getAge() {
+            return age;
+        }
+        @Override
+        public int getHealthScore() {
+            return healthScore;
+        }
+        @Override
+        public void setHealthScore(int healthScore) {
+        }
+        @Override
+        public void setAge(int age){
         }
     }
 
