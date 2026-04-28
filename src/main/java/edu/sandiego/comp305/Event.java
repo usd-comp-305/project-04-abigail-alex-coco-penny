@@ -8,7 +8,7 @@ public abstract class Event {
     double riskFactor;
     ArrayList<Age> validAges;
 
-    public Event(String description, double riskFactor, ArrayList<Age> validAges) {
+    public Event(double riskFactor, ArrayList<Age> validAges) {
         this.description = description;
         this.riskFactor = riskFactor;
         this.validAges = validAges;

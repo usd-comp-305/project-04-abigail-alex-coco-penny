@@ -2,12 +2,12 @@ package edu.sandiego.comp305;
 
 import java.util.ArrayList;
 
-public class MilestoneEvent {
+public class MilestoneEvent extends Event {
 
-    String milestoneType;
+    MilestoneType milestoneType;
 
-    public MilestoneEvent(String description, double riskFactor, ArrayList<Age> validAges, String milestoneType) {
-        super(description, riskFactor, validAges);
+    public MilestoneEvent (MilestoneType milestoneType, int riskFactor, ArrayList<Age> validAges) {
+        super(riskFactor, validAges);
         this.milestoneType = milestoneType;
     }
 

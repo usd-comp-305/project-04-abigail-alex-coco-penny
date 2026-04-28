@@ -1,13 +1,15 @@
 package edu.sandiego.comp305;
 
-public class RiskyEvent {
+import java.util.ArrayList;
+
+public class RiskyEvent extends Event {
 
     double successRate;
     int healthImpact;
     int financialImpact;
 
-    public RiskyEvent(String description, double riskFactor, ArrayList<Age> validAges, double successRate, int healthImpact, int financialImpact) {
-        super(description, riskFactor, validAges);
+    public RiskyEvent(double riskFactor, ArrayList<Age> validAges, double successRate, int healthImpact, int financialImpact) {
+        super(riskFactor, validAges);
         this.successRate = successRate;
         this.healthImpact = healthImpact;
         this.financialImpact = financialImpact;
