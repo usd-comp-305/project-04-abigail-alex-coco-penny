@@ -6,6 +6,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PartnerTests {
     @Test
+    public void testLifeStageIsPartner(){
+        Partner partner = new Partner();
+        assertEquals("Partner", partner.getLifeStage());
+    }
+    @Test
     public void testGetBankBalance(){
         Partner partner = new Partner();
         assertEquals(1000, partner.getBankBalance());
