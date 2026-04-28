@@ -24,10 +24,12 @@ public abstract class Person {
     public int getHealthScore(){
         return 0;
     };
+    public String getPhenotype(){
+        return null;
+    };
     public void setAge(Age age){
     };
     public void setHealthScore(int healthScore){
-
     };
 
 }
