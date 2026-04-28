@@ -15,18 +15,10 @@ public abstract class Person {
 
     }
 
-
-    public String getName(){
-        return null;
-    }
-    public int getAge(){
-        return 0;
-    }
-    public int getHealthScore(){
-        return 0;
-    }
-    public void setAge(int age){
-    }
-    public void setHealthScore(int score){}
+    public abstract String getName();
+    public abstract int getAge();
+    public abstract int getHealthScore();
+    public abstract void setAge(int age);
+    public abstract void setHealthScore(int score);
 
 }
