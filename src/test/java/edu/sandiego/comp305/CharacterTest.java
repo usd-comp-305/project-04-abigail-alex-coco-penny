@@ -24,6 +24,14 @@ public class CharacterTest {
         assertNotNull(character.getDNA());
     }
 
+    @Test
+    public void testChooseLocation(){
+        Character character = new Character("Name", Age.YOUNG_ADULT, 0, "ABCD");
+        Location location = new Location("San Diego", "CA");
+        assertEquals("San Diego", character.chooseLocation(location.getCity()));
+    }
+
+
 
 
 
