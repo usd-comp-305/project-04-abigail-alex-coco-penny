@@ -2,10 +2,13 @@ package edu.sandiego.comp305;
 
 public class House implements Insurable {
     private final int value;
+
     private final int mortgageBalance;
+
     private final int address;
 
-    public House (int value, int mortgageBalance, int address) {
+    public House (final int value, final int mortgageBalance,
+                  final int address) {
         this.value = value;
         this.mortgageBalance = mortgageBalance;
         this.address = address;

@@ -3,13 +3,15 @@ package edu.sandiego.comp305;
 public enum Career {
 
     //example careers to implement
-    //DOCTOR("Doctor", 300000, 60);
+    DOCTOR("Doctor", 300000, 60);
 
     private final String title;
+
     private final int salary;
+
     private final int retirementAge;
 
-    public Career (String title, int salary, int retirementAge) {
+    Career (final String title, final int salary, final int retirementAge) {
         this.title = title;
         this.salary = salary;
         this.retirementAge = retirementAge;

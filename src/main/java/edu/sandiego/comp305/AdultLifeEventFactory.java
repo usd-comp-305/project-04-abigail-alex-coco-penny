@@ -1,6 +1,6 @@
 package edu.sandiego.comp305;
 
-public class AdultLifeEventFactory implements AbstractEventFactory {
+public class AdultLifeEventFactory implements EventFactory {
 
     @Override
     public FinancialLifeEvent createFinancialEvent() {

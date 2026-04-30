@@ -1,8 +1,8 @@
 package edu.sandiego.comp305;
 
-public class MilestoneAdultLifeEvent {
+public class MilestoneAdultLifeEvent implements MilestoneLifeEvent {
 
-    public void executeOn(Person person) {
+    public void executeOn(final Person person) {
         return;
     }
 }

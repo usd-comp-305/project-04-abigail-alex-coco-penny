@@ -1,6 +1,6 @@
 package edu.sandiego.comp305;
 
-public class EarlyLifeEventFactory implements AbstractEventFactory {
+public class EarlyLifeEventFactory implements EventFactory {
 
 
     public FinancialLifeEvent createFinancialEvent() {

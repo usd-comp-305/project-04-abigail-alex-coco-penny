@@ -1,13 +1,16 @@
 package edu.sandiego.comp305;
 
-public class DNA {
-    Map<Allele, AllelePair> DNASequence;
+import java.util.Map;
 
-    public DNA (Map<Allele, AllelePair> DNASequence) {
+public class DNA {
+    final Map<Allele, AllelePair> DNASequence;
+
+    public DNA (final Map<Allele, AllelePair> DNASequence) {
         this.DNASequence = DNASequence;
     }
 
-    public static Map<Allele, AllelePair> combineSequences (Map<Allele, AllelePair> parentOne, Map<Allele, AllelePair> parentTwo) {
+    public static Map<Allele, AllelePair> combineSequences (final Map<Allele, AllelePair> parentOne,
+                                                            final Map<Allele, AllelePair> parentTwo) {
         return null;
     }
 
