@@ -1,5 +1,7 @@
 package edu.sandiego.comp305;
 
+import java.util.Map;
+
 public class DNA {
     Map<Allele, AllelePair> DNASequence;
 
