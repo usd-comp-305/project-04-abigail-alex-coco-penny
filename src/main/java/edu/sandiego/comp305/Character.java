@@ -13,6 +13,10 @@ public class Character extends Person{
         return null;
     }
 
+    public Location chooseLocation(){
+        return null;
+    }
+
     @Override
     public String getLifeStage(){
         return "Character";
