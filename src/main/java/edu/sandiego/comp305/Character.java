@@ -4,4 +4,8 @@ public class Character {
     public double getBankBalance(){
         return 0.0;
     }
+
+    public DNA getDNA(){
+        return null;
+    }
 }
