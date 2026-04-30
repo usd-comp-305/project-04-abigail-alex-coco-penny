@@ -9,7 +9,7 @@ public enum Career {
     private final int salary;
     private final int retirementAge;
 
-    Career (String title, int salary, int retirementAge) {
+    public Career (String title, int salary, int retirementAge) {
         this.title = title;
         this.salary = salary;
         this.retirementAge = retirementAge;
