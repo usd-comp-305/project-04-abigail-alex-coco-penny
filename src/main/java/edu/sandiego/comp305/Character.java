@@ -20,9 +20,7 @@ public class Character extends Person{
         return bankBalance;
     }
 
-    public DNA getDNA(){
-        return ;
-    }
+    public void generateDNA(){}
 
     public Car getCar(){
         return car;
