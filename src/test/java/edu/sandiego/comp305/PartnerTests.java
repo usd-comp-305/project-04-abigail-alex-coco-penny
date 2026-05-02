@@ -47,4 +47,11 @@ public class PartnerTests {
         partner.chooseCareer(Career.LAWYER);
         assertEquals(Career.LAWYER, partner.getCareer());
     }
+
+    @Test
+    public void testChooseLocationSetsLocation(){
+        final Location location = new Location("San Diego", "CA");
+        partner.chooseLocation(location);
+        assertEquals("CA", partner.getLocation().getState());
+    }
 }
