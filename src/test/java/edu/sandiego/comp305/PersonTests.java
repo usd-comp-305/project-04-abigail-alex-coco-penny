@@ -55,7 +55,7 @@ public class PersonTests {
 
     @Test
     public void testSetHealthScore() {
-        testPerson.setHealthScore(100);
-        assertEquals(100, testPerson.getHealthScore());
+        testPerson.setHealthScore(80);
+        assertEquals(80, testPerson.getHealthScore());
     }
 }
