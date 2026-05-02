@@ -18,16 +18,25 @@ public abstract class Person {
     public String getName(){
         return null;
     }
+
     public Age getAge(){
         return null;
     }
+
     public int getHealthScore(){
         return 0;
     }
+
+    public DNA getDna(){
+        return null;
+    }
+
     public void setAge(Age age){
     }
+
     public void setHealthScore(int healthScore){
     }
+
     public abstract String getLifeStage();
 
 }
