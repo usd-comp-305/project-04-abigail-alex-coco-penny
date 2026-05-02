@@ -13,6 +13,10 @@ public class Character extends Person{
         return null;
     }
 
+    public Car getCar(){
+        return null;
+    }
+
     public Location getLocation(){
         return null;
     }
@@ -25,6 +29,8 @@ public class Character extends Person{
 
     public void chooseLocation(final Location location){
     }
+
+    public void buyCar(final Car car){}
 
     @Override
     public String getLifeStage(){
