@@ -36,13 +36,19 @@ public class CharacterTest {
         character.chooseLocation(location);
         assertEquals("San Diego", character.getLocation().getCity());
     }
+
     @Test
     public void testChooseCareerSetsCareer(){
         character.chooseCareer(Career.ENGINEER);
         assertEquals(Career.ENGINEER, character.getCareer());
     }
 
+    @Test
+    public void testBuyCarSetsCar(){
+        character.buyCar(Car.SEDAN);
+        assertEquals(Car.SEDAN, character.getCar());
 
+    }
 
 
 
