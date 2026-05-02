@@ -25,6 +25,9 @@ public class Partner extends Person{
     public void chooseCareer(Career career){
     }
 
+    public void chooseLocation(Location location){
+    }
+
     @Override
     public String getLifeStage(){
         return "Partner";
