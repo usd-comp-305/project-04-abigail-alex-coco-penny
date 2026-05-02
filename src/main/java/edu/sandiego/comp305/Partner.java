@@ -18,6 +18,8 @@ public class Partner extends Person{
 
     public void setCompatibilityScore(double compatibilityScore){}
 
+    public void chooseCareer(Career career){
+    }
 
     @Override
     public String getLifeStage(){
