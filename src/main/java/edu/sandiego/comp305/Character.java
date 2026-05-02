@@ -13,8 +13,11 @@ public class Character extends Person{
         return null;
     }
 
-    public Location chooseLocation(){
+    public Location getLocation(){
         return null;
+    }
+
+    public void chooseLocation(final Location location){
     }
 
     @Override
