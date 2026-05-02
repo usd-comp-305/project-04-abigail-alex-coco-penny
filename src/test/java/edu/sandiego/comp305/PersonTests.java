@@ -58,4 +58,9 @@ public class PersonTests {
         testPerson.setHealthScore(80);
         assertEquals(80, testPerson.getHealthScore());
     }
+
+    @Test
+    public void testGetDNA(){
+        assertEquals(testDNA, testPerson.getDna());
+    }
 }
