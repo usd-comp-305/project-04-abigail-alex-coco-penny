@@ -41,4 +41,10 @@ public class PartnerTests {
         partner.setCompatibilityScore(0.75);
         assertEquals(0.75, partner.getCompatibilityScore());
     }
+
+    @Test
+    public void testChooseCareerSetsCareer(){
+        partner.chooseCareer(Career.LAWYER);
+        assertEquals(Career.LAWYER, partner.getCareer());
+    }
 }
