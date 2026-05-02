@@ -21,8 +21,8 @@ public class PartnerTests {
         assertEquals("Partner", partner.getLifeStage());
     }
     @Test
-    public void testGetBankBalance(){
-        assertEquals(1000, partner.getBankBalance());
+    public void testGetBankBalanceInitial(){
+        assertEquals(0.0, partner.getBankBalance());
     }
 
     @Test
