@@ -4,12 +4,14 @@ public abstract class Person {
     private String name;
     private Age age;
     private int healthScore;
+    private DNA dna;
 
 
-    public Person(String name, Age age, int healthScore) {
+    public Person(String name, Age age, int healthScore, DNA dna) {
         this.name = name;
         this.age = age;
         this.healthScore = healthScore;
+        this.dna = dna;
 
     }
 
