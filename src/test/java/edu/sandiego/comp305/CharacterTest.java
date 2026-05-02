@@ -34,7 +34,12 @@ public class CharacterTest {
     public void testChooseLocationSetsLocation(){
         final Location location = new Location("San Diego", "CA");
         character.chooseLocation(location);
-        assertEquals("San Diego", character.getlocation.getCity());
+        assertEquals("San Diego", character.getLocation().getCity());
+    }
+    @Test
+    public void testChooseCareerSetsCareer(){
+        character.chooseCareer(Career.ENGINEER);
+        assertEquals(Career.ENGINEER, character.getCareer());
     }
 
 
