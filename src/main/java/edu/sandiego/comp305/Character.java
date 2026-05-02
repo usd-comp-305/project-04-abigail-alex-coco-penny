@@ -17,6 +17,12 @@ public class Character extends Person{
         return null;
     }
 
+    public Career getCareer(){
+        return null;
+    }
+
+    public void chooseCareer(final Career career){}
+
     public void chooseLocation(final Location location){
     }
 
