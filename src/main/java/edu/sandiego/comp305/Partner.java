@@ -9,9 +9,6 @@ public class Partner extends Person{
         return 0.0;
     }
 
-    public void setBankBalance(int bankBalance){
-    }
-
     public double getCompatibilityScore(){
         return 0.0;
     }
@@ -20,7 +17,15 @@ public class Partner extends Person{
         return null;
     }
 
+    public Location getLocation(){
+        return null;
+    }
+
     public void setCompatibilityScore(double compatibilityScore){}
+
+
+    public void setBankBalance(int bankBalance){
+    }
 
     public void chooseCareer(Career career){
     }
