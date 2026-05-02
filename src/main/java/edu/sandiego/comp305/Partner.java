@@ -16,6 +16,10 @@ public class Partner extends Person{
         return 0.0;
     }
 
+    public Career getCareer(){
+        return null;
+    }
+
     public void setCompatibilityScore(double compatibilityScore){}
 
     public void chooseCareer(Career career){
