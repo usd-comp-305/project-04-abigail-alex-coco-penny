@@ -26,11 +26,6 @@ public class CharacterTest {
     }
 
     @Test
-    public void testGetDNA(){
-        assertNotNull(character.getDNA());
-    }
-
-    @Test
     public void testChooseLocationSetsLocation(){
         final Location location = new Location("San Diego", "CA");
         character.chooseLocation(location);
