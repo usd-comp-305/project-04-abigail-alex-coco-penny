@@ -1,36 +1,52 @@
 package edu.sandiego.comp305;
 
 public class Character extends Person{
+
+    private double bankBalance;
+
+    private Car car;
+
+    private Location location;
+
+    private Career career;
+
+
     public Character(final String name, final Age age,final int healthScore, final DNA dna) {
         super(name, age, healthScore, dna);
+        this.bankBalance = 0.0;
     }
 
     public double getBankBalance(){
-        return 0.0;
+        return bankBalance;
     }
 
     public DNA getDNA(){
-        return null;
+        return ;
     }
 
     public Car getCar(){
-        return null;
+        return car;
     }
 
     public Location getLocation(){
-        return null;
+        return location;
     }
 
     public Career getCareer(){
-        return null;
+        return career;
     }
 
-    public void chooseCareer(final Career career){}
+    public void chooseCareer(final Career career){
+        this.career = career;
+    }
 
     public void chooseLocation(final Location location){
+        this.location = location;
     }
 
-    public void buyCar(final Car car){}
+    public void buyCar(final Car car){
+        this.car = car;
+    }
 
     @Override
     public String getLifeStage(){
