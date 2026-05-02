@@ -5,17 +5,22 @@ public class Partner extends Person{
         super(name, age, healthScore, phenotype);
     }
 
+    public double getBankBalance(){
+        return 0.0;
+    }
+
+    public void setBankBalance(int bankBalance){
+    }
+
+    public double getCompatibilityScore(){
+        return 0.0;
+    }
+
+    public void setCompatibilityScore(double compatibilityScore){}
+
+
     @Override
     public String getLifeStage(){
         return "Partner";
     }
-    public int getBankBalance(){
-        return 0;
-    }
-    public void setBankBalance(int bankBalance){
-    }
-    public double getCompatibilityScore(){
-        return 0.0;
-    }
-    public void setCompatibilityScore(int compatibilityScore){}
 }
