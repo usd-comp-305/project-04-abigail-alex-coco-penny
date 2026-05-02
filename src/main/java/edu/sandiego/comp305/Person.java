@@ -16,25 +16,27 @@ public abstract class Person {
     }
 
     public String getName(){
-        return null;
+        return name;
     }
 
     public Age getAge(){
-        return null;
+        return age;
     }
 
     public int getHealthScore(){
-        return 0;
+        return healthScore;
     }
 
     public DNA getDna(){
-        return null;
+        return dna;
     }
 
-    public void setAge(Age age){
+    public void setAge(final Age age){
+        this.age = age;
     }
 
-    public void setHealthScore(int healthScore){
+    public void setHealthScore(final int healthScore){
+        this.healthScore = healthScore;
     }
 
     public abstract String getLifeStage();
