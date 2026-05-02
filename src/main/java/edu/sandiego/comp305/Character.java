@@ -1,8 +1,8 @@
 package edu.sandiego.comp305;
 
 public class Character extends Person{
-    public Character(String name, Age age, int healthScore, String phenotype) {
-        super(name, age, healthScore, phenotype);
+    public Character(final String name, final Age age,final int healthScore, final DNA dna) {
+        super(name, age, healthScore, dna);
     }
 
     public double getBankBalance(){
