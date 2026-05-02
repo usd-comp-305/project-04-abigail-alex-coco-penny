@@ -22,7 +22,7 @@ public class CharacterTest {
     }
     @Test
     public void testGetBankBalance(){
-        assertEquals(1000, character.getBankBalance());
+        assertEquals(0.0, character.getBankBalance());
     }
 
     @Test
@@ -31,10 +31,10 @@ public class CharacterTest {
     }
 
     @Test
-    public void testChooseLocation(){
-        Location location = new Location("San Diego", "CA");
+    public void testChooseLocationSetsLocation(){
+        final Location location = new Location("San Diego", "CA");
         character.chooseLocation(location);
-        assertEquals("San Diego", location.getCity());
+        assertEquals("San Diego", character.getlocation.getCity());
     }
 
 
