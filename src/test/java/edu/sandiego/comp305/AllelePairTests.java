@@ -17,4 +17,10 @@ public class AllelePairTests {
         AllelePair testPair = new AllelePair('b', 'B');
         assertTrue(testPair.isDominantExpressed());
     }
+
+    @Test
+    public void isDominantExpressedBothCopies () {
+        AllelePair testPair = new AllelePair('B', 'B');
+        assertTrue(testPair.isDominantExpressed());
+    }
 }
