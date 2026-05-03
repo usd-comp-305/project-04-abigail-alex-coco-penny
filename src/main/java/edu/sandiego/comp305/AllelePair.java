@@ -13,7 +13,7 @@ public class AllelePair {
 
     public boolean isDominantExpressed () {
 
-        if(isUpperCase(maternalCopy)) {
+        if(isUpperCase(maternalCopy) || isUpperCase(paternalCopy)) {
             return true;
         }
         return false;
