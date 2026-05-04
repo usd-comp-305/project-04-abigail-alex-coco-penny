@@ -16,10 +16,12 @@ public class CharacterTest {
         final DNA dna = new DNA(new HashMap<>());
         character = new Character ("Name", Age.YOUNG_ADULT, 100, dna);
     }
+
     @Test
     public void testGetLifeStage(){
         assertEquals("Character", character.getLifeStage());
     }
+
     @Test
     public void testGetBankBalance(){
         assertEquals(0.0, character.getBankBalance());
@@ -45,7 +47,5 @@ public class CharacterTest {
         assertEquals(car, character.getCar());
 
     }
-
-
 
 }
