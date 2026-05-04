@@ -40,8 +40,9 @@ public class CharacterTest {
 
     @Test
     public void testBuyCarSetsCar(){
-        character.buyCar(Car.SEDAN);
-        assertEquals(Car.SEDAN, character.getCar());
+        final Car car = new Car(18585, "Sedan", 2024);
+        character.buyCar(car);
+        assertEquals(car, character.getCar());
 
     }
 
