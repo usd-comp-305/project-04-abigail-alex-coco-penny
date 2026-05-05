@@ -1,47 +1,67 @@
 package edu.sandiego.comp305;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+
+
+import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
 public class PersonTests {
+
+    private static class TestPerson extends Person{
+
+        public TestPerson(String name, Age age, int healthScore, DNA dna) {
+            super(name, age, healthScore, dna);
+        }
+
+        @Override
+        public String getLifeStage() {
+            return "initialPerson";
+        }
+    }
+    private DNA testDNA;
+
+    private Person testPerson;
+
+    @BeforeEach
+    public void setUp() {
+        testDNA = new DNA(new HashMap<>());
+        testPerson = new TestPerson("Name", Age.CHILD, 100, testDNA);
+    }
 
     @Test
     public void testGetName() {
-        final Person person = new TestPerson("Name", Age.CHILD, 0, "ABCD");
-        assertEquals("Name", person.getName());
+        assertEquals("Name", testPerson.getName());
     }
 
     @Test
     public void testGetAge() {
-        final Person person  = new TestPerson("Name", Age.CHILD, 0, "ABCD");
-        assertEquals(Age.CHILD, person.getAge());
+        assertEquals(Age.CHILD, testPerson.getAge());
     }
 
     @Test
     public void testGetHealthScore() {
-        final Person person = new TestPerson("Name", Age.CHILD, 100, "ABCD");
-        assertEquals(100, person.getHealthScore());
+        assertEquals(100, testPerson.getHealthScore());
     }
 
     @Test
     public void testSetAge() {
-        final Person person = new TestPerson("Name", Age.CHILD, 0, "ABCD");
-        person.setAge(Age.YOUNG_ADULT);
-        assertEquals(Age.YOUNG_ADULT, person.getAge());
+        testPerson.setAge(Age.YOUNG_ADULT);
+        assertEquals(Age.YOUNG_ADULT, testPerson.getAge());
     }
 
     @Test
     public void testSetHealthScore() {
-        final Person person = new TestPerson("Name", Age.CHILD, 0, "ABCD");
-        person.setHealthScore(100);
-        assertEquals(100, person.getHealthScore());
+        testPerson.setHealthScore(80);
+        assertEquals(80, testPerson.getHealthScore());
     }
 
     @Test
-    public void testGetPhenotype() {
-        final Person person = new TestPerson("Name", Age.CHILD, 0, "ABCD");
-        assertEquals("ABCD", person.getPhenotype());
+    public void testGetDNA(){
+        assertEquals(testDNA, testPerson.getDna());
     }
 
     private static class TestPerson extends Person{

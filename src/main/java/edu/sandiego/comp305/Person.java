@@ -6,43 +6,38 @@ public abstract class Person {
     private Age age;
 
     private int healthScore;
+    private DNA dna;
 
-    final private String phenotype;
 
-
-    public Person(final String name,
-                  final Age age,
-                  final int healthScore,
-                  final String phenotype) {
-
+    public Person(String name, Age age, int healthScore, DNA dna) {
         this.name = name;
         this.age = age;
         this.healthScore = healthScore;
-        this.phenotype = phenotype;
+        this.dna = dna;
 
     }
 
     public String getName(){
-        return this.name;
+        return name;
     }
 
-    public Age getAge() {
-        return this.age;
+    public Age getAge(){
+        return age;
     }
 
-    public int getHealthScore() {
-        return this.healthScore;
+    public int getHealthScore(){
+        return healthScore;
     }
 
-    public String getPhenotype() {
-        return this.phenotype;
+    public DNA getDna(){
+        return dna;
     }
 
-    public void setAge(final Age age) {
+    public void setAge(final Age age){
         this.age = age;
     }
 
-    public void setHealthScore(final int healthScore) {
+    public void setHealthScore(final int healthScore){
         this.healthScore = healthScore;
     }
 

@@ -1,7 +1,5 @@
 package edu.sandiego.comp305;
 
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
 
 public class DNA {
@@ -22,7 +20,5 @@ public class DNA {
         return "";
     }
 
-    public static double calculateDiseaseRisk () {
-        return 0.0;
-    }
+
 }
