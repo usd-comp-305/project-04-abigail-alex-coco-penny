@@ -3,14 +3,18 @@ package edu.sandiego.comp305;
 public abstract class Person {
     final private String name;
 
-    final private Age age;
+    private Age age;
 
-    final private int healthScore;
+    private int healthScore;
 
     final private String phenotype;
 
 
-    public Person(final String name, final Age age, int healthScore, final String phenotype) {
+    public Person(final String name,
+                  final Age age,
+                  final int healthScore,
+                  final String phenotype) {
+
         this.name = name;
         this.age = age;
         this.healthScore = healthScore;
@@ -19,23 +23,29 @@ public abstract class Person {
     }
 
     public String getName(){
-        return null;
+        return this.name;
     }
+
     public Age getAge() {
-        return null;
+        return this.age;
     }
+
     public int getHealthScore() {
-        return 0;
+        return this.healthScore;
     }
+
     public String getPhenotype() {
-        return null;
+        return this.phenotype;
     }
+
     public void setAge(final Age age) {
-        return;
+        this.age = age;
     }
+
     public void setHealthScore(final int healthScore) {
-        return;
+        this.healthScore = healthScore;
     }
+
     public abstract String getLifeStage();
 
 }

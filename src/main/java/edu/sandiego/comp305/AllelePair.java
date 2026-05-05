@@ -2,6 +2,7 @@ package edu.sandiego.comp305;
 
 public class AllelePair {
     final private char maternalCopy;
+
     final private char paternalCopy;
 
     public AllelePair (final char maternalCopy, final char paternalCopy) {
