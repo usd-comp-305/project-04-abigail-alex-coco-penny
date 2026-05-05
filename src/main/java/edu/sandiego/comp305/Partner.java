@@ -21,7 +21,7 @@ public class Partner extends Person{
     }
 
     public double getCompatibilityScore(){
-        return compatibilityScore
+        return compatibilityScore;
     }
 
     public Career getCareer(){
