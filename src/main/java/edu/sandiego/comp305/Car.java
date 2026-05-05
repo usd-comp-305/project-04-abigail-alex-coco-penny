@@ -32,8 +32,9 @@ public enum Car implements Insurable {
     @Override
     public double getPremium(Person person) {
         double premium = 0.0;
-        premium = this.baseRate;
-        // B = base rate
+        double w1 = 0.5;
+        double ageOfCarRisk = w1 * (this.year - 2000);
+        premium = this.baseRate * (1 + ageOfCarRisk);
         //Premium = B(1 + w1F1 + w2F2 + w3F3)
         //F1(value) = cost of car/50,000
         //w1 = 0.3

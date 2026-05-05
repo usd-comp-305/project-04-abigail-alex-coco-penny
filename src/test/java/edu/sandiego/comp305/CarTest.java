@@ -11,7 +11,6 @@ public class CarTest {
     @Test
     public void carUsesBaseRateCalculatePremium() {
         Person person = mock(Person.class);
-
         when(person.getAge()).thenReturn(Age.ADULT);
 
         double premium = Car.SEDAN.getPremium(person);
@@ -21,6 +20,13 @@ public class CarTest {
 
     @Test
     public void carUsesYearCalculatePremium() {
+        Person person = mock(Person.class);
+        when(person.getAge()).thenReturn(Age.ADULT);
+
+        double oldCarPremium = Car.HATCHBACK.getPremium(person); // 2008
+        double newCarPremium = Car.VAN.getPremium(person);       // 2025
+
+        assertTrue(newCarPremium > oldCarPremium);
     }
 
     @Test
