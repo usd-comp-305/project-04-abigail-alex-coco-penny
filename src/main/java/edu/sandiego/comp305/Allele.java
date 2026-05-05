@@ -6,9 +6,10 @@ public enum Allele {
     HAIR_COLOR ("brown", "blonde");
 
     private final String dominantTrait;
+
     private final String recessiveTrait;
 
-    Allele(String dominantTrait, String recessiveTrait) {
+    Allele(final String dominantTrait, final String recessiveTrait) {
         this.dominantTrait = dominantTrait;
         this.recessiveTrait = recessiveTrait;
     }

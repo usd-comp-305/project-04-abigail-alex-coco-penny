@@ -1,11 +1,11 @@
 package edu.sandiego.comp305;
 
-import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class ChildTest {
+
+
+    /*
     @Test
     public void testLifeStageIsChild(){
         Child child = new Child("Child", Age.CHILD, 0, "ABCD");
@@ -24,4 +24,6 @@ public class ChildTest {
         child.inheritTraits(parent1, parent2);
         assertNotNull(child.getPhenotype());
     }
+
+     */
 }

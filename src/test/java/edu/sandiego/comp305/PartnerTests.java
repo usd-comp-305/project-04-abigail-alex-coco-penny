@@ -16,10 +16,12 @@ public class PartnerTests {
         final DNA dna = new DNA(new HashMap<>());
         partner = new Partner("Name", Age.MIDDLE_AGE, 80, dna);
     }
+
     @Test
     public void testLifeStageIsPartner(){
         assertEquals("Partner", partner.getLifeStage());
     }
+
     @Test
     public void testGetBankBalanceInitial(){
         assertEquals(0.0, partner.getBankBalance());
