@@ -31,6 +31,8 @@ public enum Car implements Insurable {
 
     @Override
     public double getPremium(Person person) {
+        double premium = 0.0;
+        premium = this.baseRate;
         // B = base rate
         //Premium = B(1 + w1F1 + w2F2 + w3F3)
         //F1(value) = cost of car/50,000
@@ -43,7 +45,7 @@ public enum Car implements Insurable {
         //16-24 w = 0.8, 70+ w = 0.6, 25-69 w = 0.4
         //
         //premium = baseRate * (1 + costRisk + ageOfCarRisk + ageOfPersonRisk);
-        return 0.0;
+        return premium;
     }
 
     public int getValue() {
