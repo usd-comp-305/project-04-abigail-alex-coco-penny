@@ -1,5 +1,7 @@
 package edu.sandiego.comp305;
 
+import static java.lang.Character.*;
+
 public class AllelePair {
     private char maternalCopy;
     private char paternalCopy;
@@ -9,8 +11,8 @@ public class AllelePair {
         this.paternalCopy = paternalCopy;
     }
 
-    public static boolean isDominantExpressed () {
-        return true;
+    public boolean isDominantExpressed () {
+        return isUpperCase(maternalCopy) || isUpperCase(paternalCopy);
     }
 
     public char getMaternalCopy () {
