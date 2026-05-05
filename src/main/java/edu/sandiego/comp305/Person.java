@@ -1,8 +1,10 @@
 package edu.sandiego.comp305;
 
 public abstract class Person {
-    private String name;
+    final private String name;
+
     private Age age;
+
     private int healthScore;
     private DNA dna;
 

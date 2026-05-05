@@ -63,4 +63,18 @@ public class PersonTests {
     public void testGetDNA(){
         assertEquals(testDNA, testPerson.getDna());
     }
+
+    private static class TestPerson extends Person{
+
+        public TestPerson(final String name, final Age age,
+                          final int healthScore,
+                          final String phenotype) {
+            super(name, age, healthScore, phenotype);
+        }
+
+        @Override
+        public String getLifeStage() {
+            return "initialPerson";
+        }
+    }
 }

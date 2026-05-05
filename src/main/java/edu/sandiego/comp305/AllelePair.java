@@ -3,10 +3,11 @@ package edu.sandiego.comp305;
 import static java.lang.Character.*;
 
 public class AllelePair {
-    private char maternalCopy;
-    private char paternalCopy;
+    final private char maternalCopy;
 
-    public AllelePair (char maternalCopy, char paternalCopy) {
+    final private char paternalCopy;
+
+    public AllelePair (final char maternalCopy, final char paternalCopy) {
         this.maternalCopy = maternalCopy;
         this.paternalCopy = paternalCopy;
     }

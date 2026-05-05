@@ -2,10 +2,12 @@ package edu.sandiego.comp305;
 
 public class Car implements Insurable {
     private final int value;
+
     private final String type;
+
     private final int year;
 
-    public Car (int value, String type, int year) {
+    public Car (final int value, final String type, final int year) {
         this.value = value;
         this.type = type;
         this.year = year;
