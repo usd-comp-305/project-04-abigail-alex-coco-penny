@@ -17,7 +17,5 @@ public class DNA {
         return "";
     }
 
-    public static double calculateDiseaseRisk () {
-        return 0.0;
-    }
+
 }

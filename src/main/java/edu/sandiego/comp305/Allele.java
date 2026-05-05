@@ -2,8 +2,7 @@ package edu.sandiego.comp305;
 
 public enum Allele {
     EYE_COLOR ("brown", "blue"),
-    HEIGHT ("tall", "short"),
-    DISEASE_RISK ("high", "low"),
+    HEIGHT ("tall", "short");
     HAIR_COLOR ("brown", "blonde");
 
     private final String dominantTrait;
