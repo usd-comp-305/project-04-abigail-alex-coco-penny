@@ -30,7 +30,14 @@ public class CarTest {
     }
 
     @Test
-    public void carUsesCostCalculatePremium() {
+    public void carUsesValueCalculatePremium() {
+        Person person = mock(Person.class);
+        when(person.getAge()).thenReturn(Age.ADULT);
+
+        double lowValue = Car.HATCHBACK.getPremium(person);
+        double highValue = Car.WAGON.getPremium(person);
+
+        assertTrue(highValue > lowValue);
     }
 
     @Test
