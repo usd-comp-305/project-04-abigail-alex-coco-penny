@@ -6,10 +6,11 @@ public abstract class Person {
     private Age age;
 
     private int healthScore;
+
     private DNA dna;
 
 
-    public Person(String name, Age age, int healthScore, DNA dna) {
+    public Person(final String name, final Age age, final int healthScore, final DNA dna) {
         this.name = name;
         this.age = age;
         this.healthScore = healthScore;

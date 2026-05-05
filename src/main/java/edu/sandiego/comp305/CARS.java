@@ -1,6 +1,5 @@
 package edu.sandiego.comp305;
 
-import java.util.ArrayList;
 
 public enum CARS {
     MICRO (4995, new String[]{"Smart", "Fortwo"}, 2015),
@@ -15,10 +14,12 @@ public enum CARS {
     WAGON (12998, new String[]{"Volkswagen", "Golf"}, 2016);
 
     public final int value;
+
     public final String[] type;
+
     public final int year;
 
-    CARS(int value, String[] type, int year) {
+    CARS(final int value, final String[] type, final int year) {
         this.value = value;
         this.type = type;
         this.year = year;
