@@ -29,7 +29,7 @@ public class House implements Insurable {
     }
 
     @Override
-    public double getPremium() {
+    public double getPremium(Person person) {
         return 0.0;
     }
 
