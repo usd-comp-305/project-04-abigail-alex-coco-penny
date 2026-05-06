@@ -14,10 +14,12 @@ public enum Career {
     ENTERTAINER("Entertainer", 99000, 43);
 
     public final String title;
+
     public final int salary;
+
     public final int retirementAge;
 
-    Career (String title, int salary, int retirementAge) {
+    Career (final String title, final int salary, final int retirementAge) {
         this.title = title;
         this.salary = salary;
         this.retirementAge = retirementAge;
