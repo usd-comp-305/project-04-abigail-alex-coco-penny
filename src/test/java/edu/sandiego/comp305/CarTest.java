@@ -42,6 +42,16 @@ public class CarTest {
 
     @Test
     public void carUsesAgeCalculatePremium() {
+        Person teen = mock(Person.class);
+        when(teen.getAge()).thenReturn(Age.YOUNG_ADULT);
+
+        Person adult = mock(Person.class);
+        when(adult.getAge()).thenReturn(Age.ADULT);
+
+        double immature = Car.MICRO.getPremium(teen);
+        double mature = Car.MICRO.getPremium(adult);
+
+        assertTrue(immature > mature);
     }
 
     @Test

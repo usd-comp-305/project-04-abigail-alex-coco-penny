@@ -44,7 +44,8 @@ public enum Car implements Insurable {
 
         double w2 = 0.3;
         double valueRisk = w2 * (this.value / 50000.0);
-        premium = this.baseRate * (1 + yearRisk + valueRisk);
+
+        premium = this.baseRate * (1 + yearRisk + valueRisk + person.getAge().riskFactor);
         //F3 = characters age:
         //16-24 w = 0.8, 70+ w = 0.6, 25-69 w = 0.4
         //
