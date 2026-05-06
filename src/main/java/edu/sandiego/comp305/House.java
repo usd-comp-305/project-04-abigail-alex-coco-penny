@@ -32,7 +32,7 @@ public class House implements Insurable {
     }
 
     @Override
-    public double getPremium(Person person) {
+    public double getPremium(final Person person) {
         return 0.0;
     }
 
