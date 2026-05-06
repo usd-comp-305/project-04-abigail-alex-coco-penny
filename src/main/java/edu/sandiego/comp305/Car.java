@@ -16,12 +16,8 @@ public enum Car implements Insurable {
     public final String[] type;
     public final int year;
     public final int baseRate;
-
-//    private final double YEAR_RISK_WEIGHT = 0.5;
-//    private final double VALUE_RISK_WEIGHT = 0.3;
-//    private final double YOUNG_ADULT_RISK_WEIGHT = 0.8;
-//    private final double ADULT_RISK_WEIGHT = 0.4;
-//    private final double SENIOR_RISK_WEIGHT = 0.6;
+    private final double WEIGHT1 = 0.5;
+    private final double WEIGHT2 = 0.3;
 
     Car(int value, String[] type, int year, int baseRate) {
         this.value = value;
@@ -37,20 +33,11 @@ public enum Car implements Insurable {
 
     @Override
     public double getPremium(Person person) {
-        double premium = 0.0;
+        double yearRisk = WEIGHT1 * (this.year - 2000);
+        double valueRisk = WEIGHT2 * (this.value / 50000.0);
+        double ageRisk = person.getAge().riskFactor;
 
-        double w1 = 0.5;
-        double yearRisk = w1 * (this.year - 2000);
-
-        double w2 = 0.3;
-        double valueRisk = w2 * (this.value / 50000.0);
-
-        premium = this.baseRate * (1 + yearRisk + valueRisk + person.getAge().riskFactor);
-        //F3 = characters age:
-        //16-24 w = 0.8, 70+ w = 0.6, 25-69 w = 0.4
-        //
-        //premium = baseRate * (1 + costRisk + ageOfCarRisk + ageOfPersonRisk);
-        return premium;
+        return this.baseRate * (1 + yearRisk + valueRisk + ageRisk);
     }
 
     public int getValue() {
