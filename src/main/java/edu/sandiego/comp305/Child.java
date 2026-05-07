@@ -1,13 +1,10 @@
 package edu.sandiego.comp305;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Child extends Person {
 
-    private final Character parent1;
+    private final int parent1HealthScore;
 
-    private final Partner parent2;
+    private final int parent2HealthScore;
 
     public Child(
             final String name,
@@ -17,8 +14,8 @@ public class Child extends Person {
             final Character parent1,
             final Partner parent2) {
         super(name, age, healthScore, dna);
-        this.parent1 = parent1;
-        this.parent2 = parent2;
+        this.parent1HealthScore = parent1.getHealthScore();
+        this.parent2HealthScore = parent2.getHealthScore();
     }
 
     @Override
@@ -27,15 +24,8 @@ public class Child extends Person {
     }
 
 
-    public List<Person> getParents(){
-        final List<Person> parents = new ArrayList<Person>();
-        parents.add(parent1);
-        parents.add(parent2);
-        return parents;
-    }
-
     public void inheritHealthTraits(){
-        final int averageHealth = (parent1.getHealthScore() + parent2.getHealthScore()) /2;
+        final int averageHealth = (parent1HealthScore + parent2HealthScore) /2;
         setHealthScore(averageHealth);
     }
 
