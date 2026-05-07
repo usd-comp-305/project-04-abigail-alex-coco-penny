@@ -46,6 +46,8 @@ public class Character extends Person{
         this.car = car;
     }
 
+    public void calculateBankBalance(){}
+
     @Override
     public String getLifeStage(){
         return "Character";
