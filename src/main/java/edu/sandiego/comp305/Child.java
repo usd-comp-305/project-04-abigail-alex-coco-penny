@@ -36,7 +36,10 @@ public class Child extends Person {
     }
 
     public List<Person> getParents(){
-        return null;
+        final List<Person> parents = new ArrayList<Person>();
+        parents.add(parent1);
+        parents.add(parent2);
+        return parents;
     }
 
     public void inheritHealthTraits(){
