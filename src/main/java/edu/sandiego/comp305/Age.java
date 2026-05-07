@@ -6,7 +6,7 @@ public enum Age {
     ADULT (0.4),
     SENIOR (0.6);
 
-    public double riskFactor;
+    public final double riskFactor;
 
     Age (final double riskFactor) {
         this.riskFactor = riskFactor;
