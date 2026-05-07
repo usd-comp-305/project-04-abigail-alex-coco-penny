@@ -37,7 +37,7 @@ public class ChildTest {
 
     @Test
     public void testInheritParentDNA_SetHealthScore(){
-        child.inheritTraits();
+        child.inheritHealthTraits();
         final int expectedHealth = (parent1.getHealthScore() + parent2.getHealthScore()) /2;
         assertEquals(expectedHealth, child.getHealthScore());
 
