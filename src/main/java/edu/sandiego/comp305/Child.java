@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Child extends Person {
 
-    private Character parent1;
+    private final Character parent1;
 
-    private Partner parent2;
+    private final Partner parent2;
 
     public Child(
             final String name,
