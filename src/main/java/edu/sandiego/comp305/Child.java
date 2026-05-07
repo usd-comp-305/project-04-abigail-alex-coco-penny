@@ -1,5 +1,6 @@
 package edu.sandiego.comp305;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Child extends Person {
@@ -27,18 +28,20 @@ public class Child extends Person {
     }
 
     public Character getParent1() {
-        return null;
+        return parent1;
     }
 
     public Partner getParent2() {
-        return null;
+        return parent2;
     }
 
     public List<Person> getParents(){
         return null;
     }
 
-    public void inheritTraits(){
+    public void inheritHealthTraits(){
+        final int averageHealth = (parent1.getHealthScore() + parent2.getHealthScore()) /2;
+        setHealthScore(averageHealth);
     }
 
 }
