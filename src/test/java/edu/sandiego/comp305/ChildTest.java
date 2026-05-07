@@ -2,12 +2,11 @@ package edu.sandiego.comp305;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import java.util.HashMap;
+import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class ChildTest {
@@ -40,8 +39,13 @@ public class ChildTest {
         child.inheritHealthTraits();
         final int expectedHealth = (parent1.getHealthScore() + parent2.getHealthScore()) /2;
         assertEquals(expectedHealth, child.getHealthScore());
+    }
 
-
+    @Test
+    public void testGetParentsContainsBothParents(){
+        final List<Person> parents = child.getParents();
+        assertTrue(parents.contains(parent1));
+        assertTrue(parents.contains(parent2));
     }
 
 }
