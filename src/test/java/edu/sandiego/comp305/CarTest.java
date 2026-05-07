@@ -10,46 +10,46 @@ public class CarTest {
 
     @Test
     public void carUsesBaseRateCalculatePremium() {
-        Person person = mock(Person.class);
+        final Person person = mock(Person.class);
         when(person.getAge()).thenReturn(Age.ADULT);
 
-        double premium = Car.SEDAN.getPremium(person);
+        final double premium = Car.SEDAN.getPremium(person);
 
         assertTrue(premium >= Car.SEDAN.baseRate);
     }
 
     @Test
     public void carUsesYearCalculatePremium() {
-        Person person = mock(Person.class);
+        final Person person = mock(Person.class);
         when(person.getAge()).thenReturn(Age.ADULT);
 
-        double oldCarPremium = Car.HATCHBACK.getPremium(person); // 2008
-        double newCarPremium = Car.VAN.getPremium(person);       // 2025
+        final double oldCarPremium = Car.HATCHBACK.getPremium(person); // 2008
+        final double newCarPremium = Car.VAN.getPremium(person);       // 2025
 
         assertTrue(newCarPremium > oldCarPremium);
     }
 
     @Test
     public void carUsesValueCalculatePremium() {
-        Person person = mock(Person.class);
+        final Person person = mock(Person.class);
         when(person.getAge()).thenReturn(Age.ADULT);
 
-        double lowValue = Car.HATCHBACK.getPremium(person);
-        double highValue = Car.WAGON.getPremium(person);
+        final double lowValue = Car.HATCHBACK.getPremium(person);
+        final double highValue = Car.WAGON.getPremium(person);
 
         assertTrue(highValue > lowValue);
     }
 
     @Test
     public void carUsesAgeCalculatePremium() {
-        Person teen = mock(Person.class);
+        final Person teen = mock(Person.class);
         when(teen.getAge()).thenReturn(Age.YOUNG_ADULT);
 
-        Person adult = mock(Person.class);
+        final Person adult = mock(Person.class);
         when(adult.getAge()).thenReturn(Age.ADULT);
 
-        double immature = Car.MICRO.getPremium(teen);
-        double mature = Car.MICRO.getPremium(adult);
+        final double immature = Car.MICRO.getPremium(teen);
+        final double mature = Car.MICRO.getPremium(adult);
 
         assertTrue(immature > mature);
     }
