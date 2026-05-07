@@ -47,4 +47,11 @@ public class CharacterTest {
 
     }
 
+    @Test
+    public void testChooseCalculateBankWithSalary(){
+        character.chooseCareer(Career.LAWYER);
+        character.calculateBankBalance();
+        assertEquals(Career.LAWYER.salary, character.getBankBalance());
+    }
+
 }
