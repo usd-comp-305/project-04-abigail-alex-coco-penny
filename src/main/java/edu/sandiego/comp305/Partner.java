@@ -48,7 +48,7 @@ public class Partner extends Person{
         this.location = location;
     }
 
-    public void calculateBank(){
+    public void calculateBankBalance(){
         if (career != null) {
             bankBalance += career.salary;
         }

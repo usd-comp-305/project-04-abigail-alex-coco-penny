@@ -60,7 +60,7 @@ public class PartnerTests {
     @Test
     public void testChooseCalculateBankWithSalary(){
         partner.chooseCareer(Career.LAWYER);
-        partner.calculateBank();
+        partner.calculateBankBalance();
         assertEquals(Career.LAWYER.salary, partner.getBankBalance());
     }
 }
