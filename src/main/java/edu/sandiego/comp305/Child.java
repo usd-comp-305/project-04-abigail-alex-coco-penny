@@ -1,6 +1,6 @@
 package edu.sandiego.comp305;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Child extends Person {
 
@@ -26,11 +26,19 @@ public class Child extends Person {
         return "Child";
     }
 
-    public ArrayList<Person> getParents(){
+    public Character getParent1() {
         return null;
     }
 
-    public void inheritTraits(final Person parent1, final Person parent2){
+    public Partner getParent2() {
+        return null;
+    }
+
+    public List<Person> getParents(){
+        return null;
+    }
+
+    public void inheritTraits(){
     }
 
 }
