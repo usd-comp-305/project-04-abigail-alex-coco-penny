@@ -14,7 +14,7 @@ public class PartnerTests {
     @BeforeEach
     public void setUp() {
         final DNA dna = new DNA(new HashMap<>());
-        partner = new Partner("Name", Age.MIDDLE_AGE, 80, dna);
+        partner = new Partner("Name", Age.ADULT, 80, dna);
     }
 
     @Test
