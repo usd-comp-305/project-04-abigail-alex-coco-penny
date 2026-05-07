@@ -36,7 +36,6 @@ public class Partner extends Person{
         this.compatibilityScore = compatibilityScore;
     }
 
-
     public void setBankBalance(final double bankBalance){
         this.bankBalance = bankBalance;
     }
@@ -47,6 +46,12 @@ public class Partner extends Person{
 
     public void chooseLocation(final Location location){
         this.location = location;
+    }
+
+    public void calculateBank(){
+        if (career != null) {
+            bankBalance += career.salary;
+        }
     }
 
     @Override
