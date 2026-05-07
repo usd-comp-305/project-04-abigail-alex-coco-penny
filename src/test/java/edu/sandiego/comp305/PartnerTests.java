@@ -56,4 +56,11 @@ public class PartnerTests {
         partner.chooseLocation(location);
         assertEquals("CA", partner.getLocation().getState());
     }
+
+    @Test
+    public void testChooseCalculateBankWithSalary(){
+        partner.chooseCareer(Career.LAWYER);
+        partner.calculateBank();
+        assertEquals(Career.LAWYER.salary, partner.getBankBalance());
+    }
 }
