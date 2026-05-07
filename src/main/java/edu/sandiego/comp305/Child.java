@@ -9,14 +9,13 @@ public class Child extends Person {
 
     private Partner parent2;
 
-
-
-    public Child(final String name,
-                 final Age age,
-                 final int healthScore,
-                 final DNA dna,
-                 final Character parent1,
-                 final Partner parent2) {
+    public Child(
+            final String name,
+            final Age age,
+            final int healthScore,
+            final DNA dna,
+            final Character parent1,
+            final Partner parent2) {
         super(name, age, healthScore, dna);
         this.parent1 = parent1;
         this.parent2 = parent2;
@@ -27,13 +26,6 @@ public class Child extends Person {
         return "Child";
     }
 
-    public Character getParent1() {
-        return parent1;
-    }
-
-    public Partner getParent2() {
-        return parent2;
-    }
 
     public List<Person> getParents(){
         final List<Person> parents = new ArrayList<Person>();
