@@ -14,6 +14,7 @@ public class HouseTest {
     public void setUp() {
         person = mock(Person.class);
         when(person.getAge()).thenReturn(Age.ADULT);
+        when(person.getLocation()).thenReturn(Location.SAN_DIEGO);
     }
 
     @Test
@@ -34,11 +35,31 @@ public class HouseTest {
     public void houseUsesAgeCalculatePremium() {
         final Person youngerPerson = mock(Person.class);
         when(youngerPerson.getAge()).thenReturn(Age.YOUNG_ADULT);
+        when(youngerPerson.getLocation()).thenReturn(Location.SAN_DIEGO);
 
-        final double youngerCarOwner = House.APARTMENT.getPremium(youngerPerson);
-        final double olderCarOwner = House.APARTMENT.getPremium(person);
+        final double youngerHomeOwner = House.APARTMENT.getPremium(youngerPerson);
+        final double olderHomeOwner = House.APARTMENT.getPremium(person);
 
-        assertTrue(youngerCarOwner > olderCarOwner);
+        assertTrue(youngerHomeOwner > olderHomeOwner);
+    }
+
+    @Test
+    public void houseUsesLocationCalculatePremium() {
+        DNA mockDNA = mock(DNA.class);
+
+        Character characterInSafeLocation = new Character("Safe", Age.ADULT, 80, mockDNA);
+
+        characterInSafeLocation.chooseLocation(Location.SEATTLE);
+
+        Character characterInRiskyLocation = new Character("Risky", Age.ADULT, 80, mockDNA);
+
+        characterInRiskyLocation.chooseLocation(Location.MIAMI);
+
+        double lowRiskHouse = House.APARTMENT.getPremium(characterInSafeLocation);
+
+        double highRiskHouse = House.APARTMENT.getPremium(characterInRiskyLocation);
+
+        assertTrue(highRiskHouse > lowRiskHouse);
     }
 
 

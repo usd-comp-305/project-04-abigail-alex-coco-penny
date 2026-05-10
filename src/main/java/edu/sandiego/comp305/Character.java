@@ -28,6 +28,7 @@ public class Character extends Person{
         return car;
     }
 
+    @Override
     public Location getLocation(){
         return location;
     }

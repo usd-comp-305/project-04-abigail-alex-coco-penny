@@ -28,6 +28,7 @@ public class Partner extends Person{
         return career;
     }
 
+    @Override
     public Location getLocation(){
         return location;
     }
