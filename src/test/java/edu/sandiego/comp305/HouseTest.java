@@ -30,5 +30,16 @@ public class HouseTest {
         assertTrue(highValue > lowValue);
     }
 
+    @Test
+    public void houseUsesAgeCalculatePremium() {
+        final Person youngerPerson = mock(Person.class);
+        when(youngerPerson.getAge()).thenReturn(Age.YOUNG_ADULT);
+
+        final double youngerCarOwner = House.APARTMENT.getPremium(youngerPerson);
+        final double olderCarOwner = House.APARTMENT.getPremium(person);
+
+        assertTrue(youngerCarOwner > olderCarOwner);
+    }
+
 
 }

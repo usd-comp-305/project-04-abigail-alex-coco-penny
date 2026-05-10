@@ -39,9 +39,9 @@ public enum House implements Insurable {
         final double weight1 = 500000.0;
         final double valueRisk = this.value / weight1;
         final double mortgageRisk = this.mortgageBalance / (double) this.value;
+        final double ageRisk = person.getAge().getRiskFactor();
 
-
-        return 1000 * (1 + valueRisk + mortgageRisk);
+        return 1000 * (1 + valueRisk + mortgageRisk+ ageRisk);
     }
 
 }
