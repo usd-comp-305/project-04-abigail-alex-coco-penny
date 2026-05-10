@@ -38,7 +38,7 @@ public enum Car implements Insurable {
         final double yearRisk = weight1 * (this.year - 2000);
         final double weight2 = 0.3;
         final double valueRisk = weight2 * (this.value / 50000.0);
-        final double ageRisk = person.getAge().riskFactor;
+        final double ageRisk = person.getAge().getRiskFactor();
 
         return this.baseRate * (1 + yearRisk + valueRisk + ageRisk);
     }
