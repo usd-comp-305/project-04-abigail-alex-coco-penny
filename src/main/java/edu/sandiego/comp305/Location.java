@@ -8,7 +8,7 @@ public enum Location {
     HOUSTON ("Houston", "TX", 0.5),
     BOSTON ("Boston", "MA", 0.4),
     PHOENIX ("Phoenix", "AZ", 0.4),
-    SAN_DIEGO ("San Diego", "CAa" , 0.3),
+    SAN_DIEGO ("San Diego", "CA" , 0.3),
     DENVER ("Denver", "CO", 0.3),
     SEATTLE ("Seattle", "WA", 0.2);
 
