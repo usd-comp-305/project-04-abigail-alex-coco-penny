@@ -12,11 +12,11 @@ public enum Location {
     BOSTON ("Boston", "MA", 0.6),
     MIAMI ("Miami", "FL", 0.8);
 
-    private String city;
+    private final String city;
 
-    private String state;
+    private final String state;
 
-    private double riskFactor;
+    private final double riskFactor;
 
     Location (final String city, final String state, final double riskFactor) {
         this.city = city;
@@ -24,13 +24,9 @@ public enum Location {
         this.riskFactor = riskFactor;
     }
 
-    public String getCity () {
-        return this.city;
-    }
+    public String getCity () { return this.city; }
 
-    public String getState() {
-        return this.state;
-    }
+    public String getState() { return this.state; }
 
     public double getRiskFactor() { return this.riskFactor; }
 
