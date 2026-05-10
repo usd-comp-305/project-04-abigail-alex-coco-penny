@@ -33,7 +33,9 @@ public class Character extends Person{
         return location;
     }
 
-    public House getHouse() { return house; }
+    public House getHouse() {
+        return house;
+    }
 
     public Career getCareer(){
         return career;
@@ -51,7 +53,8 @@ public class Character extends Person{
         this.car = car;
     }
 
-    public void buyHouse(final House house) { this.house = house; }
+    public void buyHouse(final House house) {
+        this.house = house; }
 
     @Override
     public String getLifeStage(){

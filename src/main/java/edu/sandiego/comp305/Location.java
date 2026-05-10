@@ -24,10 +24,13 @@ public enum Location {
         this.riskFactor = riskFactor;
     }
 
-    public String getCity () { return this.city; }
+    public String getCity () {
+        return this.city; }
 
-    public String getState() { return this.state; }
+    public String getState() {
+        return this.state; }
 
-    public double getRiskFactor() { return this.riskFactor; }
+    public double getRiskFactor() {
+        return this.riskFactor; }
 
 }

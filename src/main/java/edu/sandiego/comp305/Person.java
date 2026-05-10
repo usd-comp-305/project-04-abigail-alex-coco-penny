@@ -44,6 +44,7 @@ public abstract class Person {
 
     public abstract String getLifeStage();
 
-    public Location getLocation() { return null; }
+    public Location getLocation() {
+        return null; }
 
 }
