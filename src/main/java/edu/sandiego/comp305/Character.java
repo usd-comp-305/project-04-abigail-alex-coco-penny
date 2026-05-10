@@ -50,6 +50,8 @@ public class Character extends Person{
         this.car = car;
     }
 
+    public void buyHouse(final House house) { this.house = house; }
+
     @Override
     public String getLifeStage(){
         return "Character";
