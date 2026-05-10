@@ -38,8 +38,10 @@ public enum House implements Insurable {
     public double getPremium(final Person person) {
         final double weight1 = 500000.0;
         final double valueRisk = this.value / weight1;
+        final double mortgageRisk = this.mortgageBalance / (double) this.value;
 
-        return 1000 * (1 + valueRisk);
+
+        return 1000 * (1 + valueRisk + mortgageRisk);
     }
 
 }
