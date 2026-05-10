@@ -11,11 +11,11 @@ public class DNA {
         this.DNASequence = new HashMap<>(DNASequence);
     }
 
-    public static Map<Allele, AllelePair> combineSequences (final Map<Allele, AllelePair> parent1,
-                                                            final Map<Allele, AllelePair> parent2) {
+    public static DNA combineSequences (final DNA parent1,
+                                                            final DNA parent2) {
         final Map<Allele, AllelePair> combined = new HashMap<>();
 
-        return Collections.unmodifiableMap(combined);
+        return new DNA(combined);
     }
 
     public static String calculatePhenotype () {
