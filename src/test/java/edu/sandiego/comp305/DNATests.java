@@ -92,8 +92,24 @@ public class DNATests {
         for (Allele allele: Allele.values()) {
             AllelePair childPair = childDNA.getAllelePair(allele);
 
-            assertEquals('B', childPair.getMaternalCopy());
-            assertEquals('b', childPair.getPaternalCopy());
+            assertTrue((childPair.getMaternalCopy() == 'B' && childPair.getPaternalCopy() == 'b') ||
+                    (childPair.getMaternalCopy() == 'b' && childPair.getPaternalCopy() == 'B'));
+        }
+    }
+
+    @Test
+    public void combineBothBbChildEitherBBorBborbb() {
+        DNA parent1DNA = createDNAMock(mockBb);
+        DNA parent2DNA = createDNAMock(mockBb);
+
+        DNA childDNA = DNA.combineSequences(parent1DNA, parent2DNA);
+        for (Allele allele: Allele.values()) {
+            AllelePair childPair = childDNA.getAllelePair(allele);
+
+            assertTrue((childPair.getMaternalCopy() == 'B' && childPair.getPaternalCopy() == 'B') ||
+                    (childPair.getMaternalCopy() == 'b' && childPair.getPaternalCopy() == 'b') ||
+                    (childPair.getMaternalCopy() == 'b' && childPair.getPaternalCopy() == 'B') ||
+                    (childPair.getMaternalCopy() == 'B' && childPair.getPaternalCopy() == 'b'));
         }
     }
 

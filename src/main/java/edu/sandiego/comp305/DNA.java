@@ -3,6 +3,7 @@ package edu.sandiego.comp305;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class DNA {
     final Map<Allele, AllelePair> DNASequence;
@@ -14,12 +15,31 @@ public class DNA {
     public static DNA combineSequences (final DNA parent1,
                                                             final DNA parent2) {
         final Map<Allele, AllelePair> combined = new HashMap<>();
+        Random rng = new Random();
 
         for(Allele allele: Allele.values()) {
             AllelePair parent1Pair = parent1.getAllelePair(allele);
             AllelePair parent2Pair = parent2.getAllelePair(allele);
 
-            combined.put(allele, new AllelePair(parent1Pair.getMaternalCopy(), parent2Pair.getPaternalCopy()));
+            // randomly pick one copy from each parent for each allele (flips a coin)
+            char fromParent1;
+            char fromParent2;
+
+            if(rng.nextBoolean()) {
+                fromParent1 = parent1Pair.getMaternalCopy();
+            }
+            else {
+                fromParent1 = parent1Pair.getPaternalCopy();
+            }
+
+            if(rng.nextBoolean()) {
+                fromParent2 = parent2Pair.getMaternalCopy();
+            }
+            else {
+                fromParent2 = parent2Pair.getPaternalCopy();
+            }
+
+            combined.put(allele, new AllelePair(fromParent1, fromParent2));
         }
 
         return new DNA(combined);
