@@ -6,9 +6,12 @@ public enum Age {
     ADULT (0.4),
     SENIOR (0.6);
 
-    public final double riskFactor;
+    private final double riskFactor;
 
     Age (final double riskFactor) {
         this.riskFactor = riskFactor;
     }
+
+    public double getRiskFactor() {
+        return this.riskFactor; }
 }

@@ -10,6 +10,8 @@ public class Character extends Person{
 
     private Career career;
 
+    private House house;
+
 
     public Character(final String name, final Age age,final int healthScore, final DNA dna) {
         super(name, age, healthScore, dna);
@@ -26,8 +28,13 @@ public class Character extends Person{
         return car;
     }
 
+    @Override
     public Location getLocation(){
         return location;
+    }
+
+    public House getHouse() {
+        return house;
     }
 
     public Career getCareer(){
@@ -45,6 +52,9 @@ public class Character extends Person{
     public void buyCar(final Car car){
         this.car = car;
     }
+
+    public void buyHouse(final House house) {
+        this.house = house; }
 
     @Override
     public String getLifeStage(){
