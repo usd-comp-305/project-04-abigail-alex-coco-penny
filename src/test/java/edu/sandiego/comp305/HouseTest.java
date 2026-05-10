@@ -45,19 +45,19 @@ public class HouseTest {
 
     @Test
     public void houseUsesLocationCalculatePremium() {
-        DNA mockDNA = mock(DNA.class);
+        final DNA mockDNA = mock(DNA.class);
 
-        Character characterInSafeLocation = new Character("Safe", Age.ADULT, 80, mockDNA);
+        final Character characterInSafeLocation = new Character("Safe", Age.ADULT, 80, mockDNA);
 
         characterInSafeLocation.chooseLocation(Location.SEATTLE);
 
-        Character characterInRiskyLocation = new Character("Risky", Age.ADULT, 80, mockDNA);
+        final Character characterInRiskyLocation = new Character("Risky", Age.ADULT, 80, mockDNA);
 
         characterInRiskyLocation.chooseLocation(Location.MIAMI);
 
-        double lowRiskHouse = House.APARTMENT.getPremium(characterInSafeLocation);
+        final double lowRiskHouse = House.APARTMENT.getPremium(characterInSafeLocation);
 
-        double highRiskHouse = House.APARTMENT.getPremium(characterInRiskyLocation);
+        final double highRiskHouse = House.APARTMENT.getPremium(characterInRiskyLocation);
 
         assertTrue(highRiskHouse > lowRiskHouse);
     }
