@@ -10,6 +10,8 @@ public class Character extends Person{
 
     private Career career;
 
+    private House house;
+
 
     public Character(final String name, final Age age,final int healthScore, final DNA dna) {
         super(name, age, healthScore, dna);
@@ -29,6 +31,8 @@ public class Character extends Person{
     public Location getLocation(){
         return location;
     }
+
+    public House getHouse() { return house; }
 
     public Career getCareer(){
         return career;
