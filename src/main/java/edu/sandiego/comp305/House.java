@@ -36,10 +36,10 @@ public enum House implements Insurable {
 
     @Override
     public double getPremium(final Person person) {
-        return 0.0;
+        final double weight1 = 500000.0;
+        final double valueRisk = this.value / weight1;
+
+        return 1000 * (1 + valueRisk);
     }
 
-    public int calculateRiskFactor() {
-        return 0; // based on location
-    }
 }
