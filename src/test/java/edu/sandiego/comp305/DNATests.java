@@ -83,4 +83,18 @@ public class DNATests {
         }
     }
 
+    @Test
+    public void combineOneBBOnebbChildBb() {
+        DNA parent1DNA = createDNAMock(mockBB);
+        DNA parent2DNA = createDNAMock(mockbb);
+
+        DNA childDNA = DNA.combineSequences(parent1DNA, parent2DNA);
+        for (Allele allele: Allele.values()) {
+            AllelePair childPair = childDNA.getAllelePair(allele);
+
+            assertEquals('B', childPair.getMaternalCopy());
+            assertEquals('b', childPair.getPaternalCopy());
+        }
+    }
+
 }
