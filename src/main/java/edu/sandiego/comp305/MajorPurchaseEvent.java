@@ -18,13 +18,18 @@ public class MajorPurchaseEvent implements FinancialLifeEvent {
     public void executeOn(Person person, Scanner scanner, Random random) {
 
         System.out.println("Major Purchase: " + description);
-        System.out.println("Would you like to purchase for $" + purchasePrice + "? (y/n) ");
+        System.out.println("Would you like to purchase for $" + purchasePrice + "? (y/n) \n");
 
         String purchaseDecision = scanner.nextLine().toLowerCase();
 
         if(purchaseDecision.equals("y")) {
             person.setBankBalance(person.getBankBalance() - purchasePrice);
-            System.out.println("Your updated bank balance is: $" + person.getBankBalance());
+
+            if(person.getBankBalance() < 0) {
+                System.out.println("You are bankrupt!\n");
+            }
+
+            System.out.println("Your updated bank balance is: $" + person.getBankBalance() + "\n");
         }
 
 

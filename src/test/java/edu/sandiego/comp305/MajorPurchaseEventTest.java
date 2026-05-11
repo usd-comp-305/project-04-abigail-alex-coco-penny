@@ -48,4 +48,22 @@ public class MajorPurchaseEventTest {
 
     }
 
+    @Test
+    void testMajorPurchaseCausesBankruptcy() {
+        MajorPurchaseEvent majorPurchaseEvent = new MajorPurchaseEvent("Car", 100000);
+
+        person.setBankBalance(10000);
+
+        when(mockedScanner.nextLine()).thenReturn("y");
+
+
+        majorPurchaseEvent.executeOn(person, mockedScanner, mockedRNG);
+
+        double currBalance = person.getBankBalance();
+
+
+        assertEquals(-90000, currBalance);
+
+    }
+
 }
