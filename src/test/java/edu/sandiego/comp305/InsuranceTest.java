@@ -27,9 +27,18 @@ public class InsuranceTest {
     }
 
     @Test
-    public void insuranceHandlesHouseEvent() {}
+    public void calcPremiumCarOnly() {
+        Car car = mock(Car.class);
 
-    @Test
-    public void insuranceCalculatesPremium() {}
+        when(character.getCar()).thenReturn(car);
+        when(character.getHouse()).thenReturn(null);
+
+        when(car.getPremium(character)).thenReturn(200.0);
+
+        Insurance insurance = new Insurance();
+        insurance.calculatePremium(character);
+
+        assertEquals(200.0, insurance.getTotalPremium());
+    }
 
 }
