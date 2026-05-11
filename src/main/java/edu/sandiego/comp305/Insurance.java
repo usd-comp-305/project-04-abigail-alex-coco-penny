@@ -4,16 +4,12 @@ public class Insurance {
 
     private double totalPremium;
 
-    public double calculatePremium(Person person) {
-        return 0.0;
+    public double calculatePremium(final Character character) {
+        double premium = 0.0;
+        return premium;
     }
 
-    public double getTotalPremium(Person person) {
-        return 0.0;
+    public double getTotalPremium() {
+        return this.totalPremium;
     }
-    // combines car and house premiums, this will be paid annually
-    public double calculateTotalPremium() {
-        return 0.0;
-    }
-
 }
