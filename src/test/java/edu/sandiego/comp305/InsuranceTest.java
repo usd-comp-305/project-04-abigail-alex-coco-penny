@@ -41,4 +41,19 @@ public class InsuranceTest {
         assertEquals(200.0, insurance.getTotalPremium());
     }
 
+    @Test
+    public void calcPremiumHouseOnly() {
+        House house = mock(House.class);
+
+        when(character.getCar()).thenReturn(null);
+        when(character.getHouse()).thenReturn(house);
+
+        when(house.getPremium(character)).thenReturn(20000.0);
+
+        Insurance insurance = new Insurance();
+        insurance.calculatePremium(character);
+
+        assertEquals(20000.0, insurance.getTotalPremium());
+    }
+
 }
