@@ -8,7 +8,7 @@ public class Insurance {
         double premium = 0.0;
 
         for (Insurable insurable : character.getInsurables()) {
-            premium += insurable.getPremium(character);
+            premium += insurable.calculatePremium(character);
         }
 
         this.totalPremium = premium;

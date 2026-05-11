@@ -32,7 +32,7 @@ public class InsuranceTest {
     public void calcPremiumCarOnly() {
         final Car car = mock(Car.class);
 
-        when(car.getPremium(character)).thenReturn(200.0);
+        when(car.calculatePremium(character)).thenReturn(200.0);
 
         when(character.getInsurables()).thenReturn(List.of(car));
 
@@ -46,7 +46,7 @@ public class InsuranceTest {
     public void calcPremiumHouseOnly() {
         final House house = mock(House.class);
 
-        when(house.getPremium(character)).thenReturn(20000.0);
+        when(house.calculatePremium(character)).thenReturn(20000.0);
 
         when(character.getInsurables()).thenReturn(List.of(house));
 
@@ -61,8 +61,8 @@ public class InsuranceTest {
         final Car car = mock(Car.class);
         final House house = mock(House.class);
 
-        when(car.getPremium(character)).thenReturn(200.0);
-        when(house.getPremium(character)).thenReturn(400.0);
+        when(car.calculatePremium(character)).thenReturn(200.0);
+        when(house.calculatePremium(character)).thenReturn(400.0);
 
         when(character.getInsurables()).thenReturn(List.of(car, house));
 
@@ -76,7 +76,7 @@ public class InsuranceTest {
     public void recalculationResetsPremium() {
         final Car car = mock(Car.class);
 
-        when(car.getPremium(character)).thenReturn(100.0);
+        when(car.calculatePremium(character)).thenReturn(100.0);
 
         when(character.getInsurables()).thenReturn(List.of(car));
 
@@ -85,7 +85,7 @@ public class InsuranceTest {
 
         assertEquals(100.0, insurance.getTotalPremium());
 
-        when(car.getPremium(character)).thenReturn(300.0);
+        when(car.calculatePremium(character)).thenReturn(300.0);
 
         when(character.getInsurables()).thenReturn(List.of(car));
 
