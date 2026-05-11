@@ -1,5 +1,6 @@
 package edu.sandiego.comp305;
 
+import java.util.Random;
 import java.util.Scanner;
 
 import static java.lang.Math.abs;
@@ -15,7 +16,7 @@ public class UnexpectedBillEvent implements FinancialLifeEvent {
     }
 
     @Override
-    public void executeOn(Person person, Scanner scanner) {
+    public void executeOn(Person person, Scanner scanner, Random random) {
         System.out.println("Unexpected Bill: " + description);
         System.out.println("You must pay $" + cost + "\n");
         person.setBankBalance(person.getBankBalance() -  this.cost);

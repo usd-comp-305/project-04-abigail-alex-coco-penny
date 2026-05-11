@@ -3,6 +3,7 @@ package edu.sandiego.comp305;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Random;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,41 +19,48 @@ public class InvestmentOpportunityEventTest {
 
     private Scanner mockedScanner;
 
+    private Random mockedRNG;
+
     @BeforeEach
     void setUp() {
         person = new Character("person_1", Age.ADULT, 100, mockedDNA, 0.0);
 
         mockedScanner = mock(Scanner.class);
+
+        mockedRNG = mock(Random.class);
     }
 
     @Test
     void testInvestmentOpportunityEventAltersBankBalance() {
 
-        InvestmentOpportunityEvent investmentOpportunityEvent = new InvestmentOpportunityEvent("Government Bonds", 10000);
+        InvestmentOpportunityEvent investmentOpportunityEvent = new InvestmentOpportunityEvent("Government Bonds", 10000, 0.5);
 
         person.setBankBalance(100000);
 
         when(mockedScanner.nextLine()).thenReturn("y");
 
-        investmentOpportunityEvent.executeOn(person, mockedScanner);
+        when(mockedRNG.nextDouble()).thenReturn(0.5);
+
+
+        investmentOpportunityEvent.executeOn(person, mockedScanner, mockedRNG);
 
         double currBalance = person.getBankBalance();
 
 
-        assertEquals(90000, currBalance);
+        assertEquals(115000, currBalance);
 
     }
 
     @Test
     void testRejectedInvestmentOpportunityEventDoesNotAlterBankBalance() {
 
-        InvestmentOpportunityEvent investmentOpportunityEvent = new InvestmentOpportunityEvent("Real Estate", 100000);
+        InvestmentOpportunityEvent investmentOpportunityEvent = new InvestmentOpportunityEvent("Real Estate", 100000, 0.7);
 
         person.setBankBalance(200000);
 
         when(mockedScanner.nextLine()).thenReturn("n");
 
-        investmentOpportunityEvent.executeOn(person, mockedScanner);
+        investmentOpportunityEvent.executeOn(person, mockedScanner, mockedRNG);
 
         double currBalance = person.getBankBalance();
 

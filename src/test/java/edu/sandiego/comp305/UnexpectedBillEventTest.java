@@ -3,6 +3,7 @@ package edu.sandiego.comp305;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Random;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,10 +17,15 @@ public class UnexpectedBillEventTest {
 
     private Scanner mockedScanner;
 
+    private Random mockedRNG;
+
     @BeforeEach
     void setUp() {
         person = new Character("Person_1", Age.ADULT, 100, mockedDNA, 0);
+
         mockedScanner = mock(Scanner.class);
+
+        mockedRNG = mock(Random.class);
     }
 
     @Test
@@ -29,7 +35,7 @@ public class UnexpectedBillEventTest {
 
         person.setBankBalance(150);
 
-        unexpectedBillEvent.executeOn(person, mockedScanner);
+        unexpectedBillEvent.executeOn(person, mockedScanner, mockedRNG);
 
         assertEquals(50, person.getBankBalance());
     }
@@ -41,7 +47,7 @@ public class UnexpectedBillEventTest {
 
         person.setBankBalance(150);
 
-        unexpectedBillEvent.executeOn(person, mockedScanner);
+        unexpectedBillEvent.executeOn(person, mockedScanner, mockedRNG);
 
         assertEquals(-850, person.getBankBalance());
     }
