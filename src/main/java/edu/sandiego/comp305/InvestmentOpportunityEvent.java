@@ -56,7 +56,7 @@ public class InvestmentOpportunityEvent implements FinancialLifeEvent {
 
             }
 
-            System.out.println("Your updated bank balance is " + person.getBankBalance());
+            System.out.println("Your updated bank balance is " + person.getBankBalance() + "\n");
 
         }
         else {

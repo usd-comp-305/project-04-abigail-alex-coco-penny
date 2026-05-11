@@ -31,7 +31,7 @@ public class InvestmentOpportunityEventTest {
     }
 
     @Test
-    void testInvestmentOpportunityEventAltersBankBalance() {
+    void testLowRiskInvestmentOpportunityEventAltersBankBalance() {
 
         InvestmentOpportunityEvent investmentOpportunityEvent = new InvestmentOpportunityEvent("Government Bonds", 10000, 0.5);
 
@@ -66,6 +66,27 @@ public class InvestmentOpportunityEventTest {
 
 
         assertEquals(200000, currBalance);
+
+    }
+
+    @Test
+    void testHighRiskInvestmentOpportunityEventAltersBankBalance() {
+
+        InvestmentOpportunityEvent investmentOpportunityEvent = new InvestmentOpportunityEvent("Cryptocurrency", 100000, 0.8);
+
+        person.setBankBalance(1000000);
+
+        when(mockedScanner.nextLine()).thenReturn("y");
+
+        when(mockedRNG.nextDouble()).thenReturn(0.1);
+
+
+        investmentOpportunityEvent.executeOn(person, mockedScanner, mockedRNG);
+
+        double currBalance = person.getBankBalance();
+
+
+        assertEquals(1240000, currBalance);
 
     }
 
