@@ -5,8 +5,6 @@ import java.util.List;
 
 public class Character extends Person{
 
-    private double bankBalance;
-
     private Car car;
 
     private Location location;
@@ -17,15 +15,11 @@ public class Character extends Person{
 
     private List<Insurable> insurables;
 
-    public Character(final String name, final Age age,final int healthScore, final DNA dna) {
-        super(name, age, healthScore, dna);
-        this.bankBalance = 0.0;
+    public Character(final String name, final Age age,final int healthScore, final DNA dna, final double bankBalance) {
+        super(name, age, healthScore, dna, bankBalance);
         this.insurables = new ArrayList<>();
     }
 
-    public double getBankBalance(){
-        return bankBalance;
-    }
 
     public void generateDNA(){}
 
