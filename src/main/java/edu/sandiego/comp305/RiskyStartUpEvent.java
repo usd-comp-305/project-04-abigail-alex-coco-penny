@@ -5,16 +5,16 @@ import java.util.Scanner;
 
 public class RiskyStartUpEvent implements RiskyLifeEvent {
 
-    private String description;
+    final private String description;
 
-    private int cost;
+    final private int cost;
 
-    private double riskFactor;
+    final private double riskFactor;
 
 
     // modify this to take in risk factor as a parameter to make the probability dynamic
 
-    public RiskyStartUpEvent(String description, int cost, double riskFactor) {
+    public RiskyStartUpEvent(final String description, final int cost, final double riskFactor) {
         this.description = description;
         this.cost = cost;
         this.riskFactor = riskFactor;
@@ -30,29 +30,28 @@ public class RiskyStartUpEvent implements RiskyLifeEvent {
 
         System.out.println("Would you like to take the risk ? (y/n) \n");
 
-        String riskChoice = scanner.nextLine().toLowerCase();
+        final String riskChoice = scanner.nextLine().toLowerCase();
 
         if(riskChoice.equals("y")) {
 
             person.setBankBalance(person.getBankBalance() - cost);
 
-            double randomProbability = random.nextDouble();
+            final double randomProbability = random.nextDouble();
 
-            double successRate = 1 - riskFactor;
+            final double successRate = 1 - riskFactor;
 
             if (randomProbability <= successRate) {
 
-                double multiplier = 1 + ( 3 * riskFactor);
+                final double multiplier = 1 + ( 3 * riskFactor);
 
-                double returns = cost * multiplier;
+                final double returns = cost * multiplier;
 
                 System.out.println("Your company is doing well! You have made $" + returns);
                 person.setBankBalance(person.getBankBalance() + returns);
-            }
-            else {
+            } else {
 
-                double multiplier = 1 - riskFactor;
-                double returns = cost * multiplier;
+                final double multiplier = 1 - riskFactor;
+                final double returns = cost * multiplier;
                 System.out.println("Your company has gone bankrupt ... you have lost $" + returns);
                 person.setBankBalance(person.getBankBalance() - returns);
             }
