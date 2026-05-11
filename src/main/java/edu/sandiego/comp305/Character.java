@@ -15,7 +15,7 @@ public class Character extends Person{
 
     private List<Insurable> insurables;
 
-    public Character(final String name, final Age age,final int healthScore, final DNA dna, final double bankBalance) {
+    public Character(final String name, final Age age, final int healthScore, final DNA dna, final double bankBalance) {
         super(name, age, healthScore, dna, bankBalance);
         this.insurables = new ArrayList<>();
     }

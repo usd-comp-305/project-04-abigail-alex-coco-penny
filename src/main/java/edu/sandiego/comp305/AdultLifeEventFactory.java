@@ -39,9 +39,9 @@ public class AdultLifeEventFactory implements EventFactory {
                 return new RetirementMilestoneEvent();
 
             case 2:
-                return null;
+                return new BuyingHouseMilestoneEvent();
             case 3:
-                return null;
+                return new MarriageMilestoneEvent();
         }
 
         return null;

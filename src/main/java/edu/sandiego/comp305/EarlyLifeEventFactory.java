@@ -27,7 +27,7 @@ public class EarlyLifeEventFactory implements EventFactory {
     }
 
     public MilestoneLifeEvent createMilestoneEvent() {
-        return null;
+        return new HighschoolMilestoneEvent();
     }
 
     public RiskyLifeEvent createRiskyEvent() {
