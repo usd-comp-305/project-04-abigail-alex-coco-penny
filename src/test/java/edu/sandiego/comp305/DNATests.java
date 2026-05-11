@@ -13,10 +13,13 @@ import static org.mockito.Mockito.*;
 
 public class DNATests {
 
-    public AllelePair mockBB;
-    public AllelePair mockBb;
-    public AllelePair mockbB;
-    public AllelePair mockbb;
+    private AllelePair mockBB;
+
+    private AllelePair mockBb;
+
+    private AllelePair mockbB;
+
+    private AllelePair mockbb;
 
     @BeforeEach
     public void setUpAllelePairs() {
@@ -43,8 +46,8 @@ public class DNATests {
     }
 
     // helper method for the tests
-    public DNA createDNAMock(AllelePair mockPair) {
-        Map<Allele, AllelePair> traits = new HashMap<>();
+    public DNA createDNAMock(final AllelePair mockPair) {
+        final Map<Allele, AllelePair> traits = new HashMap<>();
         for(Allele allele: Allele.values()) {
             traits.put(allele, mockPair);
         }
@@ -54,22 +57,22 @@ public class DNATests {
 
     @Test
     public void combineIsNotNull() {
-        DNA parent1DNA = createDNAMock(mockBB);
-        DNA parent2DNA = createDNAMock(mockBB);
-        Random rng = mock(Random.class);
+        final DNA parent1DNA = createDNAMock(mockBB);
+        final DNA parent2DNA = createDNAMock(mockBB);
+        final Random rng = mock(Random.class);
 
         assertNotNull(DNA.combineSequences(parent1DNA, parent2DNA, rng));
     }
 
     @Test
     public void combineBothBBChildIsBB() {
-        DNA parent1DNA = createDNAMock(mockBB);
-        DNA parent2DNA = createDNAMock(mockBB);
-        Random rng = mock(Random.class);
+        final DNA parent1DNA = createDNAMock(mockBB);
+        final DNA parent2DNA = createDNAMock(mockBB);
+        final Random rng = mock(Random.class);
 
-        DNA childDNA = DNA.combineSequences(parent1DNA, parent2DNA, rng);
+        final DNA childDNA = DNA.combineSequences(parent1DNA, parent2DNA, rng);
         for (Allele allele: Allele.values()) {
-            AllelePair childPair = childDNA.getAllelePair(allele);
+            final AllelePair childPair = childDNA.getAllelePair(allele);
 
             assertEquals('B', childPair.getMaternalCopy());
             assertEquals('B', childPair.getPaternalCopy());
@@ -78,13 +81,13 @@ public class DNATests {
 
     @Test
     public void combineBothbbChildbb() {
-        DNA parent1DNA = createDNAMock(mockbb);
-        DNA parent2DNA = createDNAMock(mockbb);
-        Random rng = mock(Random.class);
+        final DNA parent1DNA = createDNAMock(mockbb);
+        final DNA parent2DNA = createDNAMock(mockbb);
+        final Random rng = mock(Random.class);
 
-        DNA childDNA = DNA.combineSequences(parent1DNA, parent2DNA, rng);
+        final DNA childDNA = DNA.combineSequences(parent1DNA, parent2DNA, rng);
         for (Allele allele: Allele.values()) {
-            AllelePair childPair = childDNA.getAllelePair(allele);
+            final AllelePair childPair = childDNA.getAllelePair(allele);
 
             assertEquals('b', childPair.getMaternalCopy());
             assertEquals('b', childPair.getPaternalCopy());
@@ -93,13 +96,13 @@ public class DNATests {
 
     @Test
     public void combineOneBBOnebbChildBb() {
-        DNA parent1DNA = createDNAMock(mockBB);
-        DNA parent2DNA = createDNAMock(mockbb);
-        Random rng = mock(Random.class);
+        final DNA parent1DNA = createDNAMock(mockBB);
+        final DNA parent2DNA = createDNAMock(mockbb);
+        final Random rng = mock(Random.class);
 
-        DNA childDNA = DNA.combineSequences(parent1DNA, parent2DNA, rng);
+        final DNA childDNA = DNA.combineSequences(parent1DNA, parent2DNA, rng);
         for (Allele allele: Allele.values()) {
-            AllelePair childPair = childDNA.getAllelePair(allele);
+            final AllelePair childPair = childDNA.getAllelePair(allele);
 
             assertTrue((childPair.getMaternalCopy() == 'B' && childPair.getPaternalCopy() == 'b') ||
                     (childPair.getMaternalCopy() == 'b' && childPair.getPaternalCopy() == 'B'));
@@ -108,13 +111,13 @@ public class DNATests {
 
     @Test
     public void combineBothBbChildEitherBBorBborbb() {
-        DNA parent1DNA = createDNAMock(mockBb);
-        DNA parent2DNA = createDNAMock(mockBb);
-        Random rng = mock(Random.class);
+        final DNA parent1DNA = createDNAMock(mockBb);
+        final DNA parent2DNA = createDNAMock(mockBb);
+        final Random rng = mock(Random.class);
 
-        DNA childDNA = DNA.combineSequences(parent1DNA, parent2DNA, rng);
+        final DNA childDNA = DNA.combineSequences(parent1DNA, parent2DNA, rng);
         for (Allele allele: Allele.values()) {
-            AllelePair childPair = childDNA.getAllelePair(allele);
+            final AllelePair childPair = childDNA.getAllelePair(allele);
 
             assertTrue((childPair.getMaternalCopy() == 'B' && childPair.getPaternalCopy() == 'B') ||
                     (childPair.getMaternalCopy() == 'b' && childPair.getPaternalCopy() == 'b') ||
@@ -125,14 +128,14 @@ public class DNATests {
 
     @Test
     public void generateRandomDNAreturnsNotNull() {
-        Random rng = mock(Random.class);
+        final Random rng = mock(Random.class);
         assertNotNull(DNA.generateRandomDNA(rng));
     }
 
     @Test
     public void generateDNAAllTraitsGenerated() {
-        Random rng = mock(Random.class);
-        DNA dna = DNA.generateRandomDNA(rng);
+        final Random rng = mock(Random.class);
+        final DNA dna = DNA.generateRandomDNA(rng);
         for(Allele allele: Allele.values()) {
             assertNotNull(dna.getAllelePair(allele));
         }
@@ -140,13 +143,13 @@ public class DNATests {
 
     @Test
     public void generateDNAExpectedDNAWithMocking() {
-        Random rng = mock(Random.class);
+        final Random rng = mock(Random.class);
         when(rng.nextInt(2)).thenReturn(0).thenReturn(1).thenReturn(0).thenReturn(1).thenReturn(0).thenReturn(1);
 
-        DNA dna = DNA.generateRandomDNA(rng);
+        final DNA dna = DNA.generateRandomDNA(rng);
 
         for(Allele allele: Allele.values()) {
-            AllelePair pair = dna.getAllelePair(allele);
+            final AllelePair pair = dna.getAllelePair(allele);
 
             assertEquals('B', pair.getMaternalCopy());
             assertEquals('b', pair.getPaternalCopy());
@@ -155,30 +158,30 @@ public class DNATests {
 
     @Test
     public void calcPhenotypeReturnsDominantOneAllele() {
-        Map<Allele, AllelePair> traits = new HashMap<>();
+        final Map<Allele, AllelePair> traits = new HashMap<>();
         traits.put(Allele.EYE_COLOR, mockBB);
-        DNA dna = new DNA(traits);
+        final DNA dna = new DNA(traits);
 
         assertEquals(Allele.EYE_COLOR.getDominantTrait(), dna.calculatePhenotypeFromAllele(Allele.EYE_COLOR));
     }
 
     @Test
     public void calcPhenotypeReturnsRecessiveOneAllele() {
-        Map<Allele, AllelePair> traits = new HashMap<>();
+        final Map<Allele, AllelePair> traits = new HashMap<>();
         traits.put(Allele.EYE_COLOR, mockbb);
-        DNA dna = new DNA(traits);
+        final DNA dna = new DNA(traits);
 
         assertEquals(Allele.EYE_COLOR.getRecessiveTrait(), dna.calculatePhenotypeFromAllele(Allele.EYE_COLOR));
     }
 
     @Test
     public void calcPhenotypeReturnsDominantAllAlleles() {
-        Map<Allele, AllelePair> traits = new HashMap<>();
+        final Map<Allele, AllelePair> traits = new HashMap<>();
 
         for(Allele allele: Allele.values()) {
             traits.put(allele, mockBb);
         }
-        DNA dna = new DNA(traits);
+        final DNA dna = new DNA(traits);
 
         for(Allele allele: Allele.values()) {
             assertEquals(allele.getDominantTrait(), dna.calculatePhenotypeFromAllele(allele));
@@ -187,18 +190,16 @@ public class DNATests {
 
     @Test
     public void calcPhenotypeReturnsRecessiveAllAlleles() {
-        Map<Allele, AllelePair> traits = new HashMap<>();
+        final Map<Allele, AllelePair> traits = new HashMap<>();
 
         for(Allele allele: Allele.values()) {
             traits.put(allele, mockbb);
         }
-        DNA dna = new DNA(traits);
+        final DNA dna = new DNA(traits);
 
         for(Allele allele: Allele.values()) {
             assertEquals(allele.getRecessiveTrait(), dna.calculatePhenotypeFromAllele(allele));
         }
     }
-
-
 
 }
