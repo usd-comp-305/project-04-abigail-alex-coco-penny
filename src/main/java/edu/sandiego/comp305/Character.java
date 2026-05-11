@@ -13,24 +13,15 @@ public class Character extends Person{
     private House house;
 
 
-    public Character(final String name, final Age age,final int healthScore, final DNA dna) {
-        super(name, age, healthScore, dna);
-        this.bankBalance = 0.0;
+    public Character(final String name, final Age age,final int healthScore, final DNA dna, double bankBalance) {
+        super(name, age, healthScore, dna, bankBalance);
     }
 
-    public double getBankBalance(){
-        return bankBalance;
-    }
 
     public void generateDNA(){}
 
     public Car getCar(){
         return car;
-    }
-
-    @Override
-    public Location getLocation(){
-        return location;
     }
 
     public House getHouse() {
