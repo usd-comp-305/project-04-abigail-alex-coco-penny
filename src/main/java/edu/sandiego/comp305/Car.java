@@ -27,10 +27,6 @@ public enum Car implements Insurable {
         this.baseRate = baseRate;
     }
 
-    @Override
-    public void applyInsurance() {
-
-    }
 
     @Override
     public double getPremium(final Person person) {

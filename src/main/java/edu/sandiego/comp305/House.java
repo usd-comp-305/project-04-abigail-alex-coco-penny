@@ -30,11 +30,6 @@ public enum House implements Insurable {
     }
 
     @Override
-    public void applyInsurance() {
-
-    }
-
-    @Override
     public double getPremium(final Person person) {
         final double weight1 = 500000.0;
         final double valueRisk = this.value / weight1;
