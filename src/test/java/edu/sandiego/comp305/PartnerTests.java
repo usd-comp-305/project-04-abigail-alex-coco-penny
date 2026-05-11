@@ -52,7 +52,7 @@ public class PartnerTests {
 
     @Test
     public void testChooseLocationSetsLocation(){
-        final Location location = new Location("San Diego", "CA");
+        final Location location = Location.SAN_DIEGO;
         partner.chooseLocation(location);
         assertEquals("CA", partner.getLocation().getState());
     }

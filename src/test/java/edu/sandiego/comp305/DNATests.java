@@ -1,5 +1,205 @@
 package edu.sandiego.comp305;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
+
 public class DNATests {
+
+    private AllelePair mockBB;
+
+    private AllelePair mockBb;
+
+    private AllelePair mockbB;
+
+    private AllelePair mockbb;
+
+    @BeforeEach
+    public void setUpAllelePairs() {
+        mockBB = mock(AllelePair.class);
+        when(mockBB.getMaternalCopy()).thenReturn('B');
+        when(mockBB.getPaternalCopy()).thenReturn('B');
+        when(mockBB.isDominantExpressed()).thenReturn(true);
+
+        mockBb = mock(AllelePair.class);
+        when(mockBb.getMaternalCopy()).thenReturn('B');
+        when(mockBb.getPaternalCopy()).thenReturn('b');
+        when(mockBb.isDominantExpressed()).thenReturn(true);
+
+        mockbB = mock(AllelePair.class);
+        when(mockbB.getMaternalCopy()).thenReturn('b');
+        when(mockbB.getPaternalCopy()).thenReturn('B');
+        when(mockbB.isDominantExpressed()).thenReturn(true);
+
+        mockbb = mock(AllelePair.class);
+        when(mockbb.getMaternalCopy()).thenReturn('b');
+        when(mockbb.getPaternalCopy()).thenReturn('b');
+        when(mockbb.isDominantExpressed()).thenReturn(false);
+
+    }
+
+    // helper method for the tests
+    public DNA createDNAMock(final AllelePair mockPair) {
+        final Map<Allele, AllelePair> traits = new HashMap<>();
+        for(Allele allele: Allele.values()) {
+            traits.put(allele, mockPair);
+        }
+        return new DNA(traits);
+    }
+
+
+    @Test
+    public void combineIsNotNull() {
+        final DNA parent1DNA = createDNAMock(mockBB);
+        final DNA parent2DNA = createDNAMock(mockBB);
+        final Random rng = mock(Random.class);
+
+        assertNotNull(DNA.combineSequences(parent1DNA, parent2DNA, rng));
+    }
+
+    @Test
+    public void combineBothBBChildIsBB() {
+        final DNA parent1DNA = createDNAMock(mockBB);
+        final DNA parent2DNA = createDNAMock(mockBB);
+        final Random rng = mock(Random.class);
+
+        final DNA childDNA = DNA.combineSequences(parent1DNA, parent2DNA, rng);
+        for (Allele allele: Allele.values()) {
+            final AllelePair childPair = childDNA.getAllelePair(allele);
+
+            assertEquals('B', childPair.getMaternalCopy());
+            assertEquals('B', childPair.getPaternalCopy());
+        }
+    }
+
+    @Test
+    public void combineBothbbChildbb() {
+        final DNA parent1DNA = createDNAMock(mockbb);
+        final DNA parent2DNA = createDNAMock(mockbb);
+        final Random rng = mock(Random.class);
+
+        final DNA childDNA = DNA.combineSequences(parent1DNA, parent2DNA, rng);
+        for (Allele allele: Allele.values()) {
+            final AllelePair childPair = childDNA.getAllelePair(allele);
+
+            assertEquals('b', childPair.getMaternalCopy());
+            assertEquals('b', childPair.getPaternalCopy());
+        }
+    }
+
+    @Test
+    public void combineOneBBOnebbChildBb() {
+        final DNA parent1DNA = createDNAMock(mockBB);
+        final DNA parent2DNA = createDNAMock(mockbb);
+        final Random rng = mock(Random.class);
+
+        final DNA childDNA = DNA.combineSequences(parent1DNA, parent2DNA, rng);
+        for (Allele allele: Allele.values()) {
+            final AllelePair childPair = childDNA.getAllelePair(allele);
+
+            assertTrue((childPair.getMaternalCopy() == 'B' && childPair.getPaternalCopy() == 'b') ||
+                    (childPair.getMaternalCopy() == 'b' && childPair.getPaternalCopy() == 'B'));
+        }
+    }
+
+    @Test
+    public void combineBothBbChildEitherBBorBborbb() {
+        final DNA parent1DNA = createDNAMock(mockBb);
+        final DNA parent2DNA = createDNAMock(mockBb);
+        final Random rng = mock(Random.class);
+
+        final DNA childDNA = DNA.combineSequences(parent1DNA, parent2DNA, rng);
+        for (Allele allele: Allele.values()) {
+            final AllelePair childPair = childDNA.getAllelePair(allele);
+
+            assertTrue((childPair.getMaternalCopy() == 'B' && childPair.getPaternalCopy() == 'B') ||
+                    (childPair.getMaternalCopy() == 'b' && childPair.getPaternalCopy() == 'b') ||
+                    (childPair.getMaternalCopy() == 'b' && childPair.getPaternalCopy() == 'B') ||
+                    (childPair.getMaternalCopy() == 'B' && childPair.getPaternalCopy() == 'b'));
+        }
+    }
+
+    @Test
+    public void generateRandomDNAreturnsNotNull() {
+        final Random rng = mock(Random.class);
+        assertNotNull(DNA.generateRandomDNA(rng));
+    }
+
+    @Test
+    public void generateDNAAllTraitsGenerated() {
+        final Random rng = mock(Random.class);
+        final DNA dna = DNA.generateRandomDNA(rng);
+        for(Allele allele: Allele.values()) {
+            assertNotNull(dna.getAllelePair(allele));
+        }
+    }
+
+    @Test
+    public void generateDNAExpectedDNAWithMocking() {
+        final Random rng = mock(Random.class);
+        when(rng.nextInt(2)).thenReturn(0).thenReturn(1).thenReturn(0).thenReturn(1).thenReturn(0).thenReturn(1);
+
+        final DNA dna = DNA.generateRandomDNA(rng);
+
+        for(Allele allele: Allele.values()) {
+            final AllelePair pair = dna.getAllelePair(allele);
+
+            assertEquals('B', pair.getMaternalCopy());
+            assertEquals('b', pair.getPaternalCopy());
+        }
+    }
+
+    @Test
+    public void calcPhenotypeReturnsDominantOneAllele() {
+        final Map<Allele, AllelePair> traits = new HashMap<>();
+        traits.put(Allele.EYE_COLOR, mockBB);
+        final DNA dna = new DNA(traits);
+
+        assertEquals(Allele.EYE_COLOR.getDominantTrait(), dna.calculatePhenotypeFromAllele(Allele.EYE_COLOR));
+    }
+
+    @Test
+    public void calcPhenotypeReturnsRecessiveOneAllele() {
+        final Map<Allele, AllelePair> traits = new HashMap<>();
+        traits.put(Allele.EYE_COLOR, mockbb);
+        final DNA dna = new DNA(traits);
+
+        assertEquals(Allele.EYE_COLOR.getRecessiveTrait(), dna.calculatePhenotypeFromAllele(Allele.EYE_COLOR));
+    }
+
+    @Test
+    public void calcPhenotypeReturnsDominantAllAlleles() {
+        final Map<Allele, AllelePair> traits = new HashMap<>();
+
+        for(Allele allele: Allele.values()) {
+            traits.put(allele, mockBb);
+        }
+        final DNA dna = new DNA(traits);
+
+        for(Allele allele: Allele.values()) {
+            assertEquals(allele.getDominantTrait(), dna.calculatePhenotypeFromAllele(allele));
+        }
+    }
+
+    @Test
+    public void calcPhenotypeReturnsRecessiveAllAlleles() {
+        final Map<Allele, AllelePair> traits = new HashMap<>();
+
+        for(Allele allele: Allele.values()) {
+            traits.put(allele, mockbb);
+        }
+        final DNA dna = new DNA(traits);
+
+        for(Allele allele: Allele.values()) {
+            assertEquals(allele.getRecessiveTrait(), dna.calculatePhenotypeFromAllele(allele));
+        }
+    }
 
 }
