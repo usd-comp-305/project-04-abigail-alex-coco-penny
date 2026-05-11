@@ -47,9 +47,10 @@ public class DNA {
 
     public static DNA generateRandomDNA(Random rng) {
         Map<Allele, AllelePair> DNASequence = new HashMap<>();
+        char[] options = {'B', 'b'};
 
         for(Allele allele: Allele.values()) {
-            DNASequence.put(allele, new AllelePair('B', 'B'));
+            DNASequence.put(allele, new AllelePair(options[rng.nextInt(2)], options[rng.nextInt(2)]));
         }
         return new DNA(DNASequence);
     }

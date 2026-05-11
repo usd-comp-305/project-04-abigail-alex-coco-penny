@@ -129,4 +129,19 @@ public class DNATests {
         }
     }
 
+    @Test
+    public void generateDNAExpectedDNAWithMocking() {
+        Random rng = mock(Random.class);
+        when(rng.nextInt(2)).thenReturn(0).thenReturn(1).thenReturn(0).thenReturn(1).thenReturn(0).thenReturn(1);
+
+        DNA dna = DNA.generateRandomDNA(rng);
+
+        for(Allele allele: Allele.values()) {
+            AllelePair pair = dna.getAllelePair(allele);
+
+            assertEquals('B', pair.getMaternalCopy());
+            assertEquals('b', pair.getPaternalCopy());
+        }
+    }
+
 }
