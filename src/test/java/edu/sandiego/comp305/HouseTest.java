@@ -18,12 +18,6 @@ public class HouseTest {
     }
 
     @Test
-    public void houseAppliesInsurance() {}
-
-    @Test
-    public void houseGetsPremium() {}
-
-    @Test
     public void houseUsesValueCalculatePremium() {
         final double lowValue = House.HUT.getPremium(person);
         final double highValue = House.CASTLE.getPremium(person);

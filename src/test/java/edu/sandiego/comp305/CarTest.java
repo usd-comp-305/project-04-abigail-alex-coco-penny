@@ -18,9 +18,6 @@ public class CarTest {
 
 
     @Test
-    public void carAppliesInsurance() {}
-
-    @Test
     public void carUsesBaseRateCalculatePremium() {
         final double premium = Car.SEDAN.getPremium(person);
 
