@@ -46,7 +46,12 @@ public class DNA {
     }
 
     public static DNA generateRandomDNA() {
-        return new DNA(new HashMap<>());
+        Map<Allele, AllelePair> DNASequence = new HashMap<>();
+
+        for(Allele allele: Allele.values()) {
+            DNASequence.put(allele, new AllelePair('B', 'B'));
+        }
+        return new DNA(DNASequence);
     }
 
     public static String calculatePhenotype () {

@@ -118,4 +118,12 @@ public class DNATests {
         assertNotNull(DNA.generateRandomDNA());
     }
 
+    @Test
+    public void generateDNAAllTraitsGenerated() {
+        DNA dna = DNA.generateRandomDNA();
+        for(Allele allele: Allele.values()) {
+            assertNotNull(dna.getAllelePair(allele));
+        }
+    }
+
 }
