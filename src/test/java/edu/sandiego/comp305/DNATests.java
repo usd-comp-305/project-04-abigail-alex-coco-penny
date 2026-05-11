@@ -149,12 +149,21 @@ public class DNATests {
     }
 
     @Test
-    public void calcPhenotypeReturnsDomEyeColor() {
+    public void calcPhenotypeReturnsDominant() {
         Map<Allele, AllelePair> traits = new HashMap<>();
         traits.put(Allele.EYE_COLOR, mockBB);
         DNA dna = new DNA(traits);
 
         assertEquals(Allele.EYE_COLOR.getDominantTrait(), dna.calculatePhenotypeFromAllele(Allele.EYE_COLOR));
+    }
+
+    @Test
+    public void calcPhenotypeReturnsRecessive() {
+        Map<Allele, AllelePair> traits = new HashMap<>();
+        traits.put(Allele.EYE_COLOR, mockbb);
+        DNA dna = new DNA(traits);
+
+        assertEquals(Allele.EYE_COLOR.getRecessiveTrait(), dna.calculatePhenotypeFromAllele(Allele.EYE_COLOR));
     }
 
 
