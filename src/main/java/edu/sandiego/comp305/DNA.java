@@ -45,6 +45,10 @@ public class DNA {
         return new DNA(combined);
     }
 
+    public static DNA generateRandomDNA() {
+        return new DNA(new HashMap<>());
+    }
+
     public static String calculatePhenotype () {
         return "";
     }

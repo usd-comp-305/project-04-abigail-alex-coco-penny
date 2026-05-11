@@ -113,4 +113,9 @@ public class DNATests {
         }
     }
 
+    @Test
+    public void generateRandomDNAreturnsNotNull() {
+        assertNotNull(DNA.generateRandomDNA());
+    }
+
 }
