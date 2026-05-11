@@ -56,4 +56,44 @@ public class InsuranceTest {
         assertEquals(20000.0, insurance.getTotalPremium());
     }
 
+    @Test
+    public void calcPremiumAllAssets() {
+        Car car = mock(Car.class);
+        House house = mock(House.class);
+
+        when(character.getCar()).thenReturn(car);
+        when(character.getHouse()).thenReturn(house);
+
+        when(car.getPremium(character)).thenReturn(200.0);
+        when(house.getPremium(character)).thenReturn(400.0);
+
+        Insurance insurance = new Insurance();
+        insurance.calculatePremium(character);
+
+        assertEquals(600.0, insurance.getTotalPremium());
+    }
+
+    @Test
+    public void recalculationResetsPremium() {
+        Car car = mock(Car.class);
+
+        when(character.getCar()).thenReturn(car);
+        when(character.getHouse()).thenReturn(null);
+
+        when(car.getPremium(character)).thenReturn(100.0);
+
+        Insurance insurance = new Insurance();
+        insurance.calculatePremium(character);
+
+        assertEquals(100.0, insurance.getTotalPremium());
+
+        when(car.getPremium(character)).thenReturn(300.0);
+
+        insurance.calculatePremium(character);
+
+        assertEquals(300.0, insurance.getTotalPremium());
+    }
+
+
+
 }
