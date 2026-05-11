@@ -49,6 +49,7 @@ public class Character extends Person{
     public List<Insurable> getInsurables() {
         return this.insurables;
     }
+
     public void chooseCareer(final Career career){
         this.career = career;
     }
