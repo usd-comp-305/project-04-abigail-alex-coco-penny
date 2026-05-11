@@ -20,13 +20,13 @@ public enum Car implements Insurable {
 
     public final int baseRate;
 
-    private final double YEAR_WEIGHT = 0.5;
+    private static final double YEAR_WEIGHT = 0.5;
 
-    private final double VALUE_WEIGHT = 0.3;
+    private static final double VALUE_WEIGHT = 0.3;
 
-    private final int BASE_YEAR = 2000;
+    private static final int BASE_YEAR = 2000;
 
-    private final double BASE_VALUE = 50000.0;
+    private static final double BASE_VALUE = 50000.0;
 
     Car(final int value, final String[] type, final int year, final int baseRate) {
         this.value = value;
