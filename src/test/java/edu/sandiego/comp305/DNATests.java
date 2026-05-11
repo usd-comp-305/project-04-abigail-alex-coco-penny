@@ -180,6 +180,20 @@ public class DNATests {
         }
     }
 
+    @Test
+    public void calcPhenotypeReturnsRecessiveAllAlleles() {
+        Map<Allele, AllelePair> traits = new HashMap<>();
+
+        for(Allele allele: Allele.values()) {
+            traits.put(allele, mockbb);
+        }
+        DNA dna = new DNA(traits);
+
+        for(Allele allele: Allele.values()) {
+            assertEquals(allele.getRecessiveTrait(), dna.calculatePhenotypeFromAllele(allele));
+        }
+    }
+
 
 
 }
