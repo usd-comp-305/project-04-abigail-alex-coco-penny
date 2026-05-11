@@ -12,14 +12,6 @@ public enum Car implements Insurable {
     CONVERTIBLE (7888, new String[]{"BMW", "328i"}, 2010, 36),
     WAGON (12998, new String[]{"Volkswagen", "Golf"}, 2016, 27);
 
-    public final int value;
-
-    public final String[] type;
-
-    public final int year;
-
-    public final int baseRate;
-
     private static final double YEAR_WEIGHT = 0.5;
 
     private static final double VALUE_WEIGHT = 0.3;
@@ -27,6 +19,14 @@ public enum Car implements Insurable {
     private static final int BASE_YEAR = 2000;
 
     private static final double BASE_VALUE = 50000.0;
+
+    public final int value;
+
+    public final String[] type;
+
+    public final int year;
+
+    public final int baseRate;
 
     Car(final int value, final String[] type, final int year, final int baseRate) {
         this.value = value;

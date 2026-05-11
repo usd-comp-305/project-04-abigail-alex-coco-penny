@@ -12,13 +12,13 @@ public enum House implements Insurable {
     HUT (25000, 10000),
     HOUSE_BOAT (220000, 150000);
 
-    private final int value;
-
-    private final int mortgageBalance;
-
     private static final double VALUE_WEIGHT = 500000.0;
 
     private static final double BASE_RATE = 1000;
+
+    private final int value;
+
+    private final int mortgageBalance;
 
     House (final int value, final int mortgageBalance) {
         this.value = value;
