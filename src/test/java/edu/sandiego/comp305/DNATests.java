@@ -56,16 +56,18 @@ public class DNATests {
     public void combineIsNotNull() {
         DNA parent1DNA = createDNAMock(mockBB);
         DNA parent2DNA = createDNAMock(mockBB);
+        Random rng = mock(Random.class);
 
-        assertNotNull(DNA.combineSequences(parent1DNA, parent2DNA));
+        assertNotNull(DNA.combineSequences(parent1DNA, parent2DNA, rng));
     }
 
     @Test
     public void combineBothBBChildIsBB() {
         DNA parent1DNA = createDNAMock(mockBB);
         DNA parent2DNA = createDNAMock(mockBB);
+        Random rng = mock(Random.class);
 
-        DNA childDNA = DNA.combineSequences(parent1DNA, parent2DNA);
+        DNA childDNA = DNA.combineSequences(parent1DNA, parent2DNA, rng);
         for (Allele allele: Allele.values()) {
             AllelePair childPair = childDNA.getAllelePair(allele);
 
@@ -78,8 +80,9 @@ public class DNATests {
     public void combineBothbbChildbb() {
         DNA parent1DNA = createDNAMock(mockbb);
         DNA parent2DNA = createDNAMock(mockbb);
+        Random rng = mock(Random.class);
 
-        DNA childDNA = DNA.combineSequences(parent1DNA, parent2DNA);
+        DNA childDNA = DNA.combineSequences(parent1DNA, parent2DNA, rng);
         for (Allele allele: Allele.values()) {
             AllelePair childPair = childDNA.getAllelePair(allele);
 
@@ -92,8 +95,9 @@ public class DNATests {
     public void combineOneBBOnebbChildBb() {
         DNA parent1DNA = createDNAMock(mockBB);
         DNA parent2DNA = createDNAMock(mockbb);
+        Random rng = mock(Random.class);
 
-        DNA childDNA = DNA.combineSequences(parent1DNA, parent2DNA);
+        DNA childDNA = DNA.combineSequences(parent1DNA, parent2DNA, rng);
         for (Allele allele: Allele.values()) {
             AllelePair childPair = childDNA.getAllelePair(allele);
 
@@ -106,8 +110,9 @@ public class DNATests {
     public void combineBothBbChildEitherBBorBborbb() {
         DNA parent1DNA = createDNAMock(mockBb);
         DNA parent2DNA = createDNAMock(mockBb);
+        Random rng = mock(Random.class);
 
-        DNA childDNA = DNA.combineSequences(parent1DNA, parent2DNA);
+        DNA childDNA = DNA.combineSequences(parent1DNA, parent2DNA, rng);
         for (Allele allele: Allele.values()) {
             AllelePair childPair = childDNA.getAllelePair(allele);
 

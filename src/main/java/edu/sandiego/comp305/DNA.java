@@ -7,15 +7,16 @@ import java.util.Random;
 
 public class DNA {
     final Map<Allele, AllelePair> DNASequence;
+    private static final char DOMINANT_COPY = 'B';
+    private static final char RECESSIVE_COPY = 'b';
 
     public DNA (final Map<Allele, AllelePair> DNASequence) {
         this.DNASequence = new HashMap<>(DNASequence);
     }
 
     public static DNA combineSequences (final DNA parent1,
-                                                            final DNA parent2) {
+                                                            final DNA parent2, Random rng) {
         final Map<Allele, AllelePair> combined = new HashMap<>();
-        Random rng = new Random();
 
         for(Allele allele: Allele.values()) {
             AllelePair parent1Pair = parent1.getAllelePair(allele);
@@ -46,13 +47,13 @@ public class DNA {
     }
 
     public static DNA generateRandomDNA(Random rng) {
-        Map<Allele, AllelePair> DNASequence = new HashMap<>();
-        char[] options = {'B', 'b'};
+        Map<Allele, AllelePair> traits = new HashMap<>();
+        char[] options = {DOMINANT_COPY, RECESSIVE_COPY};
 
         for(Allele allele: Allele.values()) {
-            DNASequence.put(allele, new AllelePair(options[rng.nextInt(2)], options[rng.nextInt(2)]));
+            traits.put(allele, new AllelePair(options[rng.nextInt(2)], options[rng.nextInt(2)]));
         }
-        return new DNA(DNASequence);
+        return new DNA(traits);
     }
 
     public String calculatePhenotypeFromAllele (Allele allele) {
