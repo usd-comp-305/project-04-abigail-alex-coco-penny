@@ -47,7 +47,7 @@ public class Character extends Person{
     }
 
     public List<Insurable> getInsurables() {
-        return insurables;
+        return new ArrayList<>(insurables);
     }
 
     public void chooseCareer(final Career career){
