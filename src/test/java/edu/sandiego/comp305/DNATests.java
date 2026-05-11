@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -115,12 +116,14 @@ public class DNATests {
 
     @Test
     public void generateRandomDNAreturnsNotNull() {
-        assertNotNull(DNA.generateRandomDNA());
+        Random rng = mock(Random.class);
+        assertNotNull(DNA.generateRandomDNA(rng));
     }
 
     @Test
     public void generateDNAAllTraitsGenerated() {
-        DNA dna = DNA.generateRandomDNA();
+        Random rng = mock(Random.class);
+        DNA dna = DNA.generateRandomDNA(rng);
         for(Allele allele: Allele.values()) {
             assertNotNull(dna.getAllelePair(allele));
         }

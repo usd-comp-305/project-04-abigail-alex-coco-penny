@@ -45,7 +45,7 @@ public class DNA {
         return new DNA(combined);
     }
 
-    public static DNA generateRandomDNA() {
+    public static DNA generateRandomDNA(Random rng) {
         Map<Allele, AllelePair> DNASequence = new HashMap<>();
 
         for(Allele allele: Allele.values()) {
