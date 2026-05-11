@@ -23,18 +23,22 @@ public class DNATests {
         mockBB = mock(AllelePair.class);
         when(mockBB.getMaternalCopy()).thenReturn('B');
         when(mockBB.getPaternalCopy()).thenReturn('B');
+        when(mockBB.isDominantExpressed()).thenReturn(true);
 
         mockBb = mock(AllelePair.class);
         when(mockBb.getMaternalCopy()).thenReturn('B');
         when(mockBb.getPaternalCopy()).thenReturn('b');
+        when(mockBb.isDominantExpressed()).thenReturn(true);
 
         mockbB = mock(AllelePair.class);
         when(mockbB.getMaternalCopy()).thenReturn('b');
         when(mockbB.getPaternalCopy()).thenReturn('B');
+        when(mockbB.isDominantExpressed()).thenReturn(true);
 
         mockbb = mock(AllelePair.class);
         when(mockbb.getMaternalCopy()).thenReturn('b');
         when(mockbb.getPaternalCopy()).thenReturn('b');
+        when(mockbb.isDominantExpressed()).thenReturn(false);
 
     }
 
@@ -143,5 +147,16 @@ public class DNATests {
             assertEquals('b', pair.getPaternalCopy());
         }
     }
+
+    @Test
+    public void calcPhenotypeReturnsDomEyeColor() {
+        Map<Allele, AllelePair> traits = new HashMap<>();
+        traits.put(Allele.EYE_COLOR, mockBB);
+        DNA dna = new DNA(traits);
+
+        assertEquals(Allele.EYE_COLOR.getDominantTrait(), dna.calculatePhenotypeFromAllele(Allele.EYE_COLOR));
+    }
+
+
 
 }

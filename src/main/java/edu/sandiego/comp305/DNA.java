@@ -55,8 +55,14 @@ public class DNA {
         return new DNA(DNASequence);
     }
 
-    public static String calculatePhenotype () {
-        return "";
+    public String calculatePhenotypeFromAllele (Allele allele) {
+        AllelePair pair = this.DNASequence.get(allele);
+
+        if(pair.isDominantExpressed()) {
+            return allele.getDominantTrait();
+        } else {
+            return allele.getRecessiveTrait();
+        }
     }
 
     public AllelePair getAllelePair(Allele allele) {
