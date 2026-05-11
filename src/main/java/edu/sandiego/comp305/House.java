@@ -31,8 +31,8 @@ public enum House implements Insurable {
 
     @Override
     public double getPremium(final Person person) {
-        final double weight1 = 500000.0;
-        final double valueRisk = this.value / weight1;
+        final double valueWeight = 500000.0;
+        final double valueRisk = this.value / valueWeight;
         final double mortgageRisk = this.mortgageBalance / (double) this.value;
         final double ageRisk = person.getAge().getRiskFactor();
         final double locationRisk = person.getLocation().getRiskFactor();
