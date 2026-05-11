@@ -18,27 +18,24 @@ public class CarTest {
 
 
     @Test
-    public void carAppliesInsurance() {}
-
-    @Test
     public void carUsesBaseRateCalculatePremium() {
-        final double premium = Car.SEDAN.getPremium(person);
+        final double premium = Car.SEDAN.calculatePremium(person);
 
         assertTrue(premium >= Car.SEDAN.baseRate);
     }
 
     @Test
     public void carUsesYearCalculatePremium() {
-        final double oldCarPremium = Car.HATCHBACK.getPremium(person); // 2008
-        final double newCarPremium = Car.VAN.getPremium(person);       // 2025
+        final double oldCarPremium = Car.HATCHBACK.calculatePremium(person); // 2008
+        final double newCarPremium = Car.VAN.calculatePremium(person);       // 2025
 
         assertTrue(newCarPremium > oldCarPremium);
     }
 
     @Test
     public void carUsesValueCalculatePremium() {
-        final double lowValue = Car.HATCHBACK.getPremium(person);
-        final double highValue = Car.WAGON.getPremium(person);
+        final double lowValue = Car.HATCHBACK.calculatePremium(person);
+        final double highValue = Car.WAGON.calculatePremium(person);
 
         assertTrue(highValue > lowValue);
     }
@@ -48,8 +45,8 @@ public class CarTest {
         final Person youngerPerson = mock(Person.class);
         when(youngerPerson.getAge()).thenReturn(Age.YOUNG_ADULT);
 
-        final double youngerCarOwner = Car.MICRO.getPremium(youngerPerson);
-        final double olderCarOwner = Car.MICRO.getPremium(person);
+        final double youngerCarOwner = Car.MICRO.calculatePremium(youngerPerson);
+        final double olderCarOwner = Car.MICRO.calculatePremium(person);
 
         assertTrue(youngerCarOwner > olderCarOwner);
     }

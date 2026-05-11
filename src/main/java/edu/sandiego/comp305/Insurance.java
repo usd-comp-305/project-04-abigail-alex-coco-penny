@@ -1,22 +1,20 @@
 package edu.sandiego.comp305;
 
 public class Insurance {
-    private final Car car;
 
-    private final House house;
+    private double totalPremium;
 
-    public Insurance (final Car car, final House house) {
-        this.car = car;
-        this.house = house;
+    public void calculatePremium(final Character character) {
+        double premium = 0.0;
+
+        for (Insurable insurable : character.getInsurables()) {
+            premium += insurable.calculatePremium(character);
+        }
+
+        this.totalPremium = premium;
     }
 
-    public void handleCarEvent(final double damageCost) {}
-
-    public void handleHouseEvenet(final double damageCost) {}
-
-    // combines car and house premiums, this will be paid annually
-    public double calculateTotalPremium() {
-        return 0.0;
+    public double getTotalPremium() {
+        return this.totalPremium;
     }
-
 }

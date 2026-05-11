@@ -18,15 +18,9 @@ public class HouseTest {
     }
 
     @Test
-    public void houseAppliesInsurance() {}
-
-    @Test
-    public void houseGetsPremium() {}
-
-    @Test
     public void houseUsesValueCalculatePremium() {
-        final double lowValue = House.HUT.getPremium(person);
-        final double highValue = House.CASTLE.getPremium(person);
+        final double lowValue = House.HUT.calculatePremium(person);
+        final double highValue = House.CASTLE.calculatePremium(person);
 
         assertTrue(highValue > lowValue);
     }
@@ -37,8 +31,8 @@ public class HouseTest {
         when(youngerPerson.getAge()).thenReturn(Age.YOUNG_ADULT);
         when(youngerPerson.getLocation()).thenReturn(Location.SAN_DIEGO);
 
-        final double youngerHomeOwner = House.APARTMENT.getPremium(youngerPerson);
-        final double olderHomeOwner = House.APARTMENT.getPremium(person);
+        final double youngerHomeOwner = House.APARTMENT.calculatePremium(youngerPerson);
+        final double olderHomeOwner = House.APARTMENT.calculatePremium(person);
 
         assertTrue(youngerHomeOwner > olderHomeOwner);
     }
@@ -55,9 +49,9 @@ public class HouseTest {
 
         characterInRiskyLocation.chooseLocation(Location.MIAMI);
 
-        final double lowRiskHouse = House.APARTMENT.getPremium(characterInSafeLocation);
+        final double lowRiskHouse = House.APARTMENT.calculatePremium(characterInSafeLocation);
 
-        final double highRiskHouse = House.APARTMENT.getPremium(characterInRiskyLocation);
+        final double highRiskHouse = House.APARTMENT.calculatePremium(characterInRiskyLocation);
 
         assertTrue(highRiskHouse > lowRiskHouse);
     }
