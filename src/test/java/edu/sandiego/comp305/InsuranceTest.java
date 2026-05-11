@@ -22,7 +22,7 @@ public class InsuranceTest {
     public void calcPremiumNoInsuranceAssets() {
         when(character.getInsurables()).thenReturn(List.of());
 
-        Insurance insurance = new Insurance();
+        final Insurance insurance = new Insurance();
         insurance.calculatePremium(character);
 
         assertEquals(0.0, insurance.getTotalPremium());
@@ -30,13 +30,13 @@ public class InsuranceTest {
 
     @Test
     public void calcPremiumCarOnly() {
-        Car car = mock(Car.class);
+        final Car car = mock(Car.class);
 
         when(car.getPremium(character)).thenReturn(200.0);
 
         when(character.getInsurables()).thenReturn(List.of(car));
 
-        Insurance insurance = new Insurance();
+        final Insurance insurance = new Insurance();
         insurance.calculatePremium(character);
 
         assertEquals(200.0, insurance.getTotalPremium());
@@ -44,13 +44,13 @@ public class InsuranceTest {
 
     @Test
     public void calcPremiumHouseOnly() {
-        House house = mock(House.class);
+        final House house = mock(House.class);
 
         when(house.getPremium(character)).thenReturn(20000.0);
 
         when(character.getInsurables()).thenReturn(List.of(house));
 
-        Insurance insurance = new Insurance();
+        final Insurance insurance = new Insurance();
         insurance.calculatePremium(character);
 
         assertEquals(20000.0, insurance.getTotalPremium());
@@ -58,15 +58,15 @@ public class InsuranceTest {
 
     @Test
     public void calcPremiumAllAssets() {
-        Car car = mock(Car.class);
-        House house = mock(House.class);
+        final Car car = mock(Car.class);
+        final House house = mock(House.class);
 
         when(car.getPremium(character)).thenReturn(200.0);
         when(house.getPremium(character)).thenReturn(400.0);
 
         when(character.getInsurables()).thenReturn(List.of(car, house));
 
-        Insurance insurance = new Insurance();
+        final Insurance insurance = new Insurance();
         insurance.calculatePremium(character);
 
         assertEquals(600.0, insurance.getTotalPremium());
@@ -74,13 +74,13 @@ public class InsuranceTest {
 
     @Test
     public void recalculationResetsPremium() {
-        Car car = mock(Car.class);
+        final Car car = mock(Car.class);
 
         when(car.getPremium(character)).thenReturn(100.0);
 
         when(character.getInsurables()).thenReturn(List.of(car));
 
-        Insurance insurance = new Insurance();
+        final Insurance insurance = new Insurance();
         insurance.calculatePremium(character);
 
         assertEquals(100.0, insurance.getTotalPremium());
