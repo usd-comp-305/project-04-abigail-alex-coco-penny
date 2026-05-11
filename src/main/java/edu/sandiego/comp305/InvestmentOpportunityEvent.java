@@ -11,7 +11,7 @@ public class InvestmentOpportunityEvent implements FinancialLifeEvent {
 
     private double riskFactor;
 
-    public InvestmentOpportunityEvent(String description, double cost, double riskFactor) {
+    public InvestmentOpportunityEvent(final String description, final double cost, final double riskFactor) {
         this.description = description;
 
         this.cost = cost;
@@ -21,35 +21,34 @@ public class InvestmentOpportunityEvent implements FinancialLifeEvent {
 
 
     @Override
-    public void executeOn(Person person, Scanner scanner, Random random) {
+    public void executeOn(final Person person, final Scanner scanner, final Random random) {
         System.out.println("Investment Opportunity: " + description);
         System.out.println("Would you like to invest $" + cost + "? (y/n) \n");
 
-        String investmentChoice = scanner.nextLine().toLowerCase();
+        final String investmentChoice = scanner.nextLine().toLowerCase();
 
         if(investmentChoice.equals("y")) {
             System.out.println("$" + cost  + " have successfully been invested!\n");
 
             person.setBankBalance(person.getBankBalance() - cost);
 
-            double randomProbability = random.nextDouble();
+            final double randomProbability = random.nextDouble();
 
-            double successRate = 1 - riskFactor;
+            final double successRate = 1 - riskFactor;
 
             if(randomProbability <= successRate) {
 
-                double multiplier = 1 + (riskFactor * 3);
+                final double multiplier = 1 + (riskFactor * 3);
 
-                double returns = cost * multiplier;
+                final double returns = cost * multiplier;
 
                 person.setBankBalance(person.getBankBalance() + returns);
                 System.out.println("Your investment paid off! Your total return is $" + returns);
 
-            }
-            else {
-                double multiplier = 1 - riskFactor;
+            } else {
+                final double multiplier = 1 - riskFactor;
 
-                double returns = cost * multiplier;
+                final double returns = cost * multiplier;
 
                 person.setBankBalance(person.getBankBalance() + returns);
                 System.out.println("Your investment did not pay off ... You kept $" + returns + " of your investment\n");
@@ -57,9 +56,7 @@ public class InvestmentOpportunityEvent implements FinancialLifeEvent {
             }
 
             System.out.println("Your updated bank balance is " + person.getBankBalance() + "\n");
-
-        }
-        else {
+        } else {
 
             System.out.println("$" + cost + " was not invested.\n");
         }

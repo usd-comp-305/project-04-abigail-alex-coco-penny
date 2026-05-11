@@ -12,7 +12,7 @@ public abstract class Person {
     private double bankBalance;
 
 
-    public Person(final String name, final Age age, final int healthScore, final DNA dna, double bankBalance) {
+    public Person(final String name, final Age age, final int healthScore, final DNA dna, final double bankBalance) {
         this.name = name;
         this.age = age;
         this.healthScore = healthScore;
@@ -49,7 +49,7 @@ public abstract class Person {
     public Location getLocation() {
         return null; }
 
-    public void setBankBalance(double bankBalance) {
+    public void setBankBalance(final double bankBalance) {
         this.bankBalance = bankBalance;
     }
 

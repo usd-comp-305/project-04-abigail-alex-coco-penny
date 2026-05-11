@@ -8,15 +8,16 @@ import static java.lang.Math.abs;
 public class UnexpectedBillEvent implements FinancialLifeEvent {
 
     private String description;
+
     private double cost;
 
-    public UnexpectedBillEvent(String description, double cost) {
+    public UnexpectedBillEvent(final String description, final double cost) {
         this.description = description;
         this.cost = cost;
     }
 
     @Override
-    public void executeOn(Person person, Scanner scanner, Random random) {
+    public void executeOn(final Person person, final Scanner scanner, final Random random) {
         System.out.println("Unexpected Bill: " + description);
         System.out.println("You must pay $" + cost + "\n");
         person.setBankBalance(person.getBankBalance() -  this.cost);

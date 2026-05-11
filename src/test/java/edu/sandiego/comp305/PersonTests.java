@@ -57,7 +57,7 @@ public class PersonTests {
 
         public TestPerson(final String name, final Age age,
                           final int healthScore,
-                          final DNA dna, double bankBalance) {
+                          final DNA dna, final double bankBalance) {
             super(name, age, healthScore, dna, bankBalance);
         }
 

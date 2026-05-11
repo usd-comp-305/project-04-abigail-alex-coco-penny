@@ -32,7 +32,7 @@ public class MajorPurchaseEventTest {
     @Test
     void testMajorPurchaseEventAltersBankBalance() {
 
-        MajorPurchaseEvent majorPurchaseEvent = new MajorPurchaseEvent("House", 10000);
+        final MajorPurchaseEvent majorPurchaseEvent = new MajorPurchaseEvent("House", 10000);
 
         person.setBankBalance(100000);
 
@@ -41,7 +41,7 @@ public class MajorPurchaseEventTest {
 
         majorPurchaseEvent.executeOn(person, mockedScanner, mockedRNG);
 
-        double currBalance = person.getBankBalance();
+        final double currBalance = person.getBankBalance();
 
 
         assertEquals(90000, currBalance);
@@ -50,7 +50,7 @@ public class MajorPurchaseEventTest {
 
     @Test
     void testMajorPurchaseCausesBankruptcy() {
-        MajorPurchaseEvent majorPurchaseEvent = new MajorPurchaseEvent("Car", 100000);
+        final MajorPurchaseEvent majorPurchaseEvent = new MajorPurchaseEvent("Car", 100000);
 
         person.setBankBalance(10000);
 
@@ -59,7 +59,7 @@ public class MajorPurchaseEventTest {
 
         majorPurchaseEvent.executeOn(person, mockedScanner, mockedRNG);
 
-        double currBalance = person.getBankBalance();
+        final double currBalance = person.getBankBalance();
 
 
         assertEquals(-90000, currBalance);

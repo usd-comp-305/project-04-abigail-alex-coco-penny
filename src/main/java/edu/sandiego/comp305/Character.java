@@ -2,7 +2,6 @@ package edu.sandiego.comp305;
 
 public class Character extends Person{
 
-    private double bankBalance;
 
     private Car car;
 
@@ -13,7 +12,7 @@ public class Character extends Person{
     private House house;
 
 
-    public Character(final String name, final Age age,final int healthScore, final DNA dna, double bankBalance) {
+    public Character(final String name, final Age age,final int healthScore, final DNA dna, final double bankBalance) {
         super(name, age, healthScore, dna, bankBalance);
     }
 
@@ -36,8 +35,13 @@ public class Character extends Person{
         this.career = career;
     }
 
+
     public void chooseLocation(final Location location){
         this.location = location;
+    }
+
+    public Location getLocation() {
+        return this.location;
     }
 
     public void buyCar(final Car car){

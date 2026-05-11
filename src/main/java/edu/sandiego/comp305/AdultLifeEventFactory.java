@@ -1,10 +1,8 @@
 package edu.sandiego.comp305;
 
-import java.util.Random;
 
 public class AdultLifeEventFactory implements EventFactory {
 
-    Random rng =  new Random();
 
     @Override
     public FinancialLifeEvent createFinancialEvent() {

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Child extends Person {
 
-    public Child(final String name, final Age age, final int healthScore, final DNA dna, double bankBalance) {
+    public Child(final String name, final Age age, final int healthScore, final DNA dna, final double bankBalance) {
         super(name, age, healthScore, dna, bankBalance);
     }
 

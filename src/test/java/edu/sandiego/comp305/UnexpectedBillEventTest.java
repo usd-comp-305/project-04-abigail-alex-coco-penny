@@ -31,7 +31,7 @@ public class UnexpectedBillEventTest {
     @Test
     void testUnexpectedBillEventAltersBankBalance() {
 
-        FinancialLifeEvent unexpectedBillEvent = new UnexpectedBillEvent("Utility Bill", 100);
+        final FinancialLifeEvent unexpectedBillEvent = new UnexpectedBillEvent("Utility Bill", 100);
 
         person.setBankBalance(150);
 
@@ -43,7 +43,7 @@ public class UnexpectedBillEventTest {
     @Test
     void testUnexpectedBillEventPutsPlayerBankrupt() {
 
-        FinancialLifeEvent unexpectedBillEvent = new UnexpectedBillEvent("Hospital Bill", 1000);
+        final FinancialLifeEvent unexpectedBillEvent = new UnexpectedBillEvent("Hospital Bill", 1000);
 
         person.setBankBalance(150);
 

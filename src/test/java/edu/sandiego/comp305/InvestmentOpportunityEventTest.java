@@ -33,7 +33,7 @@ public class InvestmentOpportunityEventTest {
     @Test
     void testLowRiskInvestmentOpportunityEventAltersBankBalance() {
 
-        InvestmentOpportunityEvent investmentOpportunityEvent = new InvestmentOpportunityEvent("Government Bonds", 10000, 0.5);
+        final InvestmentOpportunityEvent investmentOpportunityEvent = new InvestmentOpportunityEvent("Government Bonds", 10000, 0.5);
 
         person.setBankBalance(100000);
 
@@ -44,7 +44,7 @@ public class InvestmentOpportunityEventTest {
 
         investmentOpportunityEvent.executeOn(person, mockedScanner, mockedRNG);
 
-        double currBalance = person.getBankBalance();
+        final double currBalance = person.getBankBalance();
 
 
         assertEquals(115000, currBalance);
@@ -54,7 +54,7 @@ public class InvestmentOpportunityEventTest {
     @Test
     void testRejectedInvestmentOpportunityEventDoesNotAlterBankBalance() {
 
-        InvestmentOpportunityEvent investmentOpportunityEvent = new InvestmentOpportunityEvent("Real Estate", 100000, 0.7);
+        final InvestmentOpportunityEvent investmentOpportunityEvent = new InvestmentOpportunityEvent("Real Estate", 100000, 0.7);
 
         person.setBankBalance(200000);
 
@@ -62,7 +62,7 @@ public class InvestmentOpportunityEventTest {
 
         investmentOpportunityEvent.executeOn(person, mockedScanner, mockedRNG);
 
-        double currBalance = person.getBankBalance();
+        final double currBalance = person.getBankBalance();
 
 
         assertEquals(200000, currBalance);
@@ -72,7 +72,7 @@ public class InvestmentOpportunityEventTest {
     @Test
     void testHighRiskInvestmentOpportunityEventAltersBankBalance() {
 
-        InvestmentOpportunityEvent investmentOpportunityEvent = new InvestmentOpportunityEvent("Cryptocurrency", 100000, 0.8);
+        final InvestmentOpportunityEvent investmentOpportunityEvent = new InvestmentOpportunityEvent("Cryptocurrency", 100000, 0.8);
 
         person.setBankBalance(1000000);
 
@@ -83,7 +83,7 @@ public class InvestmentOpportunityEventTest {
 
         investmentOpportunityEvent.executeOn(person, mockedScanner, mockedRNG);
 
-        double currBalance = person.getBankBalance();
+        final double currBalance = person.getBankBalance();
 
 
         assertEquals(1240000, currBalance);
