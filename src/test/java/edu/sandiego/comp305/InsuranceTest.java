@@ -2,6 +2,9 @@ package edu.sandiego.comp305;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -17,8 +20,7 @@ public class InsuranceTest {
 
     @Test
     public void calcPremiumNoInsuranceAssets() {
-        when(character.getCar()).thenReturn(null);
-        when(character.getHouse()).thenReturn(null);
+        when(character.getInsurables()).thenReturn(List.of());
 
         Insurance insurance = new Insurance();
         insurance.calculatePremium(character);
@@ -30,10 +32,9 @@ public class InsuranceTest {
     public void calcPremiumCarOnly() {
         Car car = mock(Car.class);
 
-        when(character.getCar()).thenReturn(car);
-        when(character.getHouse()).thenReturn(null);
-
         when(car.getPremium(character)).thenReturn(200.0);
+
+        when(character.getInsurables()).thenReturn(List.of(car));
 
         Insurance insurance = new Insurance();
         insurance.calculatePremium(character);
@@ -45,10 +46,9 @@ public class InsuranceTest {
     public void calcPremiumHouseOnly() {
         House house = mock(House.class);
 
-        when(character.getCar()).thenReturn(null);
-        when(character.getHouse()).thenReturn(house);
-
         when(house.getPremium(character)).thenReturn(20000.0);
+
+        when(character.getInsurables()).thenReturn(List.of(house));
 
         Insurance insurance = new Insurance();
         insurance.calculatePremium(character);
@@ -61,11 +61,10 @@ public class InsuranceTest {
         Car car = mock(Car.class);
         House house = mock(House.class);
 
-        when(character.getCar()).thenReturn(car);
-        when(character.getHouse()).thenReturn(house);
-
         when(car.getPremium(character)).thenReturn(200.0);
         when(house.getPremium(character)).thenReturn(400.0);
+
+        when(character.getInsurables()).thenReturn(List.of(car, house));
 
         Insurance insurance = new Insurance();
         insurance.calculatePremium(character);
@@ -77,10 +76,9 @@ public class InsuranceTest {
     public void recalculationResetsPremium() {
         Car car = mock(Car.class);
 
-        when(character.getCar()).thenReturn(car);
-        when(character.getHouse()).thenReturn(null);
-
         when(car.getPremium(character)).thenReturn(100.0);
+
+        when(character.getInsurables()).thenReturn(List.of(car));
 
         Insurance insurance = new Insurance();
         insurance.calculatePremium(character);
@@ -88,6 +86,8 @@ public class InsuranceTest {
         assertEquals(100.0, insurance.getTotalPremium());
 
         when(car.getPremium(character)).thenReturn(300.0);
+
+        when(character.getInsurables()).thenReturn(List.of(car));
 
         insurance.calculatePremium(character);
 

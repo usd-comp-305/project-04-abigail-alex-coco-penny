@@ -7,12 +7,8 @@ public class Insurance {
     public void calculatePremium(final Character character) {
         double premium = 0.0;
 
-        if (character.getCar() != null) {
-            premium += character.getCar().getPremium(character);
-        }
-
-        if (character.getHouse() != null) {
-            premium += character.getHouse().getPremium(character);
+        for (Insurable insurable : character.getInsurables()) {
+            premium += insurable.getPremium(character);
         }
 
         this.totalPremium = premium;
