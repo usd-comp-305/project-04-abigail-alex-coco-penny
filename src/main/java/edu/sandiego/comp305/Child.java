@@ -5,8 +5,18 @@ import java.util.Random;
 
 public class Child extends Person {
 
-    public Child(final String name, final Age age, final DNA dna, final double bankBalance) {
-        super(name, age, dna, bankBalance);
+    private final DNA parent1Dna;
+    private final DNA parent2Dna;
+
+    public Child(final String name,
+                 final Age age,
+                 final DNA dna,
+                 final Character parent1,
+                 final Partner parent2,
+                 final double bankBalance) {
+        super(name, age, dna, bankBalance );
+        this.parent1Dna = parent1.getDna();
+        this.parent2Dna = parent2.getDna();
     }
 
     @Override
