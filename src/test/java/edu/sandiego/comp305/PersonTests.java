@@ -12,6 +12,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PersonTests {
 
+    private static class TestPerson extends Person{
+
+        public TestPerson(final String name, final Age age,
+                          final DNA dna, final double bankBalance) {
+            super(name, age, dna, bankBalance);
+        }
+
+        @Override
+        public String getLifeStage() {
+            return "initialPerson";
+        }
+    }
     private DNA testDNA;
 
     private Person testPerson;
@@ -51,16 +63,5 @@ public class PersonTests {
         assertEquals(testDNA, testPerson.getDna());
     }
 
-    private static class TestPerson extends Person{
 
-        public TestPerson(final String name, final Age age,
-                          final DNA dna, final double bankBalance) {
-            super(name, age, dna, bankBalance);
-        }
-
-        @Override
-        public String getLifeStage() {
-            return "initialPerson";
-        }
-    }
 }
