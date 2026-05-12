@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CharacterTest {
 
@@ -13,7 +14,7 @@ public class CharacterTest {
     @BeforeEach
     public void setUp() {
         final DNA dna = new DNA(new HashMap<>());
-        character = new Character ("Name", Age.YOUNG_ADULT, 100, dna);
+        character = new Character ("Name", Age.YOUNG_ADULT, 100, dna, 0);
     }
 
     @Test
@@ -28,7 +29,7 @@ public class CharacterTest {
 
     @Test
     public void testChooseLocationSetsLocation(){
-        final Location location = new Location("San Diego", "CA");
+        final Location location = Location.SAN_DIEGO;
         character.chooseLocation(location);
         assertEquals("San Diego", character.getLocation().getCity());
     }
@@ -48,10 +49,10 @@ public class CharacterTest {
     }
 
     @Test
-    public void testChooseCalculateBankWithSalary(){
-        character.chooseCareer(Career.LAWYER);
-        character.calculateBankBalance();
-        assertEquals(Career.LAWYER.salary, character.getBankBalance());
+    public void testBuyHouseAddsInsurable() {
+        final House house = House.HUT;
+        character.buyHouse(house);
+        assertTrue(character.getInsurables().contains(house));
     }
 
 }

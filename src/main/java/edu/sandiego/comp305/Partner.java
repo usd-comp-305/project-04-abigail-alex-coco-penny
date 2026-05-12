@@ -10,9 +10,8 @@ public class Partner extends Person{
 
     private Career career;
 
-    public Partner(final String name, final Age age, final int healthScore, final DNA dna) {
-        super(name, age, healthScore, dna);
-        this.bankBalance = 0.0;
+    public Partner(final String name, final Age age, final int healthScore, final DNA dna, final double bankBalance) {
+        super(name, age, healthScore, dna, bankBalance);
         this.compatibilityScore = 0.0;
     }
 
@@ -28,6 +27,7 @@ public class Partner extends Person{
         return career;
     }
 
+    @Override
     public Location getLocation(){
         return location;
     }

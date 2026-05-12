@@ -1,57 +1,54 @@
 package edu.sandiego.comp305;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class CarTest {
-    @Test
-    public void carAppliesInsurance() {}
+
+    private Person person;
+
+    @BeforeEach
+    public void setUp() {
+        person = mock(Person.class);
+        when(person.getAge()).thenReturn(Age.ADULT);
+    }
+
 
     @Test
     public void carUsesBaseRateCalculatePremium() {
-        final Person person = mock(Person.class);
-        when(person.getAge()).thenReturn(Age.ADULT);
-
-        final double premium = Car.SEDAN.getPremium(person);
+        final double premium = Car.SEDAN.calculatePremium(person);
 
         assertTrue(premium >= Car.SEDAN.baseRate);
     }
 
     @Test
     public void carUsesYearCalculatePremium() {
-        final Person person = mock(Person.class);
-        when(person.getAge()).thenReturn(Age.ADULT);
-
-        final double oldCarPremium = Car.HATCHBACK.getPremium(person); // 2008
-        final double newCarPremium = Car.VAN.getPremium(person);       // 2025
+        final double oldCarPremium = Car.HATCHBACK.calculatePremium(person); // 2008
+        final double newCarPremium = Car.VAN.calculatePremium(person);       // 2025
 
         assertTrue(newCarPremium > oldCarPremium);
     }
 
     @Test
     public void carUsesValueCalculatePremium() {
-        final Person person = mock(Person.class);
-        when(person.getAge()).thenReturn(Age.ADULT);
-
-        final double lowValue = Car.HATCHBACK.getPremium(person);
-        final double highValue = Car.WAGON.getPremium(person);
+        final double lowValue = Car.HATCHBACK.calculatePremium(person);
+        final double highValue = Car.WAGON.calculatePremium(person);
 
         assertTrue(highValue > lowValue);
     }
 
     @Test
     public void carUsesAgeCalculatePremium() {
-        final Person teen = mock(Person.class);
-        when(teen.getAge()).thenReturn(Age.YOUNG_ADULT);
+        final Person youngerPerson = mock(Person.class);
+        when(youngerPerson.getAge()).thenReturn(Age.YOUNG_ADULT);
 
-        final Person adult = mock(Person.class);
-        when(adult.getAge()).thenReturn(Age.ADULT);
+        final double youngerCarOwner = Car.MICRO.calculatePremium(youngerPerson);
+        final double olderCarOwner = Car.MICRO.calculatePremium(person);
 
-        final double immature = Car.MICRO.getPremium(teen);
-        final double mature = Car.MICRO.getPremium(adult);
-
-        assertTrue(immature > mature);
+        assertTrue(youngerCarOwner > olderCarOwner);
     }
 
     @Test

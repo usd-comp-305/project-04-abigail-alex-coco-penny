@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Child extends Person {
 
-    public Child(final String name, final Age age, final int healthScore, final DNA dna) {
-        super(name, age, healthScore, dna);
+    public Child(final String name, final Age age, final int healthScore, final DNA dna, final double bankBalance) {
+        super(name, age, healthScore, dna, bankBalance);
     }
 
     @Override

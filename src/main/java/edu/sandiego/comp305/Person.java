@@ -9,13 +9,15 @@ public abstract class Person {
 
     private DNA dna;
 
+    private double bankBalance;
 
-    public Person(final String name, final Age age, final int healthScore, final DNA dna) {
+
+    public Person(final String name, final Age age, final int healthScore, final DNA dna, final double bankBalance) {
         this.name = name;
         this.age = age;
         this.healthScore = healthScore;
         this.dna = dna;
-
+        this.bankBalance = bankBalance;
     }
 
     public String getName(){
@@ -43,5 +45,16 @@ public abstract class Person {
     }
 
     public abstract String getLifeStage();
+
+    public Location getLocation() {
+        return null; }
+
+    public void setBankBalance(final double bankBalance) {
+        this.bankBalance = bankBalance;
+    }
+
+    public double getBankBalance() {
+        return this.bankBalance;
+    }
 
 }

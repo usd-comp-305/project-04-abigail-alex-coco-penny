@@ -14,7 +14,7 @@ public class PartnerTests {
     @BeforeEach
     public void setUp() {
         final DNA dna = new DNA(new HashMap<>());
-        partner = new Partner("Name", Age.ADULT, 80, dna);
+        partner = new Partner("Name", Age.ADULT, 80, dna, 0.0);
     }
 
     @Test
@@ -52,7 +52,7 @@ public class PartnerTests {
 
     @Test
     public void testChooseLocationSetsLocation(){
-        final Location location = new Location("San Diego", "CA");
+        final Location location = Location.SAN_DIEGO;
         partner.chooseLocation(location);
         assertEquals("CA", partner.getLocation().getState());
     }
