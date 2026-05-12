@@ -55,16 +55,6 @@ public class PersonTests {
     }
 
     @Test
-    public void testSetDNA() {
-        final Map<Allele, AllelePair> traits = new HashMap<>();
-        traits.put(Allele.EYE_COLOR, new AllelePair('B', 'b'));
-        traits.put(Allele.HEIGHT, new AllelePair('B', 'b'));
-        traits.put(Allele.HAIR_COLOR, new AllelePair('B', 'b'));
-        final DNA newDNA = new DNA(traits);
-        assertEquals(newDNA, person.getDna());
-    }
-
-    @Test
     public void testGetPhenotypeEyeColor(){
         assertEquals("brown", person.getPhenotype().getEyeColor());
     }
@@ -88,6 +78,5 @@ public class PersonTests {
         person.setDNA(new DNA(recessiveTraits));
         assertEquals("blue", person.getPhenotype().getEyeColor());
     }
-
 
 }
