@@ -3,6 +3,7 @@ package edu.sandiego.comp305;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -13,7 +14,11 @@ public class CharacterTest {
 
     @BeforeEach
     public void setUp() {
-        final DNA dna = new DNA(new HashMap<>());
+        final Map<Allele, AllelePair> traits = new HashMap<>();
+        traits.put(Allele.EYE_COLOR, new AllelePair('B', 'b'));
+        traits.put(Allele.HEIGHT, new AllelePair('A', 'a'));
+        traits.put(Allele.HAIR_COLOR, new AllelePair('B', 'b'));
+        final DNA dna = new DNA(traits);
         character = new Character ("Name", Age.YOUNG_ADULT, 100, dna, 0);
     }
 
