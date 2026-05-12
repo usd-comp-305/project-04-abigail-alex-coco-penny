@@ -330,11 +330,12 @@ public class Simulator {
 
             return partner;
         }
+
         return null;
     }
 
     private static void offerChildren(
-            final Character player) {
+            final Character player, final Partner partner) {
 
         printHeader("CHILDREN");
 
