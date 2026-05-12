@@ -62,4 +62,19 @@ public class CharacterTest {
         assertEquals(Career.ENGINEER.salary, character.getBankBalance());
     }
 
+    @Test
+    public void testGetPhenotypeEyeColor(){
+        assertEquals("brown", character.getPhenotype().getEyeColor());
+    }
+
+    @Test
+    public void testGetPhenotypeHeight(){
+        assertEquals("tall", character.getPhenotype().getHeight());
+    }
+
+    @Test
+    public void testGetPhenotypeHairColor(){
+        assertEquals("brown", character.getPhenotype().getHairColor());
+    }
+
 }
