@@ -372,6 +372,13 @@ public class Simulator {
             child.inheritDNATraits(RNG);
 
             System.out.println(
+                    "Would you like your child to go to college? (y/n)");
+            final String collegeChoice = INPUT.nextLine().toLowerCase();
+            child.setWentToCollege(collegeChoice.equals("y"));
+
+
+
+            System.out.println(
                     "\nCongratulations on your child!");
         }
     }
