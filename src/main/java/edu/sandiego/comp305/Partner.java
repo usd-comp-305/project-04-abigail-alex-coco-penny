@@ -53,6 +53,6 @@ public class Partner extends Person{
 
     @Override
     public String getLifeStage(){
-        return "Partner";
+        return "Life with a Partner";
     }
 }

@@ -27,7 +27,7 @@ public class PartnerTests {
 
     @Test
     public void testLifeStageIsPartner(){
-        assertEquals("Partner", partner.getLifeStage());
+        assertEquals("Life with a Partner", partner.getLifeStage());
     }
 
     @Test
