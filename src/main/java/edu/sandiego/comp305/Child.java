@@ -1,21 +1,11 @@
 package edu.sandiego.comp305;
 
+import java.util.ArrayList;
+
 public class Child extends Person {
 
-    private final int parent1HealthScore;
-
-    private final int parent2HealthScore;
-
-    public Child(
-            final String name,
-            final Age age,
-            final int healthScore,
-            final DNA dna,
-            final Character parent1,
-            final Partner parent2) {
-        super(name, age, healthScore, dna);
-        this.parent1HealthScore = parent1.getHealthScore();
-        this.parent2HealthScore = parent2.getHealthScore();
+    public Child(final String name, final Age age, final int healthScore, final DNA dna, final double bankBalance) {
+        super(name, age, healthScore, dna, bankBalance);
     }
 
     @Override
@@ -23,10 +13,11 @@ public class Child extends Person {
         return "Child";
     }
 
+    public ArrayList<Person> getParents(){
+        return null;
+    }
 
-    public void inheritHealthTraits(){
-        final int averageHealth = (parent1HealthScore + parent2HealthScore) /2;
-        setHealthScore(averageHealth);
+    public void inheritTraits(final Person parent1, final Person parent2){
     }
 
 }

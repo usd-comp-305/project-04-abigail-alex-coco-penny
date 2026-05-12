@@ -18,7 +18,7 @@ public class PersonTests {
     @BeforeEach
     public void setUp() {
         testDNA = new DNA(new HashMap<>());
-        testPerson = new TestPerson("Name", Age.CHILD, 100, testDNA);
+        testPerson = new TestPerson("Name", Age.CHILD, 100, testDNA, 0);
     }
 
     @Test
@@ -57,8 +57,8 @@ public class PersonTests {
 
         public TestPerson(final String name, final Age age,
                           final int healthScore,
-                          final DNA dna) {
-            super(name, age, healthScore, dna);
+                          final DNA dna, final double bankBalance) {
+            super(name, age, healthScore, dna, bankBalance);
         }
 
         @Override

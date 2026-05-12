@@ -12,6 +12,10 @@ public enum House implements Insurable {
     HUT (25000, 10000),
     HOUSE_BOAT (220000, 150000);
 
+    private static final double VALUE_WEIGHT = 500000.0;
+
+    private static final double BASE_RATE = 1000;
+
     private final int value;
 
     private final int mortgageBalance;
@@ -30,19 +34,13 @@ public enum House implements Insurable {
     }
 
     @Override
-    public void applyInsurance() {
-
-    }
-
-    @Override
-    public double getPremium(final Person person) {
-        final double weight1 = 500000.0;
-        final double valueRisk = this.value / weight1;
+    public double calculatePremium(final Person person) {
+        final double valueRisk = this.value / VALUE_WEIGHT;
         final double mortgageRisk = this.mortgageBalance / (double) this.value;
         final double ageRisk = person.getAge().getRiskFactor();
         final double locationRisk = person.getLocation().getRiskFactor();
 
-        return 1000 * (1 + valueRisk + mortgageRisk + ageRisk + locationRisk);
+        return BASE_RATE * (1 + valueRisk + mortgageRisk + ageRisk + locationRisk);
     }
 
 }
