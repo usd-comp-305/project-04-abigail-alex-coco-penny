@@ -74,6 +74,6 @@ public class Character extends Person{
 
     @Override
     public String getLifeStage(){
-        return "Character";
+        return "Character Development";
     }
 }

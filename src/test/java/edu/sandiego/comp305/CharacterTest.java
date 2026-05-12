@@ -26,7 +26,7 @@ public class CharacterTest {
 
     @Test
     public void testGetLifeStage(){
-        assertEquals("Character", character.getLifeStage());
+        assertEquals("Character Development", character.getLifeStage());
     }
 
     @Test
