@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mockito;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,13 +16,17 @@ public class CharacterTest {
 
     @BeforeEach
     public void setUp() {
-        final DNA dna = new DNA(new HashMap<>());
-        character = new Character ("Name", Age.YOUNG_ADULT, dna, 0);
+        final Map<Allele, AllelePair> traits  = new HashMap<>();
+        traits.put(Allele.EYE_COLOR, new AllelePair('B', 'b'));
+        traits.put(Allele.HEIGHT, new AllelePair('B', 'b'));
+        traits.put(Allele.HAIR_COLOR, new AllelePair('B', 'b'));
+        final DNA dna = new DNA(traits);
+        character = new Character("Name", Age.YOUNG_ADULT, dna, 0);
     }
 
     @Test
     public void testGetLifeStage(){
-        assertEquals("Character", character.getLifeStage());
+        assertEquals("Character Development", character.getLifeStage());
     }
 
     @Test
@@ -64,8 +69,15 @@ public class CharacterTest {
         Mockito.when(mockRng.nextInt(2)).thenReturn(0);
         character.generateDNA(mockRng);
         for(final Allele allele : Allele.values()){
-            assertNotNull(character.getDna().getAllelePair(allele));
-        }
+            assertNotNull(character.getDna().getAllelePair(allele));}
     }
+
+    @Test
+    public void testCalculateBankBalanceWithCareer(){
+        character.chooseCareer(Career.ENGINEER);
+        character.calculateBankBalance();
+        assertEquals((double)Career.ENGINEER.salary, character.getBankBalance());
+    }
+
 
 }

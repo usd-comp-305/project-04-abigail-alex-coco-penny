@@ -25,10 +25,14 @@ public abstract class Person {
         return age;
     }
 
-
     public DNA getDna(){
         return dna;
     }
+
+    public double getBankBalance() {
+        return this.bankBalance;
+    }
+
 
     public void setAge(final Age age){
         this.age = age;
@@ -38,17 +42,21 @@ public abstract class Person {
         this.dna = dna;
     }
 
+    public void setBankBalance(final double bankBalance) {
+        this.bankBalance = bankBalance;
+    }
+
     public abstract String getLifeStage();
 
     public Location getLocation() {
         return null; }
 
-    public void setBankBalance(final double bankBalance) {
-        this.bankBalance = bankBalance;
-    }
-
-    public double getBankBalance() {
-        return this.bankBalance;
+    public Phenotype getPhenotype() {
+        return new Phenotype(
+                getDna().calculatePhenotypeFromAllele(Allele.EYE_COLOR),
+                getDna().calculatePhenotypeFromAllele(Allele.HEIGHT),
+                getDna().calculatePhenotypeFromAllele(Allele.HAIR_COLOR)
+        );
     }
 
 }

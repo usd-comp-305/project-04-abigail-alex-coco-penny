@@ -21,7 +21,6 @@ public class Character extends Person{
         this.insurables = new ArrayList<>();
     }
 
-
     public void generateDNA(final Random rng){
         setDNA(DNA.generateRandomDNA(rng));
     }
@@ -67,8 +66,14 @@ public class Character extends Person{
         this.insurables.add(house);
     }
 
+    public void calculateBankBalance(){
+        if (career != null) {
+            setBankBalance(getBankBalance() + career.salary);
+        }
+    }
+
     @Override
     public String getLifeStage(){
-        return "Character";
+        return "Character Development";
     }
 }

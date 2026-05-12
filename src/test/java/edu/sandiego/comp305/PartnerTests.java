@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,13 +17,17 @@ public class PartnerTests {
 
     @BeforeEach
     public void setUp() {
-        final DNA dna = new DNA(new HashMap<>());
-        partner = new Partner("Name", Age.ADULT, dna, 0.0);
+        final Map<Allele, AllelePair> traits  = new HashMap<>();
+        traits.put(Allele.EYE_COLOR, new AllelePair('B', 'b'));
+        traits.put(Allele.HEIGHT, new AllelePair('B', 'b'));
+        traits.put(Allele.HAIR_COLOR, new AllelePair('B', 'b'));
+        final DNA dna = new DNA(traits);
+        partner = new Partner("Name", Age.CHILD, dna, 0);
     }
 
     @Test
     public void testLifeStageIsPartner(){
-        assertEquals("Partner", partner.getLifeStage());
+        assertEquals("Life with a Partner", partner.getLifeStage());
     }
 
     @Test
@@ -69,5 +74,12 @@ public class PartnerTests {
         for(final Allele allele : Allele.values()){
             assertNotNull(partner.getDna().getAllelePair(allele));
         }
+    }
+
+    @Test
+    public void testCalculateBankBalanceWithCareer(){
+        partner.chooseCareer(Career.ENGINEER);
+        partner.calculateBankBalance();
+        assertEquals((double)Career.ENGINEER.salary, partner.getBankBalance());
     }
 }

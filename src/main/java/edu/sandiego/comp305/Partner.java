@@ -4,8 +4,6 @@ import java.util.Random;
 
 public class Partner extends Person{
 
-    private double bankBalance;
-
     private double compatibilityScore;
 
     private Location location;
@@ -17,9 +15,6 @@ public class Partner extends Person{
         this.compatibilityScore = 0.0;
     }
 
-    public double getBankBalance(){
-        return bankBalance;
-    }
 
     public double getCompatibilityScore(){
         return compatibilityScore;
@@ -42,11 +37,6 @@ public class Partner extends Person{
         this.compatibilityScore = compatibilityScore;
     }
 
-
-    public void setBankBalance(final double bankBalance){
-        this.bankBalance = bankBalance;
-    }
-
     public void chooseCareer(final Career career){
         this.career = career;
     }
@@ -55,8 +45,14 @@ public class Partner extends Person{
         this.location = location;
     }
 
+    public void calculateBankBalance(){
+        if(career != null){
+            setBankBalance(getBankBalance() + career.salary);
+        }
+    }
+
     @Override
     public String getLifeStage(){
-        return "Partner";
+        return "Life with a Partner";
     }
 }
