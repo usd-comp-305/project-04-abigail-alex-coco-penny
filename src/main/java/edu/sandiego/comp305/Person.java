@@ -40,8 +40,8 @@ public abstract class Person {
         this.age = age;
     }
 
-    public void setHealthScore(final int healthScore){
-        this.healthScore = healthScore;
+    public void setDNA(final DNA dna){
+        this.dna = dna;
     }
 
     public abstract String getLifeStage();
