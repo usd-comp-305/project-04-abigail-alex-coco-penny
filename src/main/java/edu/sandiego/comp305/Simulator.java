@@ -70,8 +70,11 @@ public class Simulator {
         final String name = INPUT.nextLine();
         final Character character = new Character(name, Age.CHILD, DNA.generateRandomDNA(RNG), STARTING_BONUS);
 
+        final Phenotype phenotype = character.getPhenotype();
         System.out.println("Your character has been created! Here are your traits: ");
-        //need to add a getPhenotype to the PERSON class
+        System.out.println("Eye Color: " + phenotype.getEyeColor());
+        System.out.println("Height: " + phenotype.getHeight());
+        System.out.println("Hair Color: " + phenotype.getHairColor());
 
         System.out.println(
                 "Congrats! You earned a Life Starting bonus! Starting bank balance: $"
