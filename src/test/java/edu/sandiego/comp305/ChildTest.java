@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 
@@ -18,12 +19,18 @@ public class ChildTest {
 
     private Child child;
 
+    private DNA dnaWithTraits;
+
     @BeforeEach
     public void setUp() {
-        final DNA dna = new DNA(new HashMap<>());
-        parent1 = new Character("Parent1", Age.ADULT,dna, 0);
-        parent2 = new Partner("Parent2", Age.ADULT,  dna, 0);
-        child = new Child("Child", Age.CHILD, dna, 0);
+        final Map<Allele, AllelePair> traits = new HashMap<>();
+        traits.put(Allele.EYE_COLOR, new AllelePair('B', 'b'));
+        traits.put(Allele.HEIGHT, new AllelePair('B', 'b'));
+        traits.put(Allele.HAIR_COLOR, new AllelePair('B', 'b'));
+        dnaWithTraits = new DNA(traits);
+        parent1 = new Character("Parent1", Age.ADULT, dnaWithTraits, 0);
+        parent2 = new Partner("Parent2", Age.ADULT,  dnaWithTraits, 0);
+        child = new Child("Child", Age.CHILD, dnaWithTraits, parent1, parent2);
     }
 
     @Test
