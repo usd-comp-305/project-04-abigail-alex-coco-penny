@@ -6,6 +6,7 @@ import java.util.Random;
 public class Child extends Person {
 
     private final DNA parent1Dna;
+
     private final DNA parent2Dna;
 
     public Child(final String name,
@@ -22,10 +23,6 @@ public class Child extends Person {
     @Override
     public String getLifeStage(){
         return "Child";
-    }
-
-    public ArrayList<Person> getParents(){
-        return null;
     }
 
     public void inheritDNATraits(final Random rng){
