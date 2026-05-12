@@ -70,6 +70,15 @@ public class Character extends Person{
         }
     }
 
+
+    public Phenotype getPhenotype(){
+        return new Phenotype(
+                getDna().calculatePhenotypeFromAllele(Allele.EYE_COLOR),
+                getDna().calculatePhenotypeFromAllele(Allele.HEIGHT),
+                getDna().calculatePhenotypeFromAllele(Allele.HAIR_COLOR));
+    }
+
+
     @Override
     public String getLifeStage(){
         return "Character";
