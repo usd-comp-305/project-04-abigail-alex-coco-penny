@@ -51,5 +51,11 @@ public class ChildTest {
         child.setWentToCollege(true);
         assertTrue(child.getWentToCollege());
     }
+
+    @Test
+    public void testGetPhenotypeEyeColor(){
+        final Phenotype phenotype = child.getPhenotype();
+        assertEquals("brown", phenotype.getHairColor());
+    }
 }
 
