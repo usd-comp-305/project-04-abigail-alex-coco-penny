@@ -79,5 +79,15 @@ public class PersonTests {
         assertEquals("tall", person.getPhenotype().getHeight());
     }
 
+    @Test
+    public void testGetPhenotypeRecessiveEyeColor(){
+        final Map<Allele, AllelePair> recessiveTraits = new HashMap<>();
+        recessiveTraits.put(Allele.EYE_COLOR, new AllelePair('b', 'b'));
+        recessiveTraits.put(Allele.HEIGHT, new AllelePair('b', 'b'));
+        recessiveTraits.put(Allele.HAIR_COLOR, new AllelePair('b', 'b'));
+        person.setDNA(new DNA(recessiveTraits));
+        assertEquals("blue", person.getPhenotype().getEyeColor());
+    }
+
 
 }
