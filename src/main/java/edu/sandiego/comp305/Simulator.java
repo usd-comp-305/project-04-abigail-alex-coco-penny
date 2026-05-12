@@ -357,6 +357,17 @@ public class Simulator {
                             0.0
                     );
 
+            System.out.println("Enter your child's name: ");
+            final String childName = INPUT.nextLine();
+
+            final Child child = new Child(
+                    childName,
+                    Age.CHILD,
+                    DNA.generateRandomDNA(RNG),
+                    player,
+                    childParent,
+                    0.0
+            );
 
             System.out.println(
                     "\nCongratulations on your child!");
