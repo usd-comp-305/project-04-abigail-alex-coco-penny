@@ -55,13 +55,13 @@ public class ChildTest {
     @Test
     public void testGetPhenotypeEyeColor(){
         final Phenotype phenotype = child.getPhenotype();
-        assertEquals("brown", phenotype.getHairColor());
+        assertEquals("brown", phenotype.getEyeColor());
     }
 
     @Test
     public void testGetPhenotypeHeight(){
         final Phenotype phenotype = child.getPhenotype();
-        assertEquals("tall", phenotype.getHairColor());
+        assertEquals("tall", phenotype.getHeight());
     }
 
     @Test
