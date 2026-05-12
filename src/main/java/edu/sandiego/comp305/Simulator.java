@@ -27,7 +27,7 @@ public class Simulator {
     public static Character createCharacter(){
         System.out.println("First, we will being with your name. Enter it here: ");
         final String name = INPUT.nextLine();
-        final Character character = new Character(name, Age.CHILD, 100, DNA.generateRandomDNA(RNG), 0);
+        final Character character = new Character(name, Age.CHILD, DNA.generateRandomDNA(RNG), 0);
 
         System.out.println("Your character has been created! Here are your traits: ");
         //need to add a getPhenotype to the PERSON class
