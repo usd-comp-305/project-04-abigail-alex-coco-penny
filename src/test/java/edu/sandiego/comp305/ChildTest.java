@@ -2,8 +2,10 @@ package edu.sandiego.comp305;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.util.HashMap;
+import java.util.Random;
 
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -29,5 +31,13 @@ public class ChildTest {
         assertEquals("Child", child.getLifeStage());
     }
 
+    }
+
+    @Test
+public void testInheritDNATraitsSetsNewDNA(){
+    final Random mockRng = Mockito.mock(Random.class);
+    Mockito.when(mockRng.nextBoolean()).thenReturn(true);
+    child.inheritDNATraits(mockRng);
+    assertNotNull(child.getDNA().getAllelePair(Allele.EYE_COLOR));
     }
 
