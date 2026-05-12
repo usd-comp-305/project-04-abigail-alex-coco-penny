@@ -70,4 +70,11 @@ public class PartnerTests {
             assertNotNull(partner.getDna().getAllelePair(allele));
         }
     }
+
+    @Test
+    public void testCalculateBankBalanceWithCareer(){
+        partner.chooseCareer(Career.ENGINEER);
+        partner.calculateBankBalance();
+        assertEquals((double)Career.ENGINEER.salary, partner.getBankBalance());
+    }
 }
