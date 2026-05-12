@@ -303,6 +303,22 @@ public class Simulator {
                     0.0
             );
 
+            partner.chooseCareer(
+                    chooseRandomOption(
+                            Career.values(),
+                            "Choose Partner's Career"
+                    )
+            );
+
+            partner.chooseLocation(
+                    chooseRandomOption(
+                            Location.values(),
+                            "Choose Partner's Location"
+                    )
+            );
+
+            partner.calculateBankBalance();
+
             System.out.println(
                     "\nCongratulations on your marriage!");
         }
