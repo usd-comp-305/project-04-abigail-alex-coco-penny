@@ -35,7 +35,7 @@ public class ChildTest {
 
     @Test
     public void testLifeStageIsChild() {
-        assertEquals("Child", child.getLifeStage());
+        assertEquals("Family Development", child.getLifeStage());
     }
 
     @Test

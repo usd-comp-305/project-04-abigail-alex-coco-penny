@@ -1,6 +1,5 @@
 package edu.sandiego.comp305;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class Child extends Person {
