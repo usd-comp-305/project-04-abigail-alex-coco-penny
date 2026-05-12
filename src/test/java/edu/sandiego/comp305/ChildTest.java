@@ -57,5 +57,17 @@ public class ChildTest {
         final Phenotype phenotype = child.getPhenotype();
         assertEquals("brown", phenotype.getHairColor());
     }
+
+    @Test
+    public void testGetPhenotypeHeight(){
+        final Phenotype phenotype = child.getPhenotype();
+        assertEquals("tall", phenotype.getHairColor());
+    }
+
+    @Test
+    public void testGetPhenotypeHairColor(){
+        final Phenotype phenotype = child.getPhenotype();
+        assertEquals("brown", phenotype.getHairColor());
+    }
 }
 
