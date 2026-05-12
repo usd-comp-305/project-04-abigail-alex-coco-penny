@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mockito;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,8 +16,12 @@ public class CharacterTest {
 
     @BeforeEach
     public void setUp() {
-        final DNA dna = new DNA(new HashMap<>());
-        character = new Character ("Name", Age.YOUNG_ADULT, dna, 0);
+        final Map<Allele, AllelePair> traits  = new HashMap<>();
+        traits.put(Allele.EYE_COLOR, new AllelePair('B', 'b'));
+        traits.put(Allele.HEIGHT, new AllelePair('B', 'b'));
+        traits.put(Allele.HAIR_COLOR, new AllelePair('B', 'b'));
+        final DNA dna = new DNA(traits);
+        character = new Character("Name", Age.YOUNG_ADULT, dna, 0)
     }
 
     @Test
