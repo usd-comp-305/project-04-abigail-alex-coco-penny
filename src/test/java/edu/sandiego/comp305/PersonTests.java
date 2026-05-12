@@ -12,18 +12,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PersonTests {
 
-    private static class TestPerson extends Person{
-
-        public TestPerson(final String name, final Age age,
-                          final DNA dna, final double bankBalance) {
-            super(name, age, dna, bankBalance);
-        }
-
-        @Override
-        public String getLifeStage() {
-            return "initialPerson";
-        }
-    }
     private DNA dnaWithTraits;
 
     private TestPerson person;
@@ -77,6 +65,19 @@ public class PersonTests {
         recessiveTraits.put(Allele.HAIR_COLOR, new AllelePair('b', 'b'));
         person.setDNA(new DNA(recessiveTraits));
         assertEquals("blue", person.getPhenotype().getEyeColor());
+    }
+
+    private static class TestPerson extends Person{
+
+        public TestPerson(final String name, final Age age,
+                          final DNA dna, final double bankBalance) {
+            super(name, age, dna, bankBalance);
+        }
+
+        @Override
+        public String getLifeStage() {
+            return "initialPerson";
+        }
     }
 
 }
