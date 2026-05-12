@@ -44,6 +44,13 @@ public class Partner extends Person{
         }
     }
 
+    public Phenotype getPhenotype(){
+        return new Phenotype(
+        getDna().calculatePhenotypeFromAllele(Allele.EYE_COLOR),
+        getDna().calculatePhenotypeFromAllele(Allele.HEIGHT),
+        getDna().calculatePhenotypeFromAllele(Allele.HAIR_COLOR));
+    }
+
     @Override
     public String getLifeStage(){
         return "Life with a Partner";
