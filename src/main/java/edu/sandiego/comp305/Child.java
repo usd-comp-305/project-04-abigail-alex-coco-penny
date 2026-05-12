@@ -9,6 +9,8 @@ public class Child extends Person {
 
     private final DNA parent2Dna;
 
+    private boolean wentToCollege = false;
+
     public Child(final String name,
                  final Age age,
                  final DNA dna,
@@ -22,12 +24,20 @@ public class Child extends Person {
 
     @Override
     public String getLifeStage(){
-        return "Child";
+        return "Family Development";
     }
 
     public void inheritDNATraits(final Random rng){
         final DNA combinedParentsDNA = DNA.combineSequences(parent1Dna, parent2Dna, rng);
         setDNA(combinedParentsDNA);
+    }
+
+    public boolean getWentToCollege() {
+        return wentToCollege;
+    }
+
+    public void setWentToCollege(final boolean wentToCollege) {
+        this.wentToCollege = wentToCollege;
     }
 
 }
