@@ -51,4 +51,8 @@ public abstract class Person {
     public Location getLocation() {
         return null; }
 
+    public Phenotype getPhenotype() {
+        return null;
+    }
+
 }
