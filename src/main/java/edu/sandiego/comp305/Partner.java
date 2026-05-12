@@ -13,7 +13,6 @@ public class Partner extends Person{
         this.compatibilityScore = 0.0;
     }
 
-
     public double getCompatibilityScore(){
         return compatibilityScore;
     }
@@ -41,7 +40,7 @@ public class Partner extends Person{
 
     public void calculateBankBalance(){
         if (career != null) {
-            bankBalance += career.salary;
+            setBankBalance(getBankBalance() + career.salary);
         }
     }
 

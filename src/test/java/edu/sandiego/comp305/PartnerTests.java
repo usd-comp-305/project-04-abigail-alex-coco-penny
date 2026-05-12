@@ -23,6 +23,17 @@ public class PartnerTests {
     }
 
     @Test
+    public void testGetBankBalanceInitial(){
+        assertEquals(0.0, partner.getBankBalance());
+    }
+
+    @Test
+    public void testSettBankBalance(){
+        partner.setBankBalance(1000);
+        assertEquals(1000, partner.getBankBalance());
+    }
+
+    @Test
     public void testGetInitialCompatibilityScore(){
         assertEquals(0.0, partner.getCompatibilityScore());
     }
