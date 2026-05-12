@@ -10,8 +10,8 @@ public class Partner extends Person{
 
     private Career career;
 
-    public Partner(final String name, final Age age, final int healthScore, final DNA dna, final double bankBalance) {
-        super(name, age, healthScore, dna, bankBalance);
+    public Partner(final String name, final Age age, final DNA dna, final double bankBalance) {
+        super(name, age, dna, bankBalance);
         this.compatibilityScore = 0.0;
     }
 
