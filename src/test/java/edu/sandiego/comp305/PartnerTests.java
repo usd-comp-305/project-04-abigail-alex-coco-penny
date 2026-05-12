@@ -63,4 +63,9 @@ public class PartnerTests {
         partner.calculateBankBalance();
         assertEquals(Career.LAWYER.salary, partner.getBankBalance());
     }
+
+    @Test
+    public void testGetPhenotypeEyeColor(){
+        assertEquals("brown", partner.getPhenotype().getEyeColor());
+    }
 }
