@@ -319,9 +319,18 @@ public class Simulator {
 
             partner.calculateBankBalance();
 
-            System.out.println(
-                    "\nCongratulations on your marriage!");
+            final Phenotype partnerPhenotype = partner.getPhenotype();
+            System.out.println("\nYour partner's traits");
+            System.out.println("Your character has been created! Here are your traits: ");
+            System.out.println("Eye Color: " + partnerPhenotype.getEyeColor());
+            System.out.println("Height: " + partnerPhenotype.getHeight());
+            System.out.println("Hair Color: " + partnerPhenotype.getHairColor());
+            System.out.println("Career: " + partner.getCareer().title);
+            System.out.println("\nCongratulations on your marriage!");
+
+            return partner;
         }
+        return null;
     }
 
     private static void offerChildren(
