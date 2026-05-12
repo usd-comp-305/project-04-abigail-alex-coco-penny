@@ -320,8 +320,7 @@ public class Simulator {
             partner.calculateBankBalance();
 
             final Phenotype partnerPhenotype = partner.getPhenotype();
-            System.out.println("\nYour partner's traits");
-            System.out.println("Your character has been created! Here are your traits: ");
+            System.out.println("\nYour partner has been created! Here are their traits");
             System.out.println("Eye Color: " + partnerPhenotype.getEyeColor());
             System.out.println("Height: " + partnerPhenotype.getHeight());
             System.out.println("Hair Color: " + partnerPhenotype.getHairColor());
