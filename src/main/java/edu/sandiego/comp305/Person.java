@@ -52,7 +52,11 @@ public abstract class Person {
         return null; }
 
     public Phenotype getPhenotype() {
-        return null;
+        return new Phenotype(
+                getDna().calculatePhenotypeFromAllele(Allele.EYE_COLOR),
+                getDna().calculatePhenotypeFromAllele(Allele.HEIGHT),
+                getDna().calculatePhenotypeFromAllele(Allele.HAIR_COLOR)
+        );
     }
 
 }
