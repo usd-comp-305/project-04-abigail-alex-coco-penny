@@ -169,7 +169,7 @@ public class Simulator {
 
         final Partner partner = offerMarriage(player);
 
-        offerChildren(player);
+        offerChildren(player, partner);
 
         final EventFactory factory =
                 new AdultLifeEventFactory();
