@@ -15,7 +15,7 @@ public class SportsPlayingRiskyEvent implements RiskyLifeEvent {
     private double riskFactor;
 
 
-    public SportsPlayingRiskyEvent(final String description, final double cost, double riskFactor) {
+    public SportsPlayingRiskyEvent(final String description, final double cost, final double riskFactor) {
         this.description = description;
         this.cost = cost;
         this.riskFactor = riskFactor;
@@ -23,7 +23,7 @@ public class SportsPlayingRiskyEvent implements RiskyLifeEvent {
 
 
     @Override
-    public void executeOn(Person person, Scanner scanner, Random random) {
+    public void executeOn(final Person person, final Scanner scanner, final Random random) {
         System.out.println("Your friends are betting money on a round of sports ... ");
         System.out.println("Sport: " + description);
         System.out.println("Cost: " + cost);
@@ -37,21 +37,19 @@ public class SportsPlayingRiskyEvent implements RiskyLifeEvent {
 
             person.setBankBalance(person.getBankBalance() - cost);
 
-            double randomNum = random.nextDouble();
+            final double randomNum = random.nextDouble();
 
-            double successRate = 1 - riskFactor;
+            final double successRate = 1 - riskFactor;
 
             if (randomNum <= successRate) {
-                double multiplier = 1 + (3*riskFactor);
+                final double multiplier = 1 + (3*riskFactor);
 
-                double returns = cost*multiplier;
+                final double returns = cost*multiplier;
 
                 System.out.println("Congratulations, your team won the round! You have been awarded $" + returns);
 
                 person.setBankBalance(person.getBankBalance() + returns);
-            }
-
-            else {
+            } else {
                 System.out.println("Unfortunately, your team has lost this round ... ");
             }
 

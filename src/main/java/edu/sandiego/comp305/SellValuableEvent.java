@@ -20,7 +20,7 @@ public class SellValuableEvent implements FinancialLifeEvent {
 
 
     @Override
-    public void executeOn(Person person, Scanner scanner, Random random) {
+    public void executeOn(final Person person, final Scanner scanner, final Random random) {
 
         System.out.println("Your friend wants you to sell them your valuable, but ... it may go up in price");
         System.out.println("Valuable: " + description);
@@ -34,17 +34,15 @@ public class SellValuableEvent implements FinancialLifeEvent {
 
             person.setBankBalance(person.getBankBalance() + price);
 
-            double randomNum = random.nextDouble();
+            final double randomNum = random.nextDouble();
 
-            double successRate = 1 - riskFactor;
+            final double successRate = 1 - riskFactor;
 
             if (randomNum <= successRate) {
 
                 System.out.println("Congratulations, you sold your item a good time!");
 
-            }
-
-            else {
+            } else {
 
                 final double returns = (3 * price) - price;
                 System.out.println("Unfortunately, the price of your item has increased 3x! You lost out on $" + returns);

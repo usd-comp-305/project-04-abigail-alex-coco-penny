@@ -5,9 +5,6 @@ import java.util.Scanner;
 
 public class HighschoolMilestoneEvent implements MilestoneLifeEvent {
 
-    private String description;
-
-    private double cost;
 
     public HighschoolMilestoneEvent() {
     }
