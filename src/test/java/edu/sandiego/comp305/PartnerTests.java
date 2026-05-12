@@ -73,4 +73,14 @@ public class PartnerTests {
     public void testGetPhenotypeEyeColor(){
         assertEquals("brown", partner.getPhenotype().getEyeColor());
     }
+
+    @Test
+    public void testGetPhenotypeHeight(){
+        assertEquals("tall", partner.getPhenotype().getHeight());
+    }
+
+    @Test
+    public void testGetPhenotypeHairColor(){
+        assertEquals("brown", partner.getPhenotype().getHairColor());
+    }
 }
