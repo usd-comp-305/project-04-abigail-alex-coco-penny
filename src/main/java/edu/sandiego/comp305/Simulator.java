@@ -296,6 +296,13 @@ public class Simulator {
             System.out.println("Enter your partner's name: ");
             final String partnerName = INPUT.nextLine();
 
+            final Partner partner = new Partner(
+                    partnerName,
+                    Age.ADULT,
+                    DNA.generateRandomDNA(RNG),
+                    0.0
+            );
+
             System.out.println(
                     "\nCongratulations on your marriage!");
         }
