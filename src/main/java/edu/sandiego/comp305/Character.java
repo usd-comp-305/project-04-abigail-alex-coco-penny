@@ -2,6 +2,7 @@ package edu.sandiego.comp305;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Character extends Person{
 
@@ -21,7 +22,9 @@ public class Character extends Person{
     }
 
 
-    public void generateDNA(){}
+    public void generateDNA(final Random rng){
+        setDNA(DNA.generateRandomDNA(rng));
+    }
 
     public Car getCar(){
         return car;
