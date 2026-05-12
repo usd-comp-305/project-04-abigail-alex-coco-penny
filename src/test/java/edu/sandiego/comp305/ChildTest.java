@@ -45,5 +45,11 @@ public class ChildTest {
         child.inheritDNATraits(mockRng);
         assertNotNull(child.getDna().getAllelePair(Allele.EYE_COLOR));
     }
+
+    @Test
+    public void testSetWentCollegeTrue(){
+        child.setWentToCollege(true);
+        assertTrue(child.getWentToCollege());
+    }
 }
 
