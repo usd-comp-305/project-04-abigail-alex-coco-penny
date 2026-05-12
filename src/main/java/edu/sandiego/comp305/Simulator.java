@@ -348,14 +348,17 @@ public class Simulator {
 
             //if player declined marriage, default partner is created
             // so Child constructor still has two parents
-            final Partner childParent = partner != null ? partner :
-                    new Partner(
-                            "Parent 2",
-                            Age.ADULT,
-                            DNA.generateRandomDNA(RNG),
-                            0.0
-                    );
-
+            final Partner childParent;
+            if(partner != null) {
+                childParent = partner;
+            } else {
+                childParent = new Partner(
+                        "Parent 2",
+                        Age.ADULT,
+                        DNA.generateRandomDNA(RNG),
+                        0.0
+                );
+            }
             System.out.println("Enter your child's name: ");
             final String childName = INPUT.nextLine();
 
