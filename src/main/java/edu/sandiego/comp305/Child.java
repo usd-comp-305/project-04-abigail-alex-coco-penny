@@ -1,6 +1,7 @@
 package edu.sandiego.comp305;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Child extends Person {
 
@@ -17,7 +18,9 @@ public class Child extends Person {
         return null;
     }
 
-    public void inheritTraits(final Person parent1, final Person parent2){
+    public void inheritDNATraits(final Random rng){
+        final DNA combinedParentsDNA = DNA.combineSequences(parent1Dna, parent2Dna, rng);
+        setDNA(combinedParentsDNA);
     }
 
 }
