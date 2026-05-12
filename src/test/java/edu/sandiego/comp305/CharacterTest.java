@@ -69,8 +69,15 @@ public class CharacterTest {
         Mockito.when(mockRng.nextInt(2)).thenReturn(0);
         character.generateDNA(mockRng);
         for(final Allele allele : Allele.values()){
-            assertNotNull(character.getDna().getAllelePair(allele));
-        }
+            assertNotNull(character.getDna().getAllelePair(allele));}
     }
+
+    @Test
+    public void testCalculateBankBalanceWithCareer(){
+        character.chooseCareer(Career.ENGINEER);
+        character.calculateBankBalance();
+        assertEquals(Career.ENGINEER, character.getBankBalance());
+    }
+
 
 }
