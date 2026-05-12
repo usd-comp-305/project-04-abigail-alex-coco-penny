@@ -66,7 +66,7 @@ public class Character extends Person{
 
     public void calculateBankBalance(){
         if (career != null) {
-            bankBalance += career.salary;
+            setBankBalance(getBankBalance() + career.salary);
         }
     }
 
