@@ -41,11 +41,11 @@ public class HouseTest {
     public void houseUsesLocationCalculatePremium() {
         final DNA mockDNA = mock(DNA.class);
 
-        final Character characterInSafeLocation = new Character("Safe", Age.ADULT, 80, mockDNA);
+        final Character characterInSafeLocation = new Character("Safe", Age.ADULT, 80, mockDNA, 0);
 
         characterInSafeLocation.chooseLocation(Location.SEATTLE);
 
-        final Character characterInRiskyLocation = new Character("Risky", Age.ADULT, 80, mockDNA);
+        final Character characterInRiskyLocation = new Character("Risky", Age.ADULT, 80, mockDNA, 0);
 
         characterInRiskyLocation.chooseLocation(Location.MIAMI);
 
