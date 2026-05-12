@@ -375,7 +375,12 @@ public class Simulator {
             final String collegeChoice = INPUT.nextLine().toLowerCase();
             child.setWentToCollege(collegeChoice.equals("y"));
 
-
+            final Phenotype childPhenotype = child.getPhenotype();
+            System.out.println("\nYour child has been created! Here are their traits:");
+            System.out.println("Eye Color: " + childPhenotype.getEyeColor());
+            System.out.println("Height: " + childPhenotype.getHeight());
+            System.out.println("Hair Color: " + childPhenotype.getHairColor());
+            System.out.println("Went to College: " + child.getWentToCollege());
 
             System.out.println(
                     "\nCongratulations on your child!");
