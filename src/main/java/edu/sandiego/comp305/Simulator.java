@@ -369,6 +369,8 @@ public class Simulator {
                     0.0
             );
 
+            child.inheritDNATraits(RNG);
+
             System.out.println(
                     "\nCongratulations on your child!");
         }
