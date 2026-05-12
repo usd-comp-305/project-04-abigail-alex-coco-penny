@@ -64,5 +64,20 @@ public class PersonTests {
         assertEquals(newDNA, person.getDna());
     }
 
+    @Test
+    public void testGetPhenotypeEyeColor(){
+        assertEquals("brown", person.getPhenotype().getEyeColor());
+    }
+
+    @Test
+    public void testGetPhenotypeHairColor(){
+        assertEquals("brown", person.getPhenotype().getHairColor());
+    }
+
+    @Test
+    public void testGetPhenotypeHeight(){
+        assertEquals("tall", person.getPhenotype().getHeight());
+    }
+
 
 }
