@@ -21,7 +21,7 @@ public class CharacterTest {
         traits.put(Allele.HEIGHT, new AllelePair('B', 'b'));
         traits.put(Allele.HAIR_COLOR, new AllelePair('B', 'b'));
         final DNA dna = new DNA(traits);
-        character = new Character("Name", Age.YOUNG_ADULT, dna, 0)
+        character = new Character("Name", Age.YOUNG_ADULT, dna, 0);
     }
 
     @Test
@@ -76,7 +76,7 @@ public class CharacterTest {
     public void testCalculateBankBalanceWithCareer(){
         character.chooseCareer(Career.ENGINEER);
         character.calculateBankBalance();
-        assertEquals(Career.ENGINEER, character.getBankBalance());
+        assertEquals((double)Career.ENGINEER.salary, character.getBankBalance());
     }
 
 
