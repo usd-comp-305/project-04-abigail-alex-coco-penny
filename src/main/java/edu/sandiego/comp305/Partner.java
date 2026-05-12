@@ -45,6 +45,9 @@ public class Partner extends Person{
         this.location = location;
     }
 
+    public void calculateBankBalance(){
+    }
+
     @Override
     public String getLifeStage(){
         return "Partner";
