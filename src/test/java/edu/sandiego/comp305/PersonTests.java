@@ -24,43 +24,44 @@ public class PersonTests {
             return "initialPerson";
         }
     }
-    private DNA testDNA;
+    private DNA dnaWithTraits;
 
-    private Person testPerson;
+    private TestPerson person;
 
     @BeforeEach
     public void setUp() {
-        testDNA = new DNA(new HashMap<>());
-        testPerson = new TestPerson("Name", Age.CHILD, testDNA, 0);
+        final Map<Allele, AllelePair> traits  = new HashMap<>();
+        traits.put(Allele.EYE_COLOR, new AllelePair('B', 'b'));
+        traits.put(Allele.HEIGHT, new AllelePair('B', 'b'));
+        traits.put(Allele.HAIR_COLOR, new AllelePair('B', 'b'));
+        dnaWithTraits = new DNA(traits);
+        person = new TestPerson("Name", Age.CHILD, dnaWithTraits, 0);
     }
 
     @Test
     public void testGetName() {
-        assertEquals("Name", testPerson.getName());
+        assertEquals("Name", person.getName());
     }
 
     @Test
     public void testGetAge() {
-        assertEquals(Age.CHILD, testPerson.getAge());
+        assertEquals(Age.CHILD, person.getAge());
     }
 
     @Test
     public void testSetAge() {
-        testPerson.setAge(Age.YOUNG_ADULT);
-        assertEquals(Age.YOUNG_ADULT, testPerson.getAge());
+        person.setAge(Age.YOUNG_ADULT);
+        assertEquals(Age.YOUNG_ADULT, person.getAge());
     }
 
     @Test
     public void testSetDNA() {
         final Map<Allele, AllelePair> traits = new HashMap<>();
+        traits.put(Allele.EYE_COLOR, new AllelePair('B', 'b'));
+        traits.put(Allele.HEIGHT, new AllelePair('B', 'b'));
+        traits.put(Allele.HAIR_COLOR, new AllelePair('B', 'b'));
         final DNA newDNA = new DNA(traits);
-        testPerson.setDNA(newDNA);
-        assertEquals(newDNA, testPerson.getDna());
-    }
-
-    @Test
-    public void testGetDNA(){
-        assertEquals(testDNA, testPerson.getDna());
+        assertEquals(newDNA, person.getDna());
     }
 
 
