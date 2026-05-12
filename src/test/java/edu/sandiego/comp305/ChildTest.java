@@ -29,22 +29,21 @@ public class ChildTest {
         traits.put(Allele.HAIR_COLOR, new AllelePair('B', 'b'));
         dnaWithTraits = new DNA(traits);
         parent1 = new Character("Parent1", Age.ADULT, dnaWithTraits, 0);
-        parent2 = new Partner("Parent2", Age.ADULT,  dnaWithTraits, 0);
-        child = new Child("Child", Age.CHILD, dnaWithTraits, parent1, parent2);
+        parent2 = new Partner("Parent2", Age.ADULT, dnaWithTraits, 0);
+        child = new Child("Child", Age.CHILD, dnaWithTraits, parent1, parent2, 0);
     }
 
     @Test
-    public void testLifeStageIsChild(){
+    public void testLifeStageIsChild() {
         assertEquals("Child", child.getLifeStage());
     }
 
-    }
-
     @Test
-public void testInheritDNATraitsSetsNewDNA(){
-    final Random mockRng = Mockito.mock(Random.class);
-    Mockito.when(mockRng.nextBoolean()).thenReturn(true);
-    child.inheritDNATraits(mockRng);
-    assertNotNull(child.getDNA().getAllelePair(Allele.EYE_COLOR));
+    public void testInheritDNATraitsSetsNewDNA() {
+        final Random mockRng = Mockito.mock(Random.class);
+        Mockito.when(mockRng.nextBoolean()).thenReturn(true);
+        child.inheritDNATraits(mockRng);
+        assertNotNull(child.getDna().getAllelePair(Allele.EYE_COLOR));
     }
+}
 
