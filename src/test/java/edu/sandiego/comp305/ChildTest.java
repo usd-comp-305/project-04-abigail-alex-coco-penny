@@ -19,9 +19,9 @@ public class ChildTest {
     @BeforeEach
     public void setUp() {
         final DNA dna = new DNA(new HashMap<>());
-        parent1 = new Character("Parent1", Age.ADULT,dna);
-        parent2 = new Partner("Parent2", Age.ADULT,  dna);
-        child = new Child("Child", Age.CHILD, 85, dna, parent1, parent2);
+        parent1 = new Character("Parent1", Age.ADULT,dna, 0);
+        parent2 = new Partner("Parent2", Age.ADULT,  dna, 0);
+        child = new Child("Child", Age.CHILD, dna, 0);
     }
 
     @Test
@@ -29,7 +29,5 @@ public class ChildTest {
         assertEquals("Child", child.getLifeStage());
     }
 
-
     }
 
-}

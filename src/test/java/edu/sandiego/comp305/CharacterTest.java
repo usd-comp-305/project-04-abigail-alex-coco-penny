@@ -16,7 +16,7 @@ public class CharacterTest {
     @BeforeEach
     public void setUp() {
         final DNA dna = new DNA(new HashMap<>());
-        character = new Character ("Name", Age.YOUNG_ADULT, 100, dna, 0);
+        character = new Character ("Name", Age.YOUNG_ADULT, dna, 0);
     }
 
     @Test

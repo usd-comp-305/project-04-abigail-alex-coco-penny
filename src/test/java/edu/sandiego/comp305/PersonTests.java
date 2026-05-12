@@ -19,7 +19,7 @@ public class PersonTests {
     @BeforeEach
     public void setUp() {
         testDNA = new DNA(new HashMap<>());
-        testPerson = new TestPerson("Name", Age.CHILD, 100, testDNA, 0);
+        testPerson = new TestPerson("Name", Age.CHILD, testDNA, 0);
     }
 
     @Test
@@ -30,11 +30,6 @@ public class PersonTests {
     @Test
     public void testGetAge() {
         assertEquals(Age.CHILD, testPerson.getAge());
-    }
-
-    @Test
-    public void testGetHealthScore() {
-        assertEquals(100, testPerson.getHealthScore());
     }
 
     @Test
@@ -59,9 +54,8 @@ public class PersonTests {
     private static class TestPerson extends Person{
 
         public TestPerson(final String name, final Age age,
-                          final int healthScore,
                           final DNA dna, final double bankBalance) {
-            super(name, age, healthScore, dna, bankBalance);
+            super(name, age, dna, bankBalance);
         }
 
         @Override
