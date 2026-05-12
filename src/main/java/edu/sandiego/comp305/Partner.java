@@ -46,6 +46,9 @@ public class Partner extends Person{
     }
 
     public void calculateBankBalance(){
+        if(career != null){
+            setBankBalance(getBankBalance() + career.salary);
+        }
     }
 
     @Override
