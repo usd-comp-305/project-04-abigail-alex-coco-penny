@@ -55,4 +55,11 @@ public class CharacterTest {
         assertTrue(character.getInsurables().contains(house));
     }
 
+    @Test
+    public void testChooseCalculateBankWithSalary(){
+        character.chooseCareer(Career.ENGINEER);
+        character.calculateBankBalance();
+        assertEquals(Career.ENGINEER.salary, character.getBankBalance());
+    }
+
 }
