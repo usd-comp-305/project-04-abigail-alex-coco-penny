@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 
 
 import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -43,9 +44,11 @@ public class PersonTests {
     }
 
     @Test
-    public void testSetHealthScore() {
-        testPerson.setHealthScore(80);
-        assertEquals(80, testPerson.getHealthScore());
+    public void testSetDNA() {
+        final Map<Allele, AllelePair> traits = new HashMap<>();
+        final DNA newDNA = new DNA(traits);
+        testPerson.setDNA(newDNA);
+        assertEquals(newDNA, testPerson.getDna());
     }
 
     @Test
