@@ -167,7 +167,7 @@ public class Simulator {
 
         chooseHouse(player);
 
-        offerMarriage(player);
+        final Partner partner = offerMarriage(player);
 
         offerChildren(player);
 
@@ -280,7 +280,7 @@ public class Simulator {
         }
     }
 
-    private static void offerMarriage(
+    private static Partner offerMarriage(
             final Character player) {
 
         printHeader("MARRIAGE");
@@ -292,6 +292,9 @@ public class Simulator {
                 INPUT.nextLine().toLowerCase();
 
         if (choice.equals("y")) {
+
+            System.out.println("Enter your partner's name: ");
+            final String partnerName = INPUT.nextLine();
 
             System.out.println(
                     "\nCongratulations on your marriage!");
