@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -13,7 +14,11 @@ public class PartnerTests {
 
     @BeforeEach
     public void setUp() {
-        final DNA dna = new DNA(new HashMap<>());
+        final Map<Allele, AllelePair> traits = new HashMap<>();
+        traits.put(Allele.EYE_COLOR, new AllelePair('B', 'b'));
+        traits.put(Allele.HEIGHT, new AllelePair('A', 'a'));
+        traits.put(Allele.HAIR_COLOR, new AllelePair('B', 'b'));
+        final DNA dna = new DNA(traits);
         partner = new Partner("Name", Age.ADULT, 80, dna, 0.0);
     }
 
