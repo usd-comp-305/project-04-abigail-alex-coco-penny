@@ -2,6 +2,7 @@ package edu.sandiego.comp305;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Character extends Person{
 
@@ -15,13 +16,15 @@ public class Character extends Person{
 
     private List<Insurable> insurables;
 
-    public Character(final String name, final Age age, final int healthScore, final DNA dna, final double bankBalance) {
-        super(name, age, healthScore, dna, bankBalance);
+    public Character(final String name, final Age age, final DNA dna, final double bankBalance) {
+        super(name, age, dna, bankBalance);
         this.insurables = new ArrayList<>();
     }
 
 
-    public void generateDNA(){}
+    public void generateDNA(final Random rng){
+        setDNA(DNA.generateRandomDNA(rng));
+    }
 
     public Car getCar(){
         return car;

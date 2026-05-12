@@ -1,23 +1,49 @@
 package edu.sandiego.comp305;
 
-import java.util.ArrayList;
+import java.util.Random;
 
 public class Child extends Person {
 
-    public Child(final String name, final Age age, final int healthScore, final DNA dna, final double bankBalance) {
-        super(name, age, healthScore, dna, bankBalance);
+    private final DNA parent1Dna;
+
+    private final DNA parent2Dna;
+
+    private boolean wentToCollege = false;
+
+    public Child(final String name,
+                 final Age age,
+                 final DNA dna,
+                 final Character parent1,
+                 final Partner parent2,
+                 final double bankBalance) {
+        super(name, age, dna, bankBalance );
+        this.parent1Dna = parent1.getDna();
+        this.parent2Dna = parent2.getDna();
     }
 
     @Override
     public String getLifeStage(){
-        return "Child";
+        return "Family Development";
     }
 
-    public ArrayList<Person> getParents(){
-        return null;
+    public void inheritDNATraits(final Random rng){
+        final DNA combinedParentsDNA = DNA.combineSequences(parent1Dna, parent2Dna, rng);
+        setDNA(combinedParentsDNA);
     }
 
-    public void inheritTraits(final Person parent1, final Person parent2){
+    public boolean getWentToCollege() {
+        return wentToCollege;
+    }
+
+    public void setWentToCollege(final boolean wentToCollege) {
+        this.wentToCollege = wentToCollege;
+    }
+
+    public Phenotype getPhenotype(){
+        return new Phenotype(
+                getDna().calculatePhenotypeFromAllele(Allele.EYE_COLOR),
+                getDna().calculatePhenotypeFromAllele(Allele.HEIGHT),
+                getDna().calculatePhenotypeFromAllele(Allele.HAIR_COLOR));
     }
 
 }

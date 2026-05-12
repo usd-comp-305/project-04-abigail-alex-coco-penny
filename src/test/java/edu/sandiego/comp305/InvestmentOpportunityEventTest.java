@@ -23,7 +23,7 @@ public class InvestmentOpportunityEventTest {
 
     @BeforeEach
     void setUp() {
-        person = new Character("person_1", Age.ADULT, 100, mockedDNA, 0.0);
+        person = new Character("person_1", Age.ADULT, mockedDNA, 0.0);
 
         mockedScanner = mock(Scanner.class);
 

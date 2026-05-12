@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 
 
 import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -18,7 +19,7 @@ public class PersonTests {
     @BeforeEach
     public void setUp() {
         testDNA = new DNA(new HashMap<>());
-        testPerson = new TestPerson("Name", Age.CHILD, 100, testDNA, 0);
+        testPerson = new TestPerson("Name", Age.CHILD, testDNA, 0);
     }
 
     @Test
@@ -32,20 +33,17 @@ public class PersonTests {
     }
 
     @Test
-    public void testGetHealthScore() {
-        assertEquals(100, testPerson.getHealthScore());
-    }
-
-    @Test
     public void testSetAge() {
         testPerson.setAge(Age.YOUNG_ADULT);
         assertEquals(Age.YOUNG_ADULT, testPerson.getAge());
     }
 
     @Test
-    public void testSetHealthScore() {
-        testPerson.setHealthScore(80);
-        assertEquals(80, testPerson.getHealthScore());
+    public void testSetDNA() {
+        final Map<Allele, AllelePair> traits = new HashMap<>();
+        final DNA newDNA = new DNA(traits);
+        testPerson.setDNA(newDNA);
+        assertEquals(newDNA, testPerson.getDna());
     }
 
     @Test
@@ -56,9 +54,8 @@ public class PersonTests {
     private static class TestPerson extends Person{
 
         public TestPerson(final String name, final Age age,
-                          final int healthScore,
                           final DNA dna, final double bankBalance) {
-            super(name, age, healthScore, dna, bankBalance);
+            super(name, age, dna, bankBalance);
         }
 
         @Override

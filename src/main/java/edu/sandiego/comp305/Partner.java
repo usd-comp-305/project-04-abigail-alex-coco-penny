@@ -1,5 +1,7 @@
 package edu.sandiego.comp305;
 
+import java.util.Random;
+
 public class Partner extends Person{
 
     private double bankBalance;
@@ -10,8 +12,8 @@ public class Partner extends Person{
 
     private Career career;
 
-    public Partner(final String name, final Age age, final int healthScore, final DNA dna, final double bankBalance) {
-        super(name, age, healthScore, dna, bankBalance);
+    public Partner(final String name, final Age age, final DNA dna, final double bankBalance) {
+        super(name, age, dna, bankBalance);
         this.compatibilityScore = 0.0;
     }
 
@@ -25,6 +27,10 @@ public class Partner extends Person{
 
     public Career getCareer(){
         return career;
+    }
+
+    public void generateDNA(final Random rng){
+        setDNA(DNA.generateRandomDNA(rng));
     }
 
     @Override

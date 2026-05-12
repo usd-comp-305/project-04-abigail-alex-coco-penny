@@ -21,7 +21,7 @@ public class UnexpectedBillEventTest {
 
     @BeforeEach
     void setUp() {
-        person = new Character("Person_1", Age.ADULT, 100, mockedDNA, 0);
+        person = new Character("Person_1", Age.ADULT, mockedDNA, 0);
 
         mockedScanner = mock(Scanner.class);
 

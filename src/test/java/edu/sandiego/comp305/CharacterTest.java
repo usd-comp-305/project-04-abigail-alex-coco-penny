@@ -2,10 +2,12 @@ package edu.sandiego.comp305;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
-import java.util.HashMap;
+import org.mockito.Mockito;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import java.util.HashMap;
+import java.util.Random;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CharacterTest {
 
@@ -14,7 +16,7 @@ public class CharacterTest {
     @BeforeEach
     public void setUp() {
         final DNA dna = new DNA(new HashMap<>());
-        character = new Character ("Name", Age.YOUNG_ADULT, 100, dna, 0);
+        character = new Character ("Name", Age.YOUNG_ADULT, dna, 0);
     }
 
     @Test
@@ -53,6 +55,17 @@ public class CharacterTest {
         final House house = House.HUT;
         character.buyHouse(house);
         assertTrue(character.getInsurables().contains(house));
+    }
+
+    @Test
+    public void testGenerateDNAContainsAlleles(){
+        final Random mockRng = Mockito.mock(Random.class);
+        Mockito.when(mockRng.nextBoolean()).thenReturn(true);
+        Mockito.when(mockRng.nextInt(2)).thenReturn(0);
+        character.generateDNA(mockRng);
+        for(final Allele allele : Allele.values()){
+            assertNotNull(character.getDna().getAllelePair(allele));
+        }
     }
 
 }

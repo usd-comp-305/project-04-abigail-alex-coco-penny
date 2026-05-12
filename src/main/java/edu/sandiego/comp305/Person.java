@@ -5,17 +5,14 @@ public abstract class Person {
 
     private Age age;
 
-    private int healthScore;
-
     private DNA dna;
 
     private double bankBalance;
 
 
-    public Person(final String name, final Age age, final int healthScore, final DNA dna, final double bankBalance) {
+    public Person(final String name, final Age age, final DNA dna, final double bankBalance) {
         this.name = name;
         this.age = age;
-        this.healthScore = healthScore;
         this.dna = dna;
         this.bankBalance = bankBalance;
     }
@@ -28,9 +25,6 @@ public abstract class Person {
         return age;
     }
 
-    public int getHealthScore(){
-        return healthScore;
-    }
 
     public DNA getDna(){
         return dna;
@@ -40,8 +34,8 @@ public abstract class Person {
         this.age = age;
     }
 
-    public void setHealthScore(final int healthScore){
-        this.healthScore = healthScore;
+    public void setDNA(final DNA dna){
+        this.dna = dna;
     }
 
     public abstract String getLifeStage();
