@@ -18,7 +18,7 @@ public class NeighborhoodBusinessEvent implements RiskyLifeEvent{
     }
 
     @Override
-    public void executeOn(Character person, Scanner scanner, Random random) {
+    public void executeOn(final Character person, final Scanner scanner, final Random random) {
         System.out.println("You want to start a neighborhood business!");
         System.out.println("Business Idea " + description);
         System.out.println("Risk Factor: " + riskFactor);

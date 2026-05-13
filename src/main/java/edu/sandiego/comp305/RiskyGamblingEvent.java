@@ -18,7 +18,7 @@ public class RiskyGamblingEvent implements RiskyLifeEvent {
     }
 
     @Override
-    public void executeOn(Character person, Scanner scanner, Random random) {
+    public void executeOn(final Character person, final Scanner scanner, final Random random) {
         System.out.println("Your friends invited you gambling ... ");
         System.out.println("Game: " + description);
         System.out.println("Risk Factor: " + riskFactor);

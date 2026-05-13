@@ -65,7 +65,7 @@ public class AdultLifeEventFactory implements EventFactory {
             case 4:
                 return new RiskyGamblingEvent("Poker", 5000, 0.9);
             case 5:
-                return new RiskyGamblingEvent("Baccarat", 3000, 0.7)
+                return new RiskyGamblingEvent("Baccarat", 3000, 0.7);
         }
 
         return null;
