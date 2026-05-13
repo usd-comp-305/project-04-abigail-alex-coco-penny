@@ -13,10 +13,10 @@ public class EarlyLifeEventFactory implements EventFactory {
         switch (randInt) {
 
             case 1:
-                return new UnexpectedBillEvent("Vet Bill", 500);
+                return new SellValuableEvent("Gold Money Clip", 300, 0.8);
 
             case 2:
-                return new UnexpectedBillEvent("Utilities Bill", 300);
+                return new FirstPaycheckEvent( 300);
 
             case 3:
                 return new UnexpectedBillEvent("Cell Service Bill", 100);
@@ -42,7 +42,7 @@ public class EarlyLifeEventFactory implements EventFactory {
                 return new RiskyAuditionEvent("Support", 2500, 0.6);
 
             case 3:
-                return new RiskyAuditionEvent("Lighting", 500, 0.2);
+                return new SportsPlayingRiskyEvent("Basketball", 50, 0.2);
         }
 
         return null;
