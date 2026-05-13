@@ -198,7 +198,12 @@ public class Simulator {
 
             System.out.println("Would you like your child to go to college? (y/n)");
             final String collegeChoice = INPUT.nextLine().toLowerCase();
-            child.setWentToCollege(collegeChoice.equals("y"));
+
+            if(collegeChoice.equals("y")) {
+                child.setWentToCollege(true);
+            }else {
+                child.setWentToCollege(false);
+            }
 
             final Phenotype childPhenotype = child.getPhenotype();
             System.out.println("\nYour child has been created! Here are their traits:");
