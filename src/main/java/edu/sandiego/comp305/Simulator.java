@@ -28,29 +28,22 @@ public class Simulator {
 
     public static void main(final String[] args) {
         printHeader("Welcome to the Game of Life");
-
         final Character player = createCharacter();
-
         pause();
 
         runEarlyYears(player);
-
         pause();
 
         runTeenLife(player);
-
         pause();
 
         chooseCareer(player);
-
         pause();
 
         runAdultLife(player);
-
         pause();
 
         runLateLife(player);
-
         pause();
 
         retire(player);
@@ -76,322 +69,134 @@ public class Simulator {
         System.out.println("Height: " + phenotype.getHeight());
         System.out.println("Hair Color: " + phenotype.getHairColor());
 
-        System.out.println(
-                "Congrats! You earned a Life Starting bonus! Starting bank balance: $"
-                        + character.getBankBalance());
+        System.out.println("Congrats! You earned a Life Starting bonus! Starting bank balance: $" + character.getBankBalance());
 
         return character;
     }
 
     public static void runEarlyYears(final Character player){
         player.setAge(Age.CHILD);
-
         printHeader("Starting Early Life of " + player.getName());
 
         final EventFactory factory = new EarlyLifeEventFactory();
 
         for (int year = 1; year <= EARLY_YEARS; year++) {
-
             printYearHeader(year);
-
-            final RiskyLifeEvent riskyEvent =
-                    factory.createRiskyEvent();
-
-            riskyEvent.executeOn(
-                    player,
-                    INPUT,
-                    RNG);
-
+            final RiskyLifeEvent riskyEvent = factory.createRiskyEvent(RNG);
+            riskyEvent.executeOn(player, INPUT, RNG);
             printYearSummary(player);
         }
     }
 
     public static void runTeenLife(final Character player){
         player.setAge(Age.YOUNG_ADULT);
-
         printHeader("Entering Teenage Years of " + player.getName());
-
         final EventFactory factory = new EarlyLifeEventFactory();
 
         for (int year = 1; year <= TEEN_YEARS; year++) {
 
             printYearHeader(year);
-
-            final RiskyLifeEvent riskyEvent =
-                    factory.createRiskyEvent();
-
-            riskyEvent.executeOn(
-                    player,
-                    INPUT,
-                    RNG);
-
+            final RiskyLifeEvent riskyEvent = factory.createRiskyEvent(RNG);
+            riskyEvent.executeOn(player, INPUT, RNG);
             printYearSummary(player);
         }
 
-        System.out.println(
-                "\n*** HIGH SCHOOL GRADUATION ***");
+        System.out.println("\n*** HIGH SCHOOL GRADUATION ***");
 
-        final MilestoneLifeEvent graduation =
-                new HighschoolMilestoneEvent();
-
+        final MilestoneLifeEvent graduation = factory.createMilestoneEvent(RNG);
         graduation.executeOn(player, INPUT, RNG);
     }
 
-    private static void chooseCareer(
-            final Character player) {
+    private static void chooseCareer(final Character player) {
 
         printHeader("Career Selection");
 
-        final Career career =
-                chooseRandomOption(
-                        Career.values(),
-                        "Choose Your Career");
-
+        final Career career = chooseRandomOption(Career.values(), "Choose Your Career");
         player.chooseCareer(career);
-
-        System.out.println(
-                "\nYou selected: "
-                        + career.title);
-
-        System.out.println(
-                "Yearly Salary: $"
-                        + career.salary);
+        System.out.println("\nYou selected: " + career.title);
+        System.out.println("Yearly Salary: $" + career.salary);
     }
 
     public static void runAdultLife(final Character player){
         player.setAge(Age.ADULT);
-
         printHeader("Entering Adult Life of " + player.getName());
 
         chooseCar(player);
 
-        chooseHouse(player);
+        final MilestoneLifeEvent houseMilestone = new BuyingHouseMilestoneEvent();
+        houseMilestone.executeOn(player, INPUT, RNG);
 
-        final Partner partner = offerMarriage(player);
+        final MilestoneLifeEvent marriageMilestone = new MarriageMilestoneEvent();
+        marriageMilestone.executeOn(player, INPUT, RNG);
 
-        offerChildren(player, partner);
+        offerChildren(player, player.getPartner());
 
-        final EventFactory factory =
-                new AdultLifeEventFactory();
+        final EventFactory factory = new AdultLifeEventFactory();
 
-        final Insurance insurance =
-                new Insurance();
+        final Insurance insurance = new Insurance();
 
         for (int year = 1; year <= ADULT_YEARS; year++) {
 
             printYearHeader(year);
-
             applySalary(player);
-
             applyLivingExpenses(player);
-
             insurance.calculatePremium(player);
+            player.setBankBalance(player.getBankBalance() - insurance.getTotalPremium());
+            System.out.println("Insurance Premium Paid: $" + insurance.getTotalPremium());
+            System.out.println("Current bank balance: " + (player.printedFormatBankBalance()));
 
-            player.setBankBalance(
-                    player.getBankBalance()
-                            - insurance.getTotalPremium());
+            final RiskyLifeEvent riskyEvent = factory.createRiskyEvent(RNG);
+            riskyEvent.executeOn(player, INPUT, RNG);
 
-            System.out.println(
-                    "Insurance Premium Paid: $"
-                            + insurance.getTotalPremium());
-
-            System.out.println(
-                    "Current bank balance: " +
-                            player.getBankBalance());
-
-            final RiskyLifeEvent riskyEvent =
-                    factory.createRiskyEvent();
-
-            riskyEvent.executeOn(
-                    player,
-                    INPUT,
-                    RNG);
-
-            final FinancialLifeEvent financialEvent =
-                    factory.createFinancialEvent();
-
-            financialEvent.executeOn(
-                    player,
-                    INPUT,
-                    RNG);
-
+            final FinancialLifeEvent financialEvent = factory.createFinancialEvent(RNG);
+            financialEvent.executeOn(player, INPUT, RNG);
             printYearSummary(player);
-
             if (player.getBankBalance() < -50000) {
-
-                System.out.println(
-                        "\nYou went bankrupt.");
-
+                System.out.println("\nYou went bankrupt.");
                 return;
             }
         }
     }
 
-    private static void chooseCar(
-            final Character player) {
+    private static void chooseCar(final Character player) {
 
         printHeader("CAR PURCHASE");
-
-        System.out.println(
-                "Would you like to buy a car? (y/n)");
-
-        final String choice =
-                INPUT.nextLine().toLowerCase();
+        System.out.println("Would you like to buy a car? (y/n)");
+        final String choice = INPUT.nextLine().toLowerCase();
 
         if (choice.equals("y")) {
-
-            final Car car =
-                    chooseRandomOption(
-                            Car.values(),
-                            "Choose a Car");
-
+            final Car car = chooseRandomOption(Car.values(), "Choose a Car");
             player.buyCar(car);
-
-            player.setBankBalance(
-                    player.getBankBalance()
-                            - car.getValue());
-
-            System.out.println(
-                    "\nYou bought a "
-                            + car.getType()[0]
-                            + " "
-                            + car.getType()[1]);
-
-            System.out.println(
-                    "Cost: $"
-                            + car.getValue());
+            player.setBankBalance(player.getBankBalance() - car.getValue());
+            System.out.println("\nYou bought a " + car.getType()[0] + " " + car.getType()[1]);
+            System.out.println("Cost: $" + car.getValue());
         }
     }
 
-    private static void chooseHouse(
-            final Character player) {
-
-        printHeader("HOUSE PURCHASE");
-
-        System.out.println(
-                "Would you like to buy a house? (y/n)");
-
-        final String choice =
-                INPUT.nextLine().toLowerCase();
-
-        if (choice.equals("y")) {
-
-            final House house =
-                    chooseRandomOption(
-                            House.values(),
-                            "Choose a House");
-
-            player.buyHouse(house);
-
-            player.setBankBalance(
-                    player.getBankBalance()
-                            - house.getMortgageBalance());
-
-            System.out.println(
-                    "\nYou bought: "
-                            + house);
-
-            System.out.println(
-                    "Mortgage Cost: $"
-                            + house.getMortgageBalance());
-        }
-    }
-
-    private static Partner offerMarriage(
-            final Character player) {
-
-        printHeader("MARRIAGE");
-
-        System.out.println(
-                "Would you like to get married? (y/n)");
-
-        final String choice =
-                INPUT.nextLine().toLowerCase();
-
-        if (choice.equals("y")) {
-
-            System.out.println("Enter your partner's name: ");
-            final String partnerName = INPUT.nextLine();
-
-            final Partner partner = new Partner(
-                    partnerName,
-                    Age.ADULT,
-                    DNA.generateRandomDNA(RNG),
-                    0.0
-            );
-
-            partner.chooseCareer(
-                    chooseRandomOption(
-                            Career.values(),
-                            "Choose Partner's Career"
-                    )
-            );
-
-            partner.chooseLocation(
-                    chooseRandomOption(
-                            Location.values(),
-                            "Choose Partner's Location"
-                    )
-            );
-
-            partner.calculateBankBalance();
-
-            final Phenotype partnerPhenotype = partner.getPhenotype();
-            System.out.println("\nYour partner has been created! Here are their traits");
-            System.out.println("Eye Color: " + partnerPhenotype.getEyeColor());
-            System.out.println("Height: " + partnerPhenotype.getHeight());
-            System.out.println("Hair Color: " + partnerPhenotype.getHairColor());
-            System.out.println("Career: " + partner.getCareer().title);
-            System.out.println("\nCongratulations on your marriage!");
-
-            return partner;
-        }
-
-        return null;
-    }
-
-    private static void offerChildren(
-            final Character player, final Partner partner) {
+    private static void offerChildren(final Character player, final Partner partner) {
 
         printHeader("CHILDREN");
-
-        System.out.println(
-                "Would you like to have a child? (y/n)");
-
-        final String choice =
-                INPUT.nextLine().toLowerCase();
+        System.out.println("Would you like to have a child? (y/n)");
+        final String choice = INPUT.nextLine().toLowerCase();
 
         if (choice.equals("y")) {
-
-            //if player declined marriage, default partner is created
-            // so Child constructor still has two parents
+            //if player declined marriage, default partner is created so Child constructor still has two parents
             final Partner childParent;
-            if(partner != null) {
+            if (partner != null) {
                 childParent = partner;
             } else {
-                childParent = new Partner(
-                        "Parent 2",
-                        Age.ADULT,
-                        DNA.generateRandomDNA(RNG),
-                        0.0
+                childParent = new Partner("Parent 2", Age.ADULT, DNA.generateRandomDNA(RNG), 0.0
                 );
             }
             System.out.println("Enter your child's name: ");
             final String childName = INPUT.nextLine();
 
-            final Child child = new Child(
-                    childName,
-                    Age.CHILD,
-                    DNA.generateRandomDNA(RNG),
-                    player,
-                    childParent,
-                    0.0
+            final Child child = new Child(childName, Age.CHILD, DNA.generateRandomDNA(RNG), player, childParent, 0.0
             );
 
             child.inheritDNATraits(RNG);
 
-            System.out.println(
-                    "Would you like your child to go to college? (y/n)");
+            System.out.println("Would you like your child to go to college? (y/n)");
             final String collegeChoice = INPUT.nextLine().toLowerCase();
             child.setWentToCollege(collegeChoice.equals("y"));
 
@@ -407,99 +212,32 @@ public class Simulator {
         }
     }
 
-    private static void retire(
-            final Character player) {
-
+    private static void retire(final Character player) {
         printHeader("RETIREMENT");
-
-        double retirementBonus = 0;
-
-        if (player.getCareer() != null) {
-
-            retirementBonus +=
-                    player.getCareer().salary * 0.25;
-        }
-
-        player.setBankBalance(
-                player.getBankBalance()
-                        + retirementBonus);
-
-        System.out.println(
-                "Name: "
-                        + player.getName());
-
-        System.out.println(
-                "Final Career: "
-                        + player.getCareer().title);
-
-        System.out.println(
-                "Retirement Bonus: $"
-                        + retirementBonus);
-
-        System.out.println(
-                "Final Bank Balance: $"
-                        + player.getBankBalance());
-
-        if (player.getCar() != null) {
-
-            System.out.println(
-                    "Car Owned: "
-                            + player.getCar().getType()[0]
-                            + " "
-                            + player.getCar().getType()[1]);
-        }
-
-        if (player.getHouse() != null) {
-
-            System.out.println(
-                    "House Owned: "
-                            + player.getHouse());
-        }
-
-        System.out.println(
-                "\nThank you for playing!");
+        final MilestoneLifeEvent retirement = new RetirementMilestoneEvent();
+        retirement.executeOn(player, INPUT, RNG);
     }
 
     public static void runLateLife(final Character player){
         player.setAge(Age.SENIOR);
-
         printHeader("Entering Later Life of " + player.getName());
 
-        final EventFactory factory =
-                new AdultLifeEventFactory();
-
+        final EventFactory factory = new AdultLifeEventFactory();
         final Insurance insurance = new Insurance();
 
         for (int year = 1; year <= LATE_YEARS; year++) {
 
             printYearHeader(year);
-
             applySalary(player);
-
             applyLivingExpenses(player);
-
             insurance.calculatePremium(player);
 
-            player.setBankBalance(
-                    player.getBankBalance()
-                            - insurance.getTotalPremium());
+            player.setBankBalance(player.getBankBalance() - insurance.getTotalPremium());
+            System.out.println("Insurance Premium Paid: $" + insurance.getTotalPremium());
+            System.out.println("Current bank balance: " + (player.printedFormatBankBalance()));
 
-            System.out.println(
-                    "Insurance Premium Paid: $"
-                            + insurance.getTotalPremium());
-
-            System.out.println(
-                    "Current bank balance: " +
-                            player.getBankBalance());
-
-            final FinancialLifeEvent financialEvent =
-                    factory.createFinancialEvent();
-
-            financialEvent.executeOn(
-                    player,
-                    INPUT,
-                    RNG);
-
+            final FinancialLifeEvent financialEvent = factory.createFinancialEvent(RNG);
+            financialEvent.executeOn(player, INPUT, RNG);
             printYearSummary(player);
         }
     }
@@ -509,124 +247,59 @@ public class Simulator {
             final Character player) {
 
         if (player.getCareer() != null) {
-
-            player.setBankBalance(
-                    player.getBankBalance()
-                            + player.getCareer().salary);
-
-            System.out.println(
-                    "\nSalary Earned: $"
-                            + player.getCareer().salary);
+            player.setBankBalance(player.getBankBalance() + player.getCareer().salary);
+            System.out.println("\nSalary Earned: $" + player.getCareer().salary);
         }
     }
 
-    private static void printYearHeader(
-            final int year) {
+    private static void printYearHeader(final int year) {
 
-        System.out.println(
-                "\n---------------- YEAR "
-                        + year
-                        + " ----------------");
+        System.out.println("\n---------------- YEAR " + year + " ----------------");
     }
 
-    private static void printYearSummary(
-            final Character player) {
+    private static void printYearSummary(final Character player) {
 
-        System.out.println(
-                "\nCurrent balance: $"
-                        + player.getBankBalance());
-
+        System.out.println("\nCurrent balance: $" + (player.printedFormatBankBalance()));
         if (player.getCareer() != null) {
-
-            System.out.println(
-                    "Career: "
-                            + player.getCareer().title);
+            System.out.println("Career: " + player.getCareer().title);
         }
     }
 
 
-    private static void applyLivingExpenses(
-            final Character player) {
+    private static void applyLivingExpenses(final Character player) {
 
-        player.setBankBalance(
-                player.getBankBalance()
-                        - YEARLY_EXPENSES);
-
-        System.out.println(
-                "Living Expenses Paid: $"
-                        + YEARLY_EXPENSES);
+        player.setBankBalance(player.getBankBalance() - YEARLY_EXPENSES);
+        System.out.println("Living Expenses Paid: $" + YEARLY_EXPENSES);
     }
 
     private static void pause() {
 
-        System.out.println(
-                "\nPress ENTER to continue...");
-
+        System.out.println("\nPress ENTER to continue...");
         INPUT.nextLine();
     }
 
-    public static void printRetirementSummary(final Character player) {
+    public static <T> T chooseRandomOption(final T[] values, final String title) {
 
-        printHeader("You have reached retirement!");
+        final T[] copy = Arrays.copyOf(values, values.length);
 
-        System.out.println(
-                "Name: "
-                        + player.getName());
-
-        System.out.println(
-                "Final Balance: $"
-                        + player.getBankBalance());
-
-        if (player.getCareer() != null) {
-
-            System.out.println(
-                    "Career: "
-                            + player.getCareer().title);
-        }
-
-        System.out.println(
-                "\nThank you for playing!");
-    }
-
-    private static <T> T chooseRandomOption(
-            final T[] values,
-            final String title) {
-
-        final T[] copy =
-                Arrays.copyOf(values, values.length);
-
-        Collections.shuffle(
-                Arrays.asList(copy));
-
+        Collections.shuffle(Arrays.asList(copy));
         System.out.println("\n" + title);
 
         for (int i = 0; i < 3; i++) {
-
-            System.out.println(
-                    (i + 1)
-                            + ". "
-                            + copy[i]);
+            System.out.println((i + 1) + ". " + copy[i]);
         }
 
         int choice = 0;
-
         while (choice < 1 || choice > 3) {
-
-            System.out.println(
-                    "\nEnter choice (1-3):");
+            System.out.println("\nEnter choice (1-3):");
 
             try {
-
-                choice =
-                        Integer.parseInt(
-                                INPUT.nextLine());
+                choice = Integer.parseInt(INPUT.nextLine());
 
             } catch (NumberFormatException e) {
-
                 choice = 0;
             }
         }
-
         return copy[choice - 1];
     }
 }

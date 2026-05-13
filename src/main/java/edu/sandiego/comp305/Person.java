@@ -33,6 +33,10 @@ public abstract class Person {
         return this.bankBalance;
     }
 
+    public String printedFormatBankBalance() {
+        return String.format("%.2f", this.bankBalance);
+    }
+
 
     public void setAge(final Age age){
         this.age = age;

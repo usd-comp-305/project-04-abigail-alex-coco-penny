@@ -5,12 +5,10 @@ import java.util.Random;
 
 public class AdultLifeEventFactory implements EventFactory {
 
-    private Random random = new Random();
-
     @Override
-    public FinancialLifeEvent createFinancialEvent() {
+    public FinancialLifeEvent createFinancialEvent(final Random rng) {
 
-        final int randInt = random.nextInt(3) + 1;
+        final int randInt = rng.nextInt(3) + 1;
 
         switch (randInt) {
 
@@ -30,26 +28,23 @@ public class AdultLifeEventFactory implements EventFactory {
 
     }
 
-    public MilestoneLifeEvent createMilestoneEvent() {
-        final int randInt = random.nextInt(3) + 1;
+    public MilestoneLifeEvent createMilestoneEvent(final Random rng) {
+        final int randInt = rng.nextInt(3) + 1;
 
         switch (randInt) {
 
             case 1:
-                return new RetirementMilestoneEvent();
-
-            case 2:
                 return new BuyingHouseMilestoneEvent();
-            case 3:
+            case 2:
                 return new MarriageMilestoneEvent();
         }
 
         return null;
     }
 
-    public RiskyLifeEvent createRiskyEvent() {
+    public RiskyLifeEvent createRiskyEvent(final Random rng) {
 
-        final int randInt = random.nextInt(3) + 1;
+        final int randInt = rng.nextInt(3) + 1;
 
         switch (randInt) {
 

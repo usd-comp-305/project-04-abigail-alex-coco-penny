@@ -22,7 +22,7 @@ public class RiskyStartUpEvent implements RiskyLifeEvent {
 
 
     @Override
-    public void executeOn(final Person person, final Scanner scanner, final Random random) {
+    public void executeOn(final Character person, final Scanner scanner, final Random random) {
 
         System.out.println("--- You want to make a new startup! ---\n");
         System.out.println("Business Idea: " + description);
@@ -55,7 +55,7 @@ public class RiskyStartUpEvent implements RiskyLifeEvent {
                 System.out.println("Your company has gone bankrupt ... you have lost $" + returns);
                 person.setBankBalance(person.getBankBalance() - returns);
             }
-            System.out.println("Your current bank balance is $" + person.getBankBalance());
+            System.out.println("Your current bank balance is $" + person.printedFormatBankBalance());
 
         }
 

@@ -17,7 +17,7 @@ public class UnexpectedBillEvent implements FinancialLifeEvent {
     }
 
     @Override
-    public void executeOn(final Person person, final Scanner scanner, final Random random) {
+    public void executeOn(final Character person, final Scanner scanner, final Random random) {
         System.out.println("Unexpected Bill: " + description);
         System.out.println("You must pay $" + cost + "\n");
         person.setBankBalance(person.getBankBalance() -  this.cost);

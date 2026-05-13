@@ -21,7 +21,7 @@ public class InvestmentOpportunityEvent implements FinancialLifeEvent {
 
 
     @Override
-    public void executeOn(final Person person, final Scanner scanner, final Random random) {
+    public void executeOn(final Character person, final Scanner scanner, final Random random) {
         System.out.println("Investment Opportunity: " + description);
         System.out.println("Would you like to invest $" + cost + "? (y/n) \n");
 
@@ -55,7 +55,7 @@ public class InvestmentOpportunityEvent implements FinancialLifeEvent {
 
             }
 
-            System.out.println("Your updated bank balance is " + person.getBankBalance() + "\n");
+            System.out.println("Your updated bank balance is " + person.printedFormatBankBalance() + "\n");
         } else {
 
             System.out.println("$" + cost + " was not invested.\n");

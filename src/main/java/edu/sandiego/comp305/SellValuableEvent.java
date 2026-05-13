@@ -20,7 +20,7 @@ public class SellValuableEvent implements FinancialLifeEvent {
 
 
     @Override
-    public void executeOn(final Person person, final Scanner scanner, final Random random) {
+    public void executeOn(final Character person, final Scanner scanner, final Random random) {
 
         System.out.println("Your friend wants you to sell them your valuable, but ... it may go up in price");
         System.out.println("Valuable: " + description);
@@ -50,7 +50,7 @@ public class SellValuableEvent implements FinancialLifeEvent {
             }
 
 
-            System.out.println("Your updated bank balance is: $" + person.getBankBalance() + "\n");
+            System.out.println("Your updated bank balance is: $" + person.printedFormatBankBalance() + "\n");
         }
 
 

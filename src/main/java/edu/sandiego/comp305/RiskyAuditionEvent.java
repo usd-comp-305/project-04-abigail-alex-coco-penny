@@ -20,7 +20,7 @@ public class RiskyAuditionEvent implements RiskyLifeEvent {
 
 
     @Override
-    public void executeOn(final Person person, final Scanner scanner, final Random random) {
+    public void executeOn(final Character person, final Scanner scanner, final Random random) {
 
         System.out.println("--- A prestigious arts program is holding auditions ---\n");
         System.out.println("Role: " + description);
@@ -48,7 +48,7 @@ public class RiskyAuditionEvent implements RiskyLifeEvent {
             } else {
                 System.out.println("Unfortunately, you were not called back ...  you have lost $" + cost);
             }
-            System.out.println("Your current bank balance is $" + person.getBankBalance());
+            System.out.println("Your current bank balance is $" + person.printedFormatBankBalance());
 
         }
 
