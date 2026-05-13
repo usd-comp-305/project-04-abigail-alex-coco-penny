@@ -22,6 +22,19 @@ public class MarriageMilestoneEvent implements MilestoneLifeEvent {
         final String partnerName = scanner.nextLine();
 
         final Partner partner = new Partner(partnerName, Age.ADULT, DNA.generateRandomDNA(RNG), 0.0);
+
+        partner.chooseCareer(Simulator.chooseRandomOption(Career.values(), "Choose Partner's Career"));
+        partner.chooseLocation(Simulator.chooseRandomOption(Location.values(), "Choose Partner's Location"));
+        partner.calculateBankBalance();
+
+        final Phenotype partnerPhenotype = partner.getPhenotype();
+        System.out.println("\nYour partner has been created! Here are their traits");
+        System.out.println("Eye Color: " + partnerPhenotype.getEyeColor());
+        System.out.println("Height: " + partnerPhenotype.getHeight());
+        System.out.println("Hair Color: " + partnerPhenotype.getHairColor());
+        System.out.println("Career: " + partner.getCareer().title);
+        System.out.println("\nCongratulations on your marriage!");
+
         person.setPartner(partner);
     }
 }

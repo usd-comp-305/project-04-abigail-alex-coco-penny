@@ -32,4 +32,12 @@ public class MarriageMilestoneEventTest {
         marriageMilestoneEvent.executeOn(person, mockedScanner, mockedRNG);
         assertNotNull(person.getPartner());
     }
+
+    @Test
+    void testMarriageNoPartnerWorks() {
+        when(mockedScanner.nextLine()).thenReturn("n");
+        final MarriageMilestoneEvent marriageMilestoneEvent = new MarriageMilestoneEvent();
+        marriageMilestoneEvent.executeOn(person, mockedScanner, mockedRNG);
+        assertNull(person.getPartner());
+    }
 }

@@ -588,7 +588,7 @@ public class Simulator {
                 "\nThank you for playing!");
     }
 
-    private static <T> T chooseRandomOption(
+    public static <T> T chooseRandomOption(
             final T[] values,
             final String title) {
 
