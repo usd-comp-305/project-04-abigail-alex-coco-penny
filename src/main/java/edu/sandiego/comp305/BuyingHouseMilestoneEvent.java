@@ -21,5 +21,10 @@ public class BuyingHouseMilestoneEvent implements MilestoneLifeEvent {
         final House[] houses = House.values();
         final House house = houses[RNG.nextInt(houses.length)];
         person.buyHouse(house);
+        person.setBankBalance(person.getBankBalance() - house.getMortgageBalance());
+
+        System.out.println("You bought: " + house);
+        System.out.println("Mortgage Cost: $" + house.getMortgageBalance());
+        System.out.println("Updated bank balance: $" + person.getBankBalance());
     }
 }
