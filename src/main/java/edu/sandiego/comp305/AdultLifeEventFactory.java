@@ -49,12 +49,12 @@ public class AdultLifeEventFactory implements EventFactory {
         switch (randInt) {
 
             case 1:
-                return new RiskyStartUpEvent("Tech Startup", 50000, 0.6);
+                return new RiskyStartUpEvent("Tech Startup", 50000, 0.9);
 
             case 2:
                 return new RiskyStartUpEvent("Restaurant", 100000, 0.8);
             case 3:
-                return new RiskyStartUpEvent("New App", 15000, 0.3);
+                return new RiskyGamblingEvent("Blackjack", 1000, 0.6);
         }
 
         return null;
