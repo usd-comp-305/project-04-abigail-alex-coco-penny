@@ -59,4 +59,16 @@ public class BuyingHouseMilestoneEventTest {
 
     }
 
+    @Test
+    public void DoesntBuyHouseAccountDoesntDecreases() {
+        when(mockedScanner.nextLine()).thenReturn("y=n");
+        final double balanceBefore = person.getBankBalance();
+
+        final BuyingHouseMilestoneEvent event = new BuyingHouseMilestoneEvent();
+        event.executeOn(person, mockedScanner, mockedRNG);
+
+        assertTrue(person.getBankBalance() == balanceBefore);
+
+    }
+
 }
