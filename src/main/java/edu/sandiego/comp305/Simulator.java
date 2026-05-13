@@ -171,6 +171,9 @@ public class Simulator {
         final EventFactory factory =
                 new AdultLifeEventFactory();
 
+        final Insurance insurance =
+                new Insurance();
+
         for (int year = 1; year <= ADULT_YEARS; year++) {
 
             printYearHeader(year);
@@ -178,6 +181,20 @@ public class Simulator {
             applySalary(player);
 
             applyLivingExpenses(player);
+
+            insurance.calculatePremium(player);
+
+            player.setBankBalance(
+                    player.getBankBalance()
+                            - insurance.getTotalPremium());
+
+            System.out.println(
+                    "Insurance Premium Paid: $"
+                            + insurance.getTotalPremium());
+
+            System.out.println(
+                    "Current bank balance: " +
+                            player.getBankBalance());
 
             final RiskyLifeEvent riskyEvent =
                     factory.createRiskyEvent();
@@ -350,8 +367,9 @@ public class Simulator {
 
             System.out.println(
                     "Car Owned: "
-                            + Arrays.toString(
-                            player.getCar().getType()));
+                            + player.getCar().getType()[0]
+                            + " "
+                            + player.getCar().getType()[1]);
         }
 
         if (player.getHouse() != null) {
@@ -373,6 +391,8 @@ public class Simulator {
         final EventFactory factory =
                 new AdultLifeEventFactory();
 
+        final Insurance insurance = new Insurance();
+
         for (int year = 1; year <= LATE_YEARS; year++) {
 
             printYearHeader(year);
@@ -380,6 +400,20 @@ public class Simulator {
             applySalary(player);
 
             applyLivingExpenses(player);
+
+            insurance.calculatePremium(player);
+
+            player.setBankBalance(
+                    player.getBankBalance()
+                            - insurance.getTotalPremium());
+
+            System.out.println(
+                    "Insurance Premium Paid: $"
+                            + insurance.getTotalPremium());
+
+            System.out.println(
+                    "Current bank balance: " +
+                            player.getBankBalance());
 
             final FinancialLifeEvent financialEvent =
                     factory.createFinancialEvent();
