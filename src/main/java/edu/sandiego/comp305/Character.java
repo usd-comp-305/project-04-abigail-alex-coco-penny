@@ -49,11 +49,18 @@ public class Character extends Person{
     }
 
     public Partner getPartner() {
-        return partner;
+        if(partner == null) {
+            return null;
+        }
+        return new Partner(partner);
     }
 
     public void setPartner(final Partner partner) {
-        this.partner = partner;
+        if(partner == null) {
+            this.partner = null;
+            return;
+        }
+        this.partner = new Partner(partner);
     }
 
     public void chooseCareer(final Career career){

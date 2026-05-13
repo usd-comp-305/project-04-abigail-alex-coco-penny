@@ -1,5 +1,6 @@
 package edu.sandiego.comp305;
 
+import javax.swing.*;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -19,8 +20,14 @@ public class RetirementMilestoneEvent implements MilestoneLifeEvent {
         person.setBankBalance(person.getBankBalance() + retirementBonus);
 
         System.out.println("Name: " + person.getName());
-        System.out.println("Final Career: " + person.getCareer().title);
-        System.out.println("Retirement Bonus: $" + retirementBonus);
+        if(person.getCareer() != null) {
+            System.out.println("Final Career: " + person.getCareer().title);
+            System.out.println("Retirement Bonus: $" + retirementBonus);
+        } else {
+            System.out.println("Final Career: None");
+            System.out.println("Retirement Bonus: $0.00");
+        }
+
         System.out.println("Final Bank Balance: $" + person.printedFormatBankBalance());
 
         if (person.getCar() != null) {

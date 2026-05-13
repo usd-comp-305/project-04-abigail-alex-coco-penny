@@ -34,10 +34,8 @@ public class AdultLifeEventFactory implements EventFactory {
         switch (randInt) {
 
             case 1:
-                return new RetirementMilestoneEvent();
-            case 2:
                 return new BuyingHouseMilestoneEvent();
-            case 3:
+            case 2:
                 return new MarriageMilestoneEvent();
         }
 

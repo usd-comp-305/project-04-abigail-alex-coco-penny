@@ -21,10 +21,14 @@ public class MarriageMilestoneEvent implements MilestoneLifeEvent {
         System.out.println("Enter your partner's name: ");
         final String partnerName = scanner.nextLine();
 
+        // use rng to randomly pick career and location instead of Simulator.chooseRandomOption
+        final Career partnerCareer = Career.values()[RNG.nextInt(Career.values().length)];
+        final Location partnerLocation = Location.values()[RNG.nextInt(Location.values().length)];
+
         final Partner partner = new Partner(partnerName, Age.ADULT, DNA.generateRandomDNA(RNG), 0.0);
 
-        partner.chooseCareer(Simulator.chooseRandomOption(Career.values(), "Choose Partner's Career"));
-        partner.chooseLocation(Simulator.chooseRandomOption(Location.values(), "Choose Partner's Location"));
+        partner.chooseCareer(partnerCareer);
+        partner.chooseLocation(partnerLocation);
         partner.calculateBankBalance();
 
         final Phenotype partnerPhenotype = partner.getPhenotype();

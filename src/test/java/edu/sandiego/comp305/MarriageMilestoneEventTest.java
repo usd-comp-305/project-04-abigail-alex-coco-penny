@@ -13,8 +13,11 @@ import static org.mockito.Mockito.when;
 public class MarriageMilestoneEventTest {
 
     private Character person;
+
     private DNA mockedDNA;
+
     private Scanner mockedScanner;
+
     private Random mockedRNG;
 
     @BeforeEach

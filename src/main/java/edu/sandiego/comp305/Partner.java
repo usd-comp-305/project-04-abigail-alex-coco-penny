@@ -15,6 +15,11 @@ public class Partner extends Person{
         this.compatibilityScore = 0.0;
     }
 
+    // copy constructor (for build.gradle to pass)
+    public Partner(final Partner other) {
+        super(other.getName(), other.getAge(), other.getDna(), other.getBankBalance());
+        this.compatibilityScore = other.getCompatibilityScore();
+    }
 
     public double getCompatibilityScore(){
         return compatibilityScore;
