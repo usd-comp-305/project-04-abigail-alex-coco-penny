@@ -17,8 +17,6 @@ public class EarlyLifeEventFactory implements EventFactory {
             case 2:
                 return new FirstPaycheckEvent( 300);
 
-            case 3:
-                return new UnexpectedBillEvent("Cell Service Bill", 100);
         }
 
         return null;
@@ -30,18 +28,24 @@ public class EarlyLifeEventFactory implements EventFactory {
     }
 
     public RiskyLifeEvent createRiskyEvent(final Random rng) {
-        final int randInt = rng.nextInt(3) + 1;
+        final int randInt = rng.nextInt(6) + 1;
 
         switch (randInt) {
 
             case 1:
-                return new RiskyAuditionEvent("Lead", 5000, 0.3);
+                return new RiskyAuditionEvent("Lead", 1000, 0.3);
 
             case 2:
-                return new RiskyAuditionEvent("Support", 2500, 0.6);
-
+                return new SportsPlayingRiskyEvent("Basketball", 50, 0.8);
             case 3:
-                return new SportsPlayingRiskyEvent("Basketball", 50, 0.2);
+                return new NeighborhoodBusinessEvent("Lemonade Stand", 200, 0.2);
+
+            case 4:
+                return new SportsPlayingRiskyEvent("Soccer", 100, 0.2);
+            case 5:
+                return new NeighborhoodBusinessEvent("Window Cleaning", 300, 0.8);
+            case 6:
+                return new RiskyAuditionEvent("Supporting Role", 500, 0.7);
         }
 
         return null;
