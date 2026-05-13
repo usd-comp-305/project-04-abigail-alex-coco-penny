@@ -5,6 +5,6 @@ import java.util.Scanner;
 
 public interface FinancialLifeEvent {
 
-    public abstract void executeOn(Person person, Scanner scanner, Random random);
+    public abstract void executeOn(Character person, Scanner scanner, Random random);
 
 }

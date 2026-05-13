@@ -11,7 +11,7 @@ public class RetirementMilestoneEvent implements MilestoneLifeEvent {
     }
 
     @Override
-    public void executeOn(final Person person, final Scanner scanner, final Random random) {
+    public void executeOn(final Character person, final Scanner scanner, final Random random) {
         System.out.println("--- MILESTONE: Retirement ---");
 
         // I think here we could add a retirement bonus to start. Then we see if the child went to college (add this to the child class), we add that multiplier).

@@ -11,7 +11,7 @@ import static org.mockito.Mockito.mock;
 
 public class FirstPaycheckEventTest {
 
-    private Person person;
+    private Character person;
 
     private DNA mockedDNA = mock(DNA.class);
 

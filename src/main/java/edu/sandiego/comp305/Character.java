@@ -16,6 +16,8 @@ public class Character extends Person{
 
     private List<Insurable> insurables;
 
+    private Partner partner;
+
     public Character(final String name, final Age age, final DNA dna, final double bankBalance) {
         super(name, age, dna, bankBalance);
         this.insurables = new ArrayList<>();
@@ -44,6 +46,14 @@ public class Character extends Person{
 
     public List<Insurable> getInsurables() {
         return new ArrayList<>(insurables);
+    }
+
+    public Partner getPartner() {
+        return partner;
+    }
+
+    public void setPartner(final Partner partner) {
+        this.partner = partner;
     }
 
     public void chooseCareer(final Career career){

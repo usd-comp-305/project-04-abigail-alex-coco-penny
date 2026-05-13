@@ -12,7 +12,7 @@ import static org.mockito.Mockito.when;
 
 public class MajorPurchaseEventTest {
 
-    private Person person;
+    private Character person;
 
     private DNA mockedDNA = mock(DNA.class);
 

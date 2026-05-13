@@ -23,7 +23,7 @@ public class SportsPlayingRiskyEvent implements RiskyLifeEvent {
 
 
     @Override
-    public void executeOn(final Person person, final Scanner scanner, final Random random) {
+    public void executeOn(final Character person, final Scanner scanner, final Random random) {
         System.out.println("Your friends are betting money on a round of sports ... ");
         System.out.println("Sport: " + description);
         System.out.println("Cost: " + cost);

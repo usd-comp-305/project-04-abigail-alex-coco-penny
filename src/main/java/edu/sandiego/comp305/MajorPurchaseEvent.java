@@ -15,7 +15,7 @@ public class MajorPurchaseEvent implements FinancialLifeEvent {
     }
 
     @Override
-    public void executeOn(final Person person, final Scanner scanner, final Random random) {
+    public void executeOn(final Character person, final Scanner scanner, final Random random) {
 
         System.out.println("Major Purchase: " + description);
         System.out.println("Would you like to purchase for $" + purchasePrice + "? (y/n) \n");

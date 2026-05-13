@@ -21,7 +21,7 @@ public class InvestmentOpportunityEvent implements FinancialLifeEvent {
 
 
     @Override
-    public void executeOn(final Person person, final Scanner scanner, final Random random) {
+    public void executeOn(final Character person, final Scanner scanner, final Random random) {
         System.out.println("Investment Opportunity: " + description);
         System.out.println("Would you like to invest $" + cost + "? (y/n) \n");
 

@@ -5,5 +5,5 @@ import java.util.Scanner;
 
 public interface MilestoneLifeEvent {
 
-    public abstract void executeOn(final Person person, final Scanner scanner, final Random RNG);
+    public abstract void executeOn(final Character person, final Scanner scanner, final Random RNG);
 }

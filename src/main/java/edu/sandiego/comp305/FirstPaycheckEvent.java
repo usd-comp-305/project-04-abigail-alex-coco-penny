@@ -13,7 +13,7 @@ public class FirstPaycheckEvent implements FinancialLifeEvent {
 
 
     @Override
-    public void executeOn(final Person person, final Scanner scanner, final Random random) {
+    public void executeOn(final Character person, final Scanner scanner, final Random random) {
         System.out.println("Congratulations! You have received your first paycheck");
         System.out.println("Total Amount: $" + paycheckAmount);
 

@@ -7,7 +7,7 @@ public class BuyingHouseMilestoneEvent implements MilestoneLifeEvent {
 
 
     @Override
-    public void executeOn(final Person person, final Scanner scanner, final Random RNG) {
+    public void executeOn(final Character person, final Scanner scanner, final Random RNG) {
 
     }
 }
