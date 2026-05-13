@@ -122,6 +122,7 @@ public class Simulator {
         printHeader("Entering Adult Life of " + player.getName());
 
         chooseCar(player);
+        chooseLocation(player);
 
         final MilestoneLifeEvent houseMilestone = new BuyingHouseMilestoneEvent();
         houseMilestone.executeOn(player, INPUT, RNG);
@@ -156,6 +157,14 @@ public class Simulator {
                 return;
             }
         }
+    }
+
+    private static void chooseLocation(final Character player) {
+
+        printHeader("CHOOSE LOCATION");
+        final Location location = chooseRandomOption(Location.values(), "Choose a City");
+        player.chooseLocation(location);
+        System.out.println("\nYou moved to " + location.getCity() + ", " + location.getState());
     }
 
     private static void chooseCar(final Character player) {
