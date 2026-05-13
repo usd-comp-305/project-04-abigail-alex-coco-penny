@@ -266,88 +266,15 @@ public class Simulator {
     private static void chooseHouse(
             final Character player) {
 
-        printHeader("HOUSE PURCHASE");
-
-        System.out.println(
-                "Would you like to buy a house? (y/n)");
-
-        final String choice =
-                INPUT.nextLine().toLowerCase();
-
-        if (choice.equals("y")) {
-
-            final House house =
-                    chooseRandomOption(
-                            House.values(),
-                            "Choose a House");
-
-            player.buyHouse(house);
-
-            player.setBankBalance(
-                    player.getBankBalance()
-                            - house.getMortgageBalance());
-
-            System.out.println(
-                    "\nYou bought: "
-                            + house);
-
-            System.out.println(
-                    "Mortgage Cost: $"
-                            + house.getMortgageBalance());
-        }
+        final MilestoneLifeEvent house = new BuyingHouseMilestoneEvent();
+        house.executeOn(player, INPUT, RNG);
     }
 
-    private static Partner offerMarriage(
+    private static void offerMarriage(
             final Character player) {
 
-        printHeader("MARRIAGE");
-
-        System.out.println(
-                "Would you like to get married? (y/n)");
-
-        final String choice =
-                INPUT.nextLine().toLowerCase();
-
-        if (choice.equals("y")) {
-
-            System.out.println("Enter your partner's name: ");
-            final String partnerName = INPUT.nextLine();
-
-            final Partner partner = new Partner(
-                    partnerName,
-                    Age.ADULT,
-                    DNA.generateRandomDNA(RNG),
-                    0.0
-            );
-
-            partner.chooseCareer(
-                    chooseRandomOption(
-                            Career.values(),
-                            "Choose Partner's Career"
-                    )
-            );
-
-            partner.chooseLocation(
-                    chooseRandomOption(
-                            Location.values(),
-                            "Choose Partner's Location"
-                    )
-            );
-
-            partner.calculateBankBalance();
-
-            final Phenotype partnerPhenotype = partner.getPhenotype();
-            System.out.println("\nYour partner has been created! Here are their traits");
-            System.out.println("Eye Color: " + partnerPhenotype.getEyeColor());
-            System.out.println("Height: " + partnerPhenotype.getHeight());
-            System.out.println("Hair Color: " + partnerPhenotype.getHairColor());
-            System.out.println("Career: " + partner.getCareer().title);
-            System.out.println("\nCongratulations on your marriage!");
-
-            return partner;
-        }
-
-        return null;
+        final MilestoneLifeEvent marraige = new MarriageMilestoneEvent();
+        marraige.executeOn(player, INPUT, RNG);
     }
 
     private static void offerChildren(
@@ -409,55 +336,9 @@ public class Simulator {
 
     private static void retire(
             final Character player) {
-
         printHeader("RETIREMENT");
-
-        double retirementBonus = 0;
-
-        if (player.getCareer() != null) {
-
-            retirementBonus +=
-                    player.getCareer().salary * 0.25;
-        }
-
-        player.setBankBalance(
-                player.getBankBalance()
-                        + retirementBonus);
-
-        System.out.println(
-                "Name: "
-                        + player.getName());
-
-        System.out.println(
-                "Final Career: "
-                        + player.getCareer().title);
-
-        System.out.println(
-                "Retirement Bonus: $"
-                        + retirementBonus);
-
-        System.out.println(
-                "Final Bank Balance: $"
-                        + player.getBankBalance());
-
-        if (player.getCar() != null) {
-
-            System.out.println(
-                    "Car Owned: "
-                            + player.getCar().getType()[0]
-                            + " "
-                            + player.getCar().getType()[1]);
-        }
-
-        if (player.getHouse() != null) {
-
-            System.out.println(
-                    "House Owned: "
-                            + player.getHouse());
-        }
-
-        System.out.println(
-                "\nThank you for playing!");
+        final MilestoneLifeEvent retirement = new RetirementMilestoneEvent();
+        retirement.executeOn(player, INPUT, RNG);
     }
 
     public static void runLateLife(final Character player){
@@ -563,29 +444,6 @@ public class Simulator {
                 "\nPress ENTER to continue...");
 
         INPUT.nextLine();
-    }
-
-    public static void printRetirementSummary(final Character player) {
-
-        printHeader("You have reached retirement!");
-
-        System.out.println(
-                "Name: "
-                        + player.getName());
-
-        System.out.println(
-                "Final Balance: $"
-                        + player.getBankBalance());
-
-        if (player.getCareer() != null) {
-
-            System.out.println(
-                    "Career: "
-                            + player.getCareer().title);
-        }
-
-        System.out.println(
-                "\nThank you for playing!");
     }
 
     public static <T> T chooseRandomOption(
