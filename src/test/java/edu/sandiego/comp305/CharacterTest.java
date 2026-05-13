@@ -56,10 +56,22 @@ public class CharacterTest {
     }
 
     @Test
+    public void testBuyHouseSetsHouse(){
+        character.buyHouse(House.HUT);
+        assertEquals(House.HUT, character.getHouse());
+    }
+
+    @Test
     public void testBuyHouseAddsInsurable() {
         final House house = House.HUT;
         character.buyHouse(house);
         assertTrue(character.getInsurables().contains(house));
+    }
+
+    @Test
+    public void testBuyCarAddsInsurable() {
+        character.buyCar(Car.SEDAN);
+        assertTrue(character.getInsurables().contains(Car.SEDAN));
     }
 
     @Test
@@ -69,7 +81,8 @@ public class CharacterTest {
         Mockito.when(mockRng.nextInt(2)).thenReturn(0);
         character.generateDNA(mockRng);
         for(final Allele allele : Allele.values()){
-            assertNotNull(character.getDna().getAllelePair(allele));}
+            assertNotNull(character.getDna().getAllelePair(allele));
+        }
     }
 
     @Test
@@ -77,6 +90,11 @@ public class CharacterTest {
         character.chooseCareer(Career.ENGINEER);
         character.calculateBankBalance();
         assertEquals((double)Career.ENGINEER.salary, character.getBankBalance());
+    }
+
+    @Test
+    public void testGetPhenotypeEyeColor(){
+        assertEquals("brown", character.getPhenotype().getEyeColor());
     }
 
 
