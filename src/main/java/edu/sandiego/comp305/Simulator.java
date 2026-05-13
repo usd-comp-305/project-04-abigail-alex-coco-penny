@@ -28,6 +28,8 @@ public class Simulator {
 
     public static void main(final String[] args) {
         printHeader("Welcome to the Game of Life");
+        pause();
+
         final Character player = createCharacter();
         pause();
 
@@ -52,7 +54,7 @@ public class Simulator {
 
     private static void printHeader(final String header) {
         System.out.println("\n================================================");
-        System.out.println("          " + header + "           ");
+        System.out.println("           " + header + "           ");
         System.out.println("================================================");
     }
 
@@ -94,7 +96,6 @@ public class Simulator {
         final EventFactory factory = new EarlyLifeEventFactory();
 
         for (int year = 1; year <= TEEN_YEARS; year++) {
-
             printYearHeader(year);
             final RiskyLifeEvent riskyEvent = factory.createRiskyEvent(RNG);
             riskyEvent.executeOn(player, INPUT, RNG);
@@ -269,6 +270,8 @@ public class Simulator {
     private static void printYearHeader(final int year) {
 
         System.out.println("\n---------------- YEAR " + year + " ----------------");
+
+        pause();
     }
 
     private static void printYearSummary(final Character player) {
