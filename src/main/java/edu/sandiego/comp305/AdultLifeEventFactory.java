@@ -20,6 +20,12 @@ public class AdultLifeEventFactory implements EventFactory {
 
             case 3:
                 return new InvestmentOpportunityEvent("Real Estate", 100000, 0.3);
+            case 4:
+                return new UnexpectedBillEvent("Vet Bill", 1000);
+            case 5:
+                return new UnexpectedBillEvent("Utilities Bill", 300);
+            case 6:
+                return new UnexpectedBillEvent("Cell Service Bill", 200);
         }
 
         return null;
@@ -44,7 +50,7 @@ public class AdultLifeEventFactory implements EventFactory {
 
     public RiskyLifeEvent createRiskyEvent(final Random rng) {
 
-        final int randInt = rng.nextInt(3) + 1;
+        final int randInt = rng.nextInt(5) + 1;
 
         switch (randInt) {
 
@@ -55,6 +61,11 @@ public class AdultLifeEventFactory implements EventFactory {
                 return new RiskyStartUpEvent("Restaurant", 100000, 0.8);
             case 3:
                 return new RiskyGamblingEvent("Blackjack", 1000, 0.6);
+
+            case 4:
+                return new RiskyGamblingEvent("Poker", 5000, 0.9);
+            case 5:
+                return new RiskyGamblingEvent("Baccarat", 3000, 0.7)
         }
 
         return null;

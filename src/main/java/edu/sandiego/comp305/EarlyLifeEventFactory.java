@@ -17,8 +17,6 @@ public class EarlyLifeEventFactory implements EventFactory {
             case 2:
                 return new FirstPaycheckEvent( 300);
 
-            case 3:
-                return new UnexpectedBillEvent("Cell Service Bill", 100);
         }
 
         return null;
