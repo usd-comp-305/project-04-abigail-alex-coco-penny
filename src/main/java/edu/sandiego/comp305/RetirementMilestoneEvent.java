@@ -6,26 +6,33 @@ import java.util.Scanner;
 public class RetirementMilestoneEvent implements MilestoneLifeEvent {
 
 
-
-    public RetirementMilestoneEvent() {
-    }
-
     @Override
     public void executeOn(final Character person, final Scanner scanner, final Random random) {
-        System.out.println("--- MILESTONE: Retirement ---");
+        System.out.println("\n*** RETIREMENT ***");
 
-        // I think here we could add a retirement bonus to start. Then we see if the child went to college (add this to the child class), we add that multiplier).
-        // If the child went to college, the multiplier will be larger for the retirement bonus.
+        double retirementBonus = 0;
 
-        // Here we will print: name, went to college, married, child's name, house, location, and phenotype as well as their final balance with the bonus
+        if (person.getCareer() != null) {
+            retirementBonus += person.getCareer().salary * 0.25;
+        }
 
-        // want to put number of kids that the person has as a life stat, as well as money. then, depending on
-        // how many kids that they had and how many of them went to college, that will add to the multiplier for a
-        // retirement bonus. then we can say the total final amount and reset the character.
+        person.setBankBalance(person.getBankBalance() + retirementBonus);
 
-        System.out.println("LIFE STATS:\n ");
+        System.out.println("Name: " + person.getName());
+        System.out.println("Final Career: " + person.getCareer().title);
+        System.out.println("Retirement Bonus: $" + retirementBonus);
+        System.out.println("Final Bank Balance: $" + person.getBankBalance());
+
+        if (person.getCar() != null) {
+            System.out.println("Car Owned: " + person.getCar().getType()[0] + " " + person.getCar().getType()[1]);
+        }
+
+        if (person.getHouse() != null) {
+            System.out.println("House Owned: " + person.getHouse());
+        }
+
+        System.out.println("\nThank you for playing!");
 
     }
-
 
 }
