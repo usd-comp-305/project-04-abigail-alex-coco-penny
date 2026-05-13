@@ -58,6 +58,12 @@ public class PersonTests {
     }
 
     @Test
+    public void testPrintedFormatBankBalance(){
+        person.setBankBalance(1234.5);
+        assertEquals("1234.50", person.printedFormatBankBalance());
+    }
+
+    @Test
     public void testGetPhenotypeRecessiveEyeColor(){
         final Map<Allele, AllelePair> recessiveTraits = new HashMap<>();
         recessiveTraits.put(Allele.EYE_COLOR, new AllelePair('b', 'b'));
