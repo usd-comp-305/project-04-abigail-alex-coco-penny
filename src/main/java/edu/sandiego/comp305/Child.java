@@ -39,11 +39,4 @@ public class Child extends Person {
         this.wentToCollege = wentToCollege;
     }
 
-    public Phenotype getPhenotype(){
-        return new Phenotype(
-                getDna().calculatePhenotypeFromAllele(Allele.EYE_COLOR),
-                getDna().calculatePhenotypeFromAllele(Allele.HEIGHT),
-                getDna().calculatePhenotypeFromAllele(Allele.HAIR_COLOR));
-    }
-
 }
