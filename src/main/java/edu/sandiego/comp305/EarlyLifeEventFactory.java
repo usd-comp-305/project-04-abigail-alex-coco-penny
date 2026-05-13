@@ -30,18 +30,15 @@ public class EarlyLifeEventFactory implements EventFactory {
     }
 
     public RiskyLifeEvent createRiskyEvent(final Random rng) {
-        final int randInt = rng.nextInt(3) + 1;
+        final int randInt = rng.nextInt(2) + 1;
 
         switch (randInt) {
 
             case 1:
-                return new RiskyAuditionEvent("Lead", 5000, 0.3);
+                return new RiskyAuditionEvent("Lead", 5000, 0.6);
 
             case 2:
-                return new RiskyAuditionEvent("Support", 2500, 0.6);
-
-            case 3:
-                return new SportsPlayingRiskyEvent("Basketball", 50, 0.2);
+                return new SportsPlayingRiskyEvent("Basketball", 50, 0.8);
         }
 
         return null;
