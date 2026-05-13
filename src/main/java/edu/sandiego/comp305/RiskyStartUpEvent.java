@@ -55,7 +55,7 @@ public class RiskyStartUpEvent implements RiskyLifeEvent {
                 System.out.println("Your company has gone bankrupt ... you have lost $" + returns);
                 person.setBankBalance(person.getBankBalance() - returns);
             }
-            System.out.println("Your current bank balance is $" + person.getBankBalance());
+            System.out.println("Your current bank balance is $" + person.printedFormatBankBalance());
 
         }
 

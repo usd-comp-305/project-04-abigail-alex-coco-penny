@@ -25,6 +25,6 @@ public class BuyingHouseMilestoneEvent implements MilestoneLifeEvent {
 
         System.out.println("You bought: " + house);
         System.out.println("Mortgage Cost: $" + house.getMortgageBalance());
-        System.out.println("Updated bank balance: $" + person.getBankBalance());
+        System.out.println("Updated bank balance: $" + person.printedFormatBankBalance());
     }
 }

@@ -48,7 +48,7 @@ public class RiskyAuditionEvent implements RiskyLifeEvent {
             } else {
                 System.out.println("Unfortunately, you were not called back ...  you have lost $" + cost);
             }
-            System.out.println("Your current bank balance is $" + person.getBankBalance());
+            System.out.println("Your current bank balance is $" + person.printedFormatBankBalance());
 
         }
 

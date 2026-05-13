@@ -95,7 +95,7 @@ public class Simulator {
             printYearHeader(year);
 
             final RiskyLifeEvent riskyEvent =
-                    factory.createRiskyEvent();
+                    factory.createRiskyEvent(RNG);
 
             riskyEvent.executeOn(
                     player,
@@ -167,9 +167,9 @@ public class Simulator {
 
         chooseHouse(player);
 
-        final Partner partner = offerMarriage(player);
+        offerMarriage(player);
 
-        offerChildren(player, partner);
+        offerChildren(player, player.getPartner());
 
         final EventFactory factory =
                 new AdultLifeEventFactory();
@@ -197,10 +197,10 @@ public class Simulator {
 
             System.out.println(
                     "Current bank balance: " +
-                            player.getBankBalance());
+                            (player.printedFormatBankBalance()));
 
             final RiskyLifeEvent riskyEvent =
-                    factory.createRiskyEvent();
+                    factory.createRiskyEvent(RNG);
 
             riskyEvent.executeOn(
                     player,
@@ -208,7 +208,7 @@ public class Simulator {
                     RNG);
 
             final FinancialLifeEvent financialEvent =
-                    factory.createFinancialEvent();
+                    factory.createFinancialEvent(RNG);
 
             financialEvent.executeOn(
                     player,
@@ -371,10 +371,10 @@ public class Simulator {
 
             System.out.println(
                     "Current bank balance: " +
-                            player.getBankBalance());
+                            (player.printedFormatBankBalance()));
 
             final FinancialLifeEvent financialEvent =
-                    factory.createFinancialEvent();
+                    factory.createFinancialEvent(RNG);
 
             financialEvent.executeOn(
                     player,
@@ -415,7 +415,7 @@ public class Simulator {
 
         System.out.println(
                 "\nCurrent balance: $"
-                        + player.getBankBalance());
+                        + (player.printedFormatBankBalance()));
 
         if (player.getCareer() != null) {
 

@@ -29,7 +29,7 @@ public class MajorPurchaseEvent implements FinancialLifeEvent {
                 System.out.println("You are bankrupt!\n");
             }
 
-            System.out.println("Your updated bank balance is: $" + person.getBankBalance() + "\n");
+            System.out.println("Your updated bank balance is: $" + person.printedFormatBankBalance() + "\n");
         }
 
 

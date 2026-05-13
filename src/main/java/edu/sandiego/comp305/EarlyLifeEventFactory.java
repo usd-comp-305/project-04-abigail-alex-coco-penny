@@ -4,11 +4,10 @@ import java.util.Random;
 
 public class EarlyLifeEventFactory implements EventFactory {
 
-    private Random random = new Random();
 
-    public FinancialLifeEvent createFinancialEvent() {
+    public FinancialLifeEvent createFinancialEvent(final Random rng) {
 
-        final int randInt = random.nextInt(3) + 1;
+        final int randInt = rng.nextInt(3) + 1;
 
         switch (randInt) {
 
@@ -26,12 +25,12 @@ public class EarlyLifeEventFactory implements EventFactory {
 
     }
 
-    public MilestoneLifeEvent createMilestoneEvent() {
+    public MilestoneLifeEvent createMilestoneEvent(final Random rng) {
         return new HighschoolMilestoneEvent();
     }
 
-    public RiskyLifeEvent createRiskyEvent() {
-        final int randInt = random.nextInt(3) + 1;
+    public RiskyLifeEvent createRiskyEvent(final Random rng) {
+        final int randInt = rng.nextInt(3) + 1;
 
         switch (randInt) {
 

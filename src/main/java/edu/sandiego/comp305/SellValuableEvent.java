@@ -50,7 +50,7 @@ public class SellValuableEvent implements FinancialLifeEvent {
             }
 
 
-            System.out.println("Your updated bank balance is: $" + person.getBankBalance() + "\n");
+            System.out.println("Your updated bank balance is: $" + person.printedFormatBankBalance() + "\n");
         }
 
 

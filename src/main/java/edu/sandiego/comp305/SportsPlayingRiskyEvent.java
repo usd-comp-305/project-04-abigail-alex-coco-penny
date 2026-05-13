@@ -27,7 +27,7 @@ public class SportsPlayingRiskyEvent implements RiskyLifeEvent {
         System.out.println("Your friends are betting money on a round of sports ... ");
         System.out.println("Sport: " + description);
         System.out.println("Cost: " + cost);
-        System.out.println("Risk Factor" + riskFactor);
+        System.out.println("Risk Factor: " + riskFactor);
 
         System.out.println("Would you like to take the risk? (y/n) \n");
 
@@ -54,7 +54,7 @@ public class SportsPlayingRiskyEvent implements RiskyLifeEvent {
             }
 
 
-            System.out.println("Your updated bank balance is: $" + person.getBankBalance() + "\n");
+            System.out.println("Your updated bank balance is: $" + person.printedFormatBankBalance() + "\n");
         }
 
 

@@ -21,7 +21,7 @@ public class RetirementMilestoneEvent implements MilestoneLifeEvent {
         System.out.println("Name: " + person.getName());
         System.out.println("Final Career: " + person.getCareer().title);
         System.out.println("Retirement Bonus: $" + retirementBonus);
-        System.out.println("Final Bank Balance: $" + person.getBankBalance());
+        System.out.println("Final Bank Balance: $" + person.printedFormatBankBalance());
 
         if (person.getCar() != null) {
             System.out.println("Car Owned: " + person.getCar().getType()[0] + " " + person.getCar().getType()[1]);
