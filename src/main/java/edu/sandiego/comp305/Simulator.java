@@ -205,6 +205,7 @@ public class Simulator {
             );
 
             child.inheritDNATraits(RNG);
+            System.out.println("Combining you and your partner's DNA...");
 
             System.out.println("Would you like your child to go to college? (y/n)");
             final String collegeChoice = INPUT.nextLine().toLowerCase();
