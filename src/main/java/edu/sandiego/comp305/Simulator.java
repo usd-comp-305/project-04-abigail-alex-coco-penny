@@ -337,8 +337,7 @@ public class Simulator {
             partner.calculateBankBalance();
 
             final Phenotype partnerPhenotype = partner.getPhenotype();
-            System.out.println("\nYour partner's traits");
-            System.out.println("Your character has been created! Here are your traits: ");
+            System.out.println("\nYour partner has been created! Here are their traits");
             System.out.println("Eye Color: " + partnerPhenotype.getEyeColor());
             System.out.println("Height: " + partnerPhenotype.getHeight());
             System.out.println("Hair Color: " + partnerPhenotype.getHairColor());
@@ -363,6 +362,45 @@ public class Simulator {
                 INPUT.nextLine().toLowerCase();
 
         if (choice.equals("y")) {
+
+            //if player declined marriage, default partner is created
+            // so Child constructor still has two parents
+            final Partner childParent;
+            if(partner != null) {
+                childParent = partner;
+            } else {
+                childParent = new Partner(
+                        "Parent 2",
+                        Age.ADULT,
+                        DNA.generateRandomDNA(RNG),
+                        0.0
+                );
+            }
+            System.out.println("Enter your child's name: ");
+            final String childName = INPUT.nextLine();
+
+            final Child child = new Child(
+                    childName,
+                    Age.CHILD,
+                    DNA.generateRandomDNA(RNG),
+                    player,
+                    childParent,
+                    0.0
+            );
+
+            child.inheritDNATraits(RNG);
+
+            System.out.println(
+                    "Would you like your child to go to college? (y/n)");
+            final String collegeChoice = INPUT.nextLine().toLowerCase();
+            child.setWentToCollege(collegeChoice.equals("y"));
+
+            final Phenotype childPhenotype = child.getPhenotype();
+            System.out.println("\nYour child has been created! Here are their traits:");
+            System.out.println("Eye Color: " + childPhenotype.getEyeColor());
+            System.out.println("Height: " + childPhenotype.getHeight());
+            System.out.println("Hair Color: " + childPhenotype.getHairColor());
+            System.out.println("Went to College: " + child.getWentToCollege());
 
             System.out.println(
                     "\nCongratulations on your child!");
