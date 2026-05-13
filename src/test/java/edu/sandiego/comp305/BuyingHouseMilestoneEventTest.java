@@ -36,4 +36,15 @@ public class BuyingHouseMilestoneEventTest {
 
     }
 
+    @Test
+    public void DoesNotBuyHouseHouseNull() {
+        when(mockedScanner.nextLine()).thenReturn("n");
+
+        final BuyingHouseMilestoneEvent event = new BuyingHouseMilestoneEvent();
+        event.executeOn(person, mockedScanner, mockedRNG);
+
+        assertNull(person.getHouse());
+
+    }
+
 }
